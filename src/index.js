@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import theme from './theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/styles';
+import Header from './components/header/Header'
 
 ReactDOM.render(
     <ThemeProvider theme={theme}>
@@ -14,6 +15,9 @@ ReactDOM.render(
         <App />
     </ThemeProvider>,
     document.getElementById('root'));
+
+ReactDOM.render(<Header />,
+    document.getElementById('header'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
