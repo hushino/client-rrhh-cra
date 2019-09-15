@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback} from 'react';
 import './App.css';
 import axios from 'axios';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import { async } from 'q';
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -22,10 +23,25 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
   const [data, setData] = useState([]);
-  const [spacing, setSpacing] = React.useState(2);
+  const [spacing] = React.useState(2);
   const classes = useStyles();
+
+  const axiosInstance = axios.create({
+    headers: {
+      Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTY4NTUwODE0LCJleHAiOjE1NjkxNTU2MTR9.25EW7Y24UKafhODIGnFfHg2rgZPKtTgk0GqzjzY5B7iqeSuDMnO2E0L6U3BgMFxogilkTZcmF0GzWv844HNkGQ',
+      'Content-Type': 'application/json'
+    }
+  });
+
   useEffect(() => {
-    axios.get('http://localhost:8080/api/').then(result => setData(result.data));
+    
+    const fetchData = async () => {
+      const response = await axiosInstance.get('http://localhost:8080/api/')
+      setData(response.data)
+      //console.log(response.headers);
+    }
+    fetchData();
+
   }, []);
 
   return (
@@ -38,11 +54,16 @@ function App() {
               <Grid key={value} item>
                 <Paper className={classes.paper}>
                   <Typography variant="h5" component="h3">
-                    This is a sheet of paper.
-        </Typography>
+                    Bienvenido
+                  </Typography>
                   <Typography component="p">
-                    Paper can be used to build surface or other elements for your application.
-        </Typography>
+                    Inicie sesion para continuar
+                    {data.map(item => (
+                      <li key={item.id}>
+                        {item.nombre}
+                      </li>
+                    ))}
+                  </Typography>
                 </Paper>
               </Grid>
             ))}
@@ -55,13 +76,19 @@ function App() {
 }
 
 export default App
-
-/* useEffect(() => {
-   const fetchData = async () => {
-     const result = await axios(
-       'http://localhost:8080/api/',
-     );
-     setData(result.data);
-   };
-   fetchData();
- }, []); */
+   
+  /*  async function fetchData() {
+  useEffect(() => {
+     const fetchData = async () => {
+       const result = await axios(
+         'http://localhost:8080/api/',
+       );
+       setData(result.data);
+     };
+     fetchData();
+   }, []); 
+  
+      /*  axiosInstance.get('http://localhost:8080/api/').then((result) => {
+         setData(result.data)
+         console.log(result.headers);
+       }); */
