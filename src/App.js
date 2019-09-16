@@ -1,8 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState} from 'react';
 import './App.css';
 import axios from 'axios';
-import { Button } from 'antd';
+import {PageHeader  } from 'antd';
+import Login from './components/login/Login';
 
 function App() {
   const [data, setData] = useState([]); 
@@ -16,18 +16,27 @@ function App() {
 
   useEffect(() => {
     
-    const fetchData = async () => {
-      const response = await axiosInstance.get('http://localhost:8080/api/')
+    let fetchData = async () => {
+      let response = await axiosInstance.get('http://localhost:8080/api/')
       setData(response.data)
       //console.log(response.headers);
     }
     fetchData();
 
-  }, []);
+  }, [axiosInstance]);
 
   return (
     <React.Fragment>
-      <div className="App">
+        <PageHeader onBack={() => null} title="RRHH" subTitle="Bienvenido" />
+   Inicie sesion para continuar
+         <Login/>
+    </React.Fragment>
+
+  );
+}
+
+export default App
+    /*  <div className="App">
         <Button type="primary">Button</Button>
       </div>
       Inicie sesion para continuar
@@ -35,14 +44,7 @@ function App() {
          <li key={item.id}>
               {item.nombre}
             </li>
-            ))}
-                 
-    </React.Fragment>
-  );
-}
-
-export default App
-   
+            ))} */
   /*  async function fetchData() {
   useEffect(() => {
      const fetchData = async () => {
