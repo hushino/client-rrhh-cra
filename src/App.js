@@ -1,30 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState, useCallback} from 'react';
+import React, { useEffect, useState} from 'react';
 import './App.css';
 import axios from 'axios';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import { async } from 'q';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(3, 2),
-  },
-  control: {
-    padding: theme.spacing(2),
-  },
-}));
+import { Button } from 'antd';
 
 function App() {
-  const [data, setData] = useState([]);
-  const [spacing] = React.useState(2);
-  const classes = useStyles();
+  const [data, setData] = useState([]); 
 
   const axiosInstance = axios.create({
     headers: {
@@ -46,31 +27,16 @@ function App() {
 
   return (
     <React.Fragment>
-      <CssBaseline />
-      <Grid container className={classes.root} spacing={2}>
-        <Grid item xs={6}>
-          <Grid container justify="center" spacing={spacing}>
-            {[0].map(value => (
-              <Grid key={value} item>
-                <Paper className={classes.paper}>
-                  <Typography variant="h5" component="h3">
-                    Bienvenido
-                  </Typography>
-                  <Typography component="p">
-                    Inicie sesion para continuar
-                    {data.map(item => (
-                      <li key={item.id}>
-                        {item.nombre}
-                      </li>
-                    ))}
-                  </Typography>
-                </Paper>
-              </Grid>
+      <div className="App">
+        <Button type="primary">Button</Button>
+      </div>
+      Inicie sesion para continuar
+       {data.map(item => (
+         <li key={item.id}>
+              {item.nombre}
+            </li>
             ))}
-          </Grid>
-        </Grid>
-
-      </Grid>
+                 
     </React.Fragment>
   );
 }
