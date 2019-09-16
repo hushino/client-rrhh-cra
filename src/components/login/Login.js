@@ -1,10 +1,35 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
-import { Checkbox, Form, Icon, Input, Button, Row, Menu, PageHeader } from 'antd';
+import { Checkbox, Form, Icon, Input, Button } from 'antd';
 import './Login.css'
-class Login extends React.Component {
+function Login(props) {
+
+    const [data, setData] = useState([]);
+
+    const axiosInstance = axios.create({
+        headers: {
+          Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTY4NTUwODE0LCJleHAiOjE1NjkxNTU2MTR9.25EW7Y24UKafhODIGnFfHg2rgZPKtTgk0GqzjzY5B7iqeSuDMnO2E0L6U3BgMFxogilkTZcmF0GzWv844HNkGQ',
+          'Content-Type': 'application/json'
+        }
+      });
+      const payload = {
+        usernameOrEmail:"user@gmail.com",
+        password:"123"
+      };
+      useEffect(() => {
+        
+        const fetchData = async () => {
+            const response = await axiosInstance.post('http://localhost:8080/api/auth/signin',payload)
+          setData(response.data)
+          console.log(response.data);
+        }
+        fetchData();
     
-    handleSubmit = e => {
+      }, []);
+
+     const handleSubmit = (e) =>  {
       e.preventDefault();
       this.props.form.validateFields((err, values) => {
         if (!err) {
@@ -12,11 +37,10 @@ class Login extends React.Component {
         }
       });
     };
-  
-    render() {
-      const { getFieldDecorator } = this.props.form;
+    const { getFieldDecorator } = props.form;
+
       return (
-        <Form onSubmit={this.handleSubmit} className="login-form">
+        <Form onSubmit={handleSubmit} className="login-form">
           <Form.Item>
             {getFieldDecorator('username', {
               rules: [{ required: true, message: 'Please input your username!' }],
@@ -43,18 +67,18 @@ class Login extends React.Component {
               valuePropName: 'checked',
               initialValue: true,
             })(<Checkbox>Remember me</Checkbox>)}
-            <a className="login-form-forgot" href="">
+            <a className="login-form-forgot" href="sfd">
               Forgot password
             </a>
             <Button type="primary" htmlType="submit" className="login-form-button">
               Log in
             </Button>
-            Or <a href="">register now!</a>
+            Or <a href="rwe">register now!</a>
           </Form.Item>
         </Form>
       );
     }
-  }
+ // }
   const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(Login);
   
 export default WrappedNormalLoginForm

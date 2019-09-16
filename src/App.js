@@ -1,7 +1,9 @@
-import React, { useEffect, useState} from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
-import {PageHeader,Row, Col  } from 'antd';
+import {PageHeader,Row, Col,Icon  } from 'antd';
 import WrappedNormalLoginForm from './components/login/Login';
 
 function App() {
@@ -16,25 +18,31 @@ function App() {
 
   useEffect(() => {
     
-    let fetchData = async () => {
-      let response = await axiosInstance.get('http://localhost:8080/api/')
+    const fetchData = async () => {
+      const response = await axiosInstance.get('http://localhost:8080/api/')
       setData(response.data)
       //console.log(response.headers);
     }
     fetchData();
 
-  }, [axiosInstance]);
+  }, []);
 
   return (
     <React.Fragment>
-        <PageHeader onBack={() => null} title="RRHH" subTitle="Bienvenido" />
+        <PageHeader onBack={() => null} /* backIcon={() => false} */ title="RRHH" subTitle="Bienvenido" />
    Inicie sesion para continuar
+   <Col span={1}></Col>
+   {data.map(item => (
+         <li key={item.id}>
+              {item.nombre}
+            </li>
+            ))} 
    <Row>
-        <Col span={4}>
-          
-   <WrappedNormalLoginForm />
-   </Col>
-    </Row>
+      <Col span={1}></Col>
+      <Col span={4}>
+       <WrappedNormalLoginForm />
+      </Col>
+   </Row>
     </React.Fragment>
   );
 }
