@@ -21,7 +21,7 @@ function Login(props) {
       useEffect(() => {
         
         const fetchData = async () => {
-            const response = await axiosInstance.post('http://localhost:8080/api/auth/signin',payload)
+        const response = await axiosInstance.post('http://localhost:8080/api/auth/signin',payload)
           setData(response.data)
           console.log(response.data);
         }

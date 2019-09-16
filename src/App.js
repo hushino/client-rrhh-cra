@@ -32,11 +32,7 @@ function App() {
         <PageHeader onBack={() => null} /* backIcon={() => false} */ title="RRHH" subTitle="Bienvenido" />
    Inicie sesion para continuar
    <Col span={1}></Col>
-   {data.map(item => (
-         <li key={item.id}>
-              {item.nombre}
-            </li>
-            ))} 
+   
    <Row>
       <Col span={1}></Col>
       <Col span={4}>
