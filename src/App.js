@@ -1,8 +1,8 @@
 import React, { useEffect, useState} from 'react';
 import './App.css';
 import axios from 'axios';
-import {PageHeader  } from 'antd';
-import Login from './components/login/Login';
+import {PageHeader,Row, Col  } from 'antd';
+import WrappedNormalLoginForm from './components/login/Login';
 
 function App() {
   const [data, setData] = useState([]); 
@@ -29,9 +29,13 @@ function App() {
     <React.Fragment>
         <PageHeader onBack={() => null} title="RRHH" subTitle="Bienvenido" />
    Inicie sesion para continuar
-         <Login/>
+   <Row>
+        <Col span={4}>
+          
+   <WrappedNormalLoginForm />
+   </Col>
+    </Row>
     </React.Fragment>
-
   );
 }
 

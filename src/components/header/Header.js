@@ -6,9 +6,9 @@ function Header() {
     //const [data, setData] = useState([]);
  
     return (
-        <div class="clearfix" id="header">
-        <div class="ant-row">
-          <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-5 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4">
+        <div className="clearfix" id="header">
+        <div className="ant-row">
+          <div className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-5 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4">
           </div> 
           <Menu /* onClick={this.handleClick} selectedKeys={[this.state.current]} */ mode="horizontal">
         <Menu.Item key="mail">
