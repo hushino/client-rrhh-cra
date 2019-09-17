@@ -13,20 +13,27 @@ function App() {
   const [data, setData] = useState([]); 
 
   useEffect(() => {
+    let isSubscribed = true
+    let reduxsub
+    if (isSubscribed) {
     const fetchData = async () => {
-      store.subscribe( async () => {
+      reduxsub = store.subscribe( async () => {
         const response = await axios.get('http://localhost:8080/api/', {
           headers: {
             Authorization: store.getState().Authorization
           }
         })
-        //console.log('aaaaaaaaa '+store.getState().Role)
         setData(response.data)
       });
     }
-    fetchData();
+      fetchData();
+    }
+    return () => {
+      reduxsub()
+      isSubscribed = false
+    }
 
-  }, [data]);
+  }, []);
  
   return (
     <React.Fragment>

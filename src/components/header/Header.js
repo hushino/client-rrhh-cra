@@ -11,11 +11,21 @@ import store from '../../redux/store';
 function Header() {
   //const [data, setData] = useState([]);
   const [data, setData] = useState([]);
+
   useEffect(() => {
-    store.subscribe(() => {
-      setData()
-    });
-  }, [data]);
+    let reduxsub
+    let isSubscribed = true
+    if (isSubscribed) {
+      reduxsub = store.subscribe(() => {
+        console.log('header ' + store.getState().Role)
+        setData(store.getState().Role)
+      });
+    }
+    return () => {
+      reduxsub()
+      isSubscribed = false
+    }
+  }, []);
 
   return (
     <Router>
