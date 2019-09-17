@@ -7,7 +7,7 @@ import UserPanel from '../userPanel/UserPanel';
 import AdminPanel from '../adminPanel/AdminPanel';
 import NoPageFound from '../noPageFound/NoPageFound';
 import store from '../../redux/store';
-
+//https://medium.com/@clrksanford/persist-ence-is-key-using-redux-persist-to-store-your-state-in-localstorage-ac6a000aee63
 function Header() {
   //const [data, setData] = useState([]);
   const [data, setData] = useState([]);
