@@ -15,11 +15,11 @@ import Header from './components/header/Header'
             }
 ] */
 
-ReactDOM.render(
+/* ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
-    document.getElementById('root'));
+    document.getElementById('root')); */
 
 ReactDOM.render(
     <Provider store={store}>

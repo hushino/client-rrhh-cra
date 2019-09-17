@@ -1,51 +1,61 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { Button,Row, Menu, Icon,PageHeader  } from 'antd';
-const { SubMenu } = Menu;
- 
+import React, { useEffect, useState } from 'react';
+import { Button, Row, Menu, Icon, PageHeader } from 'antd';
+import App from '../../App';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import UserPanel from '../userPanel/UserPanel';
+import AdminPanel from '../adminPanel/AdminPanel';
+import NoPageFound from '../noPageFound/NoPageFound';
+import store from '../../redux/store';
+
 function Header() {
-    //const [data, setData] = useState([]);
- 
-    return (
+  //const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    store.subscribe(() => {
+      setData()
+    });
+  }, [data]);
+
+  return (
+    <Router>
+      <nav>
         <div className="clearfix" id="header">
-        <div className="ant-row">
-          <div className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-5 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4">
-          </div> 
-          <Menu /* onClick={this.handleClick} selectedKeys={[this.state.current]} */ mode="horizontal">
-        <Menu.Item key="mail">
-          <Icon type="mail" />
-          Navigation One
-        </Menu.Item>
-        <Menu.Item key="app" disabled>
-          <Icon type="appstore" />
-          Navigation Two
-        </Menu.Item>
-        <SubMenu
-          title={
-            <span className="submenu-title-wrapper">
-              <Icon type="setting" />
-              Navigation Three - Submenu
-            </span>
-          }
-        >
-          <Menu.ItemGroup title="Item 1">
-            <Menu.Item key="setting:1">Option 1</Menu.Item>
-            <Menu.Item key="setting:2">Option 2</Menu.Item>
-          </Menu.ItemGroup>
-          <Menu.ItemGroup title="Item 2">
-            <Menu.Item key="setting:3">Option 3</Menu.Item>
-            <Menu.Item key="setting:4">Option 4</Menu.Item>
-          </Menu.ItemGroup>
-        </SubMenu>
-        <Menu.Item key="alipay">
-          <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-            Navigation Four - Link
-          </a>
-        </Menu.Item>
-      </Menu>
+          <div className="ant-row">
+            <div className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-5 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4">
+            </div>
+            <Menu mode="horizontal">
+
+              < Menu.Item key="mail" >
+                <Link to="/">
+                  <Icon type="mail" />
+                  {data}
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="app">
+                <Link to="/user/">
+                  <Icon type="appstore" />
+                  Users
+               </Link>
+              </Menu.Item>
+              <Menu.Item key="alipay">
+                <Link to="/admin/">
+                  <Icon type="appstore" />
+                  Admin
+                 </Link>
+              </Menu.Item>
+            </Menu>
+          </div>
         </div>
-    </div>
-    )
+      </nav>
+      <Switch>
+        <Route path="/" exact component={App} />
+        <Route path="/user/" component={UserPanel} />
+        <Route path="/admin/" component={AdminPanel} />
+        <Route component={NoPageFound} />
+      </Switch>
+    </Router>
+  )
 
 }
 
