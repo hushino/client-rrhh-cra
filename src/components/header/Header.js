@@ -7,7 +7,7 @@ import UserPanel from '../userPanel/UserPanel';
 import AdminPanel from '../adminPanel/AdminPanel';
 import NoPageFound from '../noPageFound/NoPageFound';
 import store from '../../redux/store';
-//https://medium.com/@clrksanford/persist-ence-is-key-using-redux-persist-to-store-your-state-in-localstorage-ac6a000aee63
+
 function Header() {
   //const [data, setData] = useState([]);
   const [data, setData] = useState([]);
@@ -26,7 +26,7 @@ function Header() {
       reduxsub()
       isSubscribed = false
     }
-    
+
   }, []);
 
   return (
@@ -37,33 +37,33 @@ function Header() {
             <div className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-5 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4">
             </div>
             <Menu mode="horizontal">
-                           <Menu.Item key="mail" >
-                                <Link to="/">
-                                   <Icon type="home" />
-                                      Inicio
+              <Menu.Item key="mail" >
+                <Link to="/">
+                  <Icon type="home" />
+                  Inicio
                                  </Link>
-                             </Menu.Item>
-              
-                {//user@gmail.com
-                            isRoleUser
-                            ? <Menu.Item key="user" >
-                                <Link to="/user">
-                                   <Icon type="gold" />
-                                        Usuario Panel
+              </Menu.Item>
+
+              {//user@gmail.com
+                isRoleUser
+                  ? <Menu.Item key="user" >
+                    <Link to="/user">
+                      <Icon type="gold" />
+                      Usuario Panel
                                  </Link>
-                             </Menu.Item>
-                            : ''
-                  }
-               {//user@gmail.com
-                            isRoleAdmin
-                            ? <Menu.Item key="admin" >
-                                <Link to="/admin">
-                                   <Icon type="appstore" />
-                                        Administrador Panel
+                  </Menu.Item>
+                  : ''
+              }
+              {//user@gmail.com
+                isRoleAdmin
+                  ? <Menu.Item key="admin" >
+                    <Link to="/admin">
+                      <Icon type="appstore" />
+                      Administrador Panel
                                  </Link>
-                             </Menu.Item>
-                            : ''
-                  }
+                  </Menu.Item>
+                  : ''
+              }
             </Menu>
           </div>
         </div>
@@ -71,15 +71,15 @@ function Header() {
       <Switch>
         <Route path="/" exact component={App} />
         {
-            isRoleAdmin
+          isRoleUser
             ? <Route path="/user/" component={UserPanel} />
-            : ''
-         }
-         {
-            isRoleAdmin
+            : <Route path="/" component={App} />
+        }
+        {
+          isRoleAdmin
             ? <Route path="/admin/" component={AdminPanel} />
-            : ''
-         }
+            : <Route path="/" component={App} />
+        }
         <Route component={NoPageFound} />
       </Switch>
     </Router>

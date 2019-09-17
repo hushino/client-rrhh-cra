@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Checkbox, Form, Icon, Input, Button,Row, Col } from 'antd';
+import { Checkbox, Form, Icon, Input, Button, Row, Col } from 'antd';
 import './Login.css';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -10,8 +10,8 @@ function Login(props) {
   const dispatch = useDispatch();
 
   const payload = {
-    usernameOrEmail: "user@gmail.comm",
-    password: "123m"
+    usernameOrEmail: "user@gmail.com",
+    password: "123"
   };
 
   function imaginator(stateOfLife) {
@@ -20,14 +20,11 @@ function Login(props) {
       stateOfLife
     };
   }
+  
   const fetchData = async () => {
     const response = await axios.post('http://localhost:8080/api/auth/signin', payload)
-    //setData(response.data)
-    //console.log(response.data);//accessToken
     dispatch(imaginator(response.data))
   }
-  /* useEffect(() => {
-  }, []); */
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +33,6 @@ function Login(props) {
         payload.usernameOrEmail = values.username;
         payload.password = values.password;
         fetchData();
-        //console.log('Received values of form: ', values);
       }
     });
   };
@@ -66,8 +62,8 @@ function Login(props) {
         )}
       </Form.Item>
       <Form.Item>
-    
-       <Row></Row>
+
+        <Row></Row>
         <Button type="primary" htmlType="submit" className="login-form-button">
           Iniciar
         </Button>
