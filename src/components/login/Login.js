@@ -8,42 +8,35 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 function Login(props) {
-
- 
   const dispatch = useDispatch();
-  //const [data, setData] = useState([]);
 
-  /*  const axiosInstance = axios.create({
-       headers: {
-         Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTY4NTUwODE0LCJleHAiOjE1NjkxNTU2MTR9.25EW7Y24UKafhODIGnFfHg2rgZPKtTgk0GqzjzY5B7iqeSuDMnO2E0L6U3BgMFxogilkTZcmF0GzWv844HNkGQ',
-         'Content-Type': 'application/json'
-       }
-     }); */
   const payload = {
-    usernameOrEmail: "user@gmail.com",
-    password: "123"
+    usernameOrEmail: "user@gmail.comm",
+    password: "123m"
   };
+
   function imaginator(stateOfLife) {
     return {
       type: 0,
       stateOfLife
     };
   }
-  useEffect(() => {
-
-    const fetchData = async () => {
-      const response = await axios.post('http://localhost:8080/api/auth/signin', payload)
-      //setData(response.data)
-      //console.log(response.data);//accessToken
-      dispatch(imaginator(response.data))
-    }
-    fetchData();
-  }, []);
+  const fetchData = async () => {
+    const response = await axios.post('http://localhost:8080/api/auth/signin', payload)
+    //setData(response.data)
+    //console.log(response.data);//accessToken
+    dispatch(imaginator(response.data))
+  }
+  /* useEffect(() => {
+  }, []); */
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    props.form.validateFields((err, values) => {
       if (!err) {
+        payload.usernameOrEmail = values.username;
+        payload.password = values.password;
+        fetchData();
         console.log('Received values of form: ', values);
       }
     });
@@ -89,7 +82,6 @@ function Login(props) {
     </Form>
   );
 }
-// }
 const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(Login);
 
 export default WrappedNormalLoginForm
