@@ -6,7 +6,6 @@ import { Checkbox, Form, Icon, Input, Button } from 'antd';
 import './Login.css';
 import { useSelector, useDispatch } from 'react-redux';
 
-
 function Login(props) {
   const dispatch = useDispatch();
 

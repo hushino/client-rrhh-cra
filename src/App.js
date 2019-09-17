@@ -43,7 +43,7 @@ function App() {
    <Col span={1}></Col>
    <Row>
       <Col span={1}></Col>
-      <Col span={4}>
+      <Col span={6}>
        <WrappedNormalLoginForm />
       </Col>
    </Row>
