@@ -11,13 +11,14 @@ import store from '../../redux/store';
 function Header() {
   //const [data, setData] = useState([]);
   const [data, setData] = useState([]);
-
+  const isRoleUser = data === 'USER';
+  const isRoleAdmin = data === 'ADMIN';
   useEffect(() => {
     let reduxsub
     let isSubscribed = true
     if (isSubscribed) {
       reduxsub = store.subscribe(() => {
-        console.log('header ' + store.getState().Role)
+        //console.log('header ' + store.getState().Role)
         setData(store.getState().Role)
       });
     }
@@ -25,6 +26,7 @@ function Header() {
       reduxsub()
       isSubscribed = false
     }
+    
   }, []);
 
   return (
@@ -35,33 +37,49 @@ function Header() {
             <div className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-5 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4">
             </div>
             <Menu mode="horizontal">
-
-              < Menu.Item key="mail" >
-                <Link to="/">
-                  <Icon type="mail" />
-                  {data}
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="app">
-                <Link to="/user/">
-                  <Icon type="appstore" />
-                  Users
-               </Link>
-              </Menu.Item>
-              <Menu.Item key="alipay">
-                <Link to="/admin/">
-                  <Icon type="appstore" />
-                  Admin
-                 </Link>
-              </Menu.Item>
+                           <Menu.Item key="mail" >
+                                <Link to="/">
+                                   <Icon type="home" />
+                                      Inicio
+                                 </Link>
+                             </Menu.Item>
+              
+                {//user@gmail.com
+                            isRoleUser
+                            ? <Menu.Item key="user" >
+                                <Link to="/user">
+                                   <Icon type="gold" />
+                                        Usuario Panel
+                                 </Link>
+                             </Menu.Item>
+                            : ''
+                  }
+               {//user@gmail.com
+                            isRoleAdmin
+                            ? <Menu.Item key="admin" >
+                                <Link to="/admin">
+                                   <Icon type="appstore" />
+                                        Administrador Panel
+                                 </Link>
+                             </Menu.Item>
+                            : ''
+                  }
             </Menu>
           </div>
         </div>
       </nav>
       <Switch>
         <Route path="/" exact component={App} />
-        <Route path="/user/" component={UserPanel} />
-        <Route path="/admin/" component={AdminPanel} />
+        {
+            isRoleAdmin
+            ? <Route path="/user/" component={UserPanel} />
+            : ''
+         }
+         {
+            isRoleAdmin
+            ? <Route path="/admin/" component={AdminPanel} />
+            : ''
+         }
         <Route component={NoPageFound} />
       </Switch>
     </Router>

@@ -36,9 +36,8 @@ function App() {
   }, []);
  
   return (
-    <React.Fragment>
-      
-  <PageHeader onBack={() => null} /* backIcon={() => false} */ title="RRHH" subTitle="Bienvenido" />
+ <React.Fragment>
+  <PageHeader onBack={() => null}  backIcon={<Icon type="appstore" />} title="RRHH" subTitle="Bienvenido" />
    Inicie sesion para continuar
    <Col span={1}></Col>
    <Row>
@@ -47,7 +46,7 @@ function App() {
        <WrappedNormalLoginForm />
       </Col>
    </Row>
-    </React.Fragment>
+</React.Fragment>
   );
 }
 

@@ -8,15 +8,13 @@ const myReducer = (state = initialState, action) => {
             //state.Authorization = action.stateOfLife.accessToken
             let role = '';
             action.stateOfLife.roles.forEach(element => {
-                //console.log(element.authority)
-                //state.Role = element.authority
                 role = element.authority
-
             });
             return {
                 Authorization: 'Bearer ' + action.stateOfLife.accessToken,
                 Role: role
-            }
+            };
+         
         default:
             return state;
     }

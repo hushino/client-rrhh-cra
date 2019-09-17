@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Checkbox, Form, Icon, Input, Button } from 'antd';
+import { Checkbox, Form, Icon, Input, Button,Row, Col } from 'antd';
 import './Login.css';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -36,7 +36,7 @@ function Login(props) {
         payload.usernameOrEmail = values.username;
         payload.password = values.password;
         fetchData();
-        console.log('Received values of form: ', values);
+        //console.log('Received values of form: ', values);
       }
     });
   };
@@ -46,37 +46,31 @@ function Login(props) {
     <Form onSubmit={handleSubmit} className="login-form">
       <Form.Item>
         {getFieldDecorator('username', {
-          rules: [{ required: true, message: 'Please input your username!' }],
+          rules: [{ required: true, message: 'Ingrese su nombre de usuario!' }],
         })(
           <Input
             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-            placeholder="Username"
+            placeholder="Usuario"
           />,
         )}
       </Form.Item>
       <Form.Item>
         {getFieldDecorator('password', {
-          rules: [{ required: true, message: 'Please input your Password!' }],
+          rules: [{ required: true, message: 'Ingrese su contraseña!' }],
         })(
           <Input
             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             type="password"
-            placeholder="Password"
+            placeholder="Contraseña"
           />,
         )}
       </Form.Item>
       <Form.Item>
-        {getFieldDecorator('remember', {
-          valuePropName: 'checked',
-          initialValue: true,
-        })(<Checkbox>Remember me</Checkbox>)}
-        <a className="login-form-forgot" href="sfd">
-          Forgot password
-            </a>
+    
+       <Row></Row>
         <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
-            </Button>
-        Or <a href="rwe">register now!</a>
+          Iniciar
+        </Button>
       </Form.Item>
     </Form>
   );

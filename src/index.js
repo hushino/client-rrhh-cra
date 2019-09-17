@@ -5,14 +5,11 @@ import * as stores from './redux/store'
 import './index.css';
 //import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Header from './components/header/Header'
-import { PersistGate } from 'redux-persist/integration/react'
+import Header from './components/header/Header';
 
 ReactDOM.render(
     <Provider store={stores.default}>
-        <PersistGate loading={null} persistor={stores.persistor}>
             <Header />
-        </PersistGate>
     </Provider>,
     document.getElementById('header'));
 
