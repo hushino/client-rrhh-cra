@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Login(props) {
 
-  const counter = useSelector(state => state.Authorization)
+ 
   const dispatch = useDispatch();
   //const [data, setData] = useState([]);
 
@@ -35,7 +35,7 @@ function Login(props) {
       const response = await axios.post('http://localhost:8080/api/auth/signin', payload)
       //setData(response.data)
       //console.log(response.data);//accessToken
-      dispatch(imaginator(response.data.accessToken))
+      dispatch(imaginator(response.data))
     }
     fetchData();
   }, []);

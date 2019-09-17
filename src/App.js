@@ -7,35 +7,26 @@ import {PageHeader,Row, Col,Icon  } from 'antd';
 import WrappedNormalLoginForm from './components/login/Login';
 import { useSelector, connect } from 'react-redux' 
 import store from './redux/store'
-function timeout(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-const mapStateToProps = (state) => {
-  return {
-    s: state.Authorization
-  }
-}
-function App(props) {
+ 
+ 
+function App() {
   const [data, setData] = useState([]); 
 
-  const asd = useSelector(state => state.Authorization)
- 
   useEffect(() => {
-
     const fetchData = async () => {
       store.subscribe( async () => {
         const response = await axios.get('http://localhost:8080/api/', {
           headers: {
-            Authorization: store.getState()
+            Authorization: store.getState().Authorization
           }
         })
+        //console.log('aaaaaaaaa '+store.getState().Role)
         setData(response.data)
       });
-     
     }
     fetchData();
 
-  }, []);
+  }, [data]);
  
   return (
     <React.Fragment>
@@ -59,7 +50,7 @@ function App(props) {
   );
 }
 
-export default connect()(App)
+export default App 
     /*  <div className="App">
         <Button type="primary">Button</Button>
       </div>
