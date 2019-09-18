@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import store from '../../redux/store';
-import { Table } from 'antd';
+import { Table, Icon } from 'antd';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import AdminPanel from '../adminPanel/AdminPanel';
 //`${name.data.apellido} ${name.data.nombre}`
 const columns = [
     {
@@ -28,6 +30,12 @@ const columns = [
         dataIndex: 'id',
         width: '20%',
     },
+    {
+        title: 'Accion',
+        key: 'action',
+        dataIndex: 'id',
+        render: (dataIndex) => <Link to={`/viewpersona/${dataIndex}`}>Ver</Link>,
+    },
 ];
 
 
@@ -35,8 +43,6 @@ function UserPanel() {
     //const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [role, setRole] = useState([])
-
-
 
     let current = 0
     let pageSize = 10
@@ -75,11 +81,7 @@ function UserPanel() {
             //console.log('...sortField ' + sortField); // nombre
             // console.log('...sortOrder ' + sortOrder); // ascend descend
 
-            /* console.log('...results ' + results);
-            console.log('...page ' + page); */
-            // handle success
-            //console.log('aaaaa ' + response.data.content);
-            //setData(response.data)
+
             setLoading({ loading: true });
             const pagination = { ...loading.pagination };
             pagination.total = response.data.totalElements;
@@ -94,13 +96,9 @@ function UserPanel() {
         })
 
 
-
     useEffect(() => {
+
         fetchData();
-        /* const fetchData = async () => {
-        const response = await axios.post(`http://localhost:8080/api/home?page=${number}`)
-        setData(response.data)}
-        fetchData() */
         setRole(store.getState().Role)
 
     }, []);
@@ -110,18 +108,15 @@ function UserPanel() {
     return (
         <div>
             <h1>Panel de Usuario Autentificado</h1>
-            {//user@gmail.com
-                isRoleUser
-                    ? <Table
-                        columns={columns}
-                        rowKey={record => record.id}
-                        dataSource={loading.data}
-                        pagination={loading.pagination}
-                        loading={loading.loading}
-                        onChange={handleTableChange}
-                    />
-                    : <h5>Primero inicie sesion </h5>
-            }
+            <Table
+                columns={columns}
+                rowKey={record => record.id}
+                dataSource={loading.data}
+                pagination={loading.pagination}
+                loading={loading.loading}
+                onChange={handleTableChange}
+            />
+
 
         </div>
     )

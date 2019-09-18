@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import UserPanel from '../userPanel/UserPanel';
 import AdminPanel from '../adminPanel/AdminPanel';
 import NoPageFound from '../noPageFound/NoPageFound';
+import Viewpersona from '../persona/Viewpersona';
 import store from '../../redux/store';
 
 function Header() {
@@ -44,16 +45,13 @@ function Header() {
                 </Link>
               </Menu.Item>
 
-              {//user@gmail.com
-                isRoleUser
-                  ? <Menu.Item key="user" >
-                    <Link to="/user">
-                      <Icon type="gold" />
-                      Panel Usuario
+              <Menu.Item key="user" >
+                <Link to="/user">
+                  <Icon type="gold" />
+                  Panel Usuario
                     </Link>
-                  </Menu.Item>
-                  : ''
-              }
+              </Menu.Item>
+
               <Menu.Item key="admin" >
                 <Link to="/admin">
                   <Icon type="appstore" />
@@ -67,11 +65,8 @@ function Header() {
       <Switch>
         <Route path="/" exact component={App} />
         <Route path="/admin/" component={AdminPanel} />
-        {
-          isRoleUser
-            ? <Route path="/user/" component={UserPanel} />
-            : <Route path="/" component={App} />
-        }
+        <Route path="/user/" component={UserPanel} />
+        <Route path="/viewpersona/:dataIndex/" component={Viewpersona} />
         <Route component={NoPageFound} />
       </Switch>
     </Router>
