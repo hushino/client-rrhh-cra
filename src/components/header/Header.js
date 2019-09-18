@@ -41,7 +41,7 @@ function Header() {
                 <Link to="/">
                   <Icon type="home" />
                   Inicio
-                                 </Link>
+                </Link>
               </Menu.Item>
 
               {//user@gmail.com
@@ -50,34 +50,26 @@ function Header() {
                     <Link to="/user">
                       <Icon type="gold" />
                       Panel Usuario
-                                 </Link>
+                    </Link>
                   </Menu.Item>
                   : ''
               }
-              {//user@gmail.com
-                isRoleAdmin
-                  ? <Menu.Item key="admin" >
-                    <Link to="/admin">
-                      <Icon type="appstore" />
-                      Panel Administrador
-                                 </Link>
-                  </Menu.Item>
-                  : ''
-              }
+              <Menu.Item key="admin" >
+                <Link to="/admin">
+                  <Icon type="appstore" />
+                  Panel Administrador
+                </Link>
+              </Menu.Item>
             </Menu>
           </div>
         </div>
       </nav>
       <Switch>
         <Route path="/" exact component={App} />
+        <Route path="/admin/" component={AdminPanel} />
         {
           isRoleUser
             ? <Route path="/user/" component={UserPanel} />
-            : <Route path="/" component={App} />
-        }
-        {
-          isRoleAdmin
-            ? <Route path="/admin/" component={AdminPanel} />
             : <Route path="/" component={App} />
         }
         <Route component={NoPageFound} />
