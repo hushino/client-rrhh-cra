@@ -6,12 +6,10 @@ const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 
 function Editarpersona(props) {
-    const [forms2, setForms] = useState({
-        formLayout: 'horizontal',
-    })
     const [data, setData] = useState([])
-    const { dataIndex } = props.match.params
-    const fetchData = () => axios.get(`http://localhost:8080/api/viewpersona/${dataIndex}`)
+    //const { dataIndex } = props.match.params
+   // console.log(dataIndex)
+    const fetchData = () => axios.get(`http://localhost:8080/api/viewpersona/`)
         .then(function (response) {
             console.log(response.data)
             setData(response.data)
@@ -19,14 +17,15 @@ function Editarpersona(props) {
         .catch(function (error) {
             console.log(error);
         })
-    const postData = (values) => axios.post(`http://localhost:8080/api/addPersona`, values)
+        console.log(props);
+    /* const postData = (values) => axios.post(`http://localhost:8080/api/addPersona`, values)
         .then(function (response) {
             console.log(response.data)
             setData(response.data)
         })
         .catch(function (error) {
             console.log(error);
-        })
+        }) */
 
     useEffect(() => {
 
@@ -41,17 +40,17 @@ function Editarpersona(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.form.validateFields((err, values) => {
+        /* props.form.validateFields((err, values) => {
             if (!err) {
                 fetchData();
             }
-        });
+        }); */
     };
     const { getFieldDecorator } = props.form;
     return (
         <div>
-            <Form  className="login-form" onSubmit={handleSubmit}>
-                <Form.Item>
+          <Form onSubmit={handleSubmit} className="login-form">
+            <Form.Item>
               {getFieldDecorator('username', {
                 rules: [{ required: true, message: 'Ingrese su nombre de usuario!' }],
               })(
@@ -72,10 +71,14 @@ function Editarpersona(props) {
                 />,
               )}
             </Form.Item>
-                <Form.Item >
-                    <Button htmlType="submit" type="primary">Enviar</Button>
-                </Form.Item>
-            </Form>
+            <Form.Item>
+
+              <Row></Row>
+              <Button type="primary" htmlType="submit" className="login-form-button" >
+                Iniciar
+              </Button>
+            </Form.Item>
+          </Form>
         </div>
     )
 }
