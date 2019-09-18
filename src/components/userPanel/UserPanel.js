@@ -78,13 +78,13 @@ function UserPanel() {
             asd.forEach(element => {
                 console.log('...filters ' + element);
             }); */
-            //console.log('...sortField ' + sortField); // nombre
-            // console.log('...sortOrder ' + sortOrder); // ascend descend
+            console.log('...sortField ' + current); // nombre
+            console.log('...sortOrder ' + pageSize); // ascend descend
 
 
             setLoading({ loading: true });
             const pagination = { ...loading.pagination };
-            pagination.total = response.data.totalElements;
+            pagination.total = response.data.totalElements-10;
             setLoading({
                 loading: false,
                 data: response.data.content,
