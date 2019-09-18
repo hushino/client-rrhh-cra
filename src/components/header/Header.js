@@ -12,7 +12,7 @@ function Header() {
   //const [data, setData] = useState([]);
   const [data, setData] = useState([]);
   const isRoleUser = data === 'USER';
-  const isRoleAdmin = data === 'ADMIN';
+  const isRoleAdmin = data === 'ADMIN' || data === 'USER';
   useEffect(() => {
     let reduxsub
     let isSubscribed = true
