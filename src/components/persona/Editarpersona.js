@@ -32,12 +32,6 @@ function Editarpersona(props) {
         fetchData();
 
     }, []);
-    
-     
-
-    
- 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         /* props.form.validateFields((err, values) => {
@@ -46,33 +40,24 @@ function Editarpersona(props) {
             }
         }); */
     };
-    const { getFieldDecorator } = props.form;
+    //const { getFieldDecorator } = props.form;
     return (
         <div>
           <Form onSubmit={handleSubmit} className="login-form">
             <Form.Item>
-              {getFieldDecorator('username', {
-                rules: [{ required: true, message: 'Ingrese su nombre de usuario!' }],
-              })(
                 <Input
                   prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   placeholder="Usuario"
-                />,
-              )}
+                />
             </Form.Item>
             <Form.Item>
-              {getFieldDecorator('password', {
-                rules: [{ required: true, message: 'Ingrese su contraseña!' }],
-              })(
                 <Input
                   prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   type="password"
                   placeholder="Contraseña"
-                />,
-              )}
+                />
             </Form.Item>
             <Form.Item>
-
               <Row></Row>
               <Button type="primary" htmlType="submit" className="login-form-button" >
                 Iniciar
