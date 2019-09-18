@@ -1,15 +1,18 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Card, Icon, Avatar, Row, Col, Layout } from 'antd';
+import { Card, Icon, Avatar, Row, Col, Layout, Button } from 'antd';
+
 const { Meta } = Card;
-const { Header, Footer, Sider, Content } = Layout;
+const { Footer, Content } = Layout;
 
 function Viewpersona(props) {
-
     const [data, setData] = useState([])
     const { dataIndex } = props.match.params
+    //console.log(dataIndex)
+
     const fetchData = () => axios.get(`http://localhost:8080/api/viewpersona/${dataIndex}`)
         .then(function (response) {
             console.log(response.data)
@@ -19,13 +22,9 @@ function Viewpersona(props) {
             console.log(error);
         })
 
-    console.log(dataIndex)
     useEffect(() => {
-
         fetchData();
-
     }, []);
-
 
     return (
         <div>
@@ -38,8 +37,8 @@ function Viewpersona(props) {
                                 style={{ marginTop: 12 }}
 
                                 actions={[
-                                   <Link to={`/${dataIndex}/editar`}>
-                                    <Icon type="edit" key="edit" /> </Link>,
+                                    <Link to={`/${dataIndex}/editar`}>
+                                        <Icon type="edit" key="edit" /> </Link>,
                                 ]}
                             >
                                 <Meta
