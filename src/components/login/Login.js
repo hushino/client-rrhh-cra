@@ -31,7 +31,7 @@ function Login(props) {
     const sd = isRole ? "Estas conectado" : "No iniciaste sesion"
     setState(sd)
 
-  }, [state]);
+  }, [role, state]);
 
   const fetchData = async () => {
     const response = await axios.post('http://localhost:8080/api/auth/signin', payload)
@@ -81,7 +81,7 @@ function Login(props) {
             <Form.Item>
 
               <Row></Row>
-              <Button type="primary" htmlType="submit" className="login-form-button" onClick={() => setState("USER")}>
+              <Button type="primary" htmlType="submit" className="login-form-button" >
                 Iniciar
         </Button>
             </Form.Item>
