@@ -11,8 +11,11 @@ import store from './redux/store'
  
 function App() {
   const [data, setData] = useState([]); 
-
+  const [role, setRole] = useState([])
+  const isRoleUser = role === 'USER';
+  const isRoleAdmin = role === 'ADMIN';
   useEffect(() => {
+    setRole(store.getState().Role)
     let isSubscribed = true
     let reduxsub
     if (isSubscribed) {
@@ -37,8 +40,17 @@ function App() {
  
   return (
  <React.Fragment>
-  <PageHeader onBack={() => null}  backIcon={<Icon type="appstore" />} title="RRHH" subTitle="Bienvenido" />
-   Inicie sesion para continuar
+      <PageHeader onBack={() => null} backIcon={<Icon type="appstore" />} title="RRHH" subTitle="Bienvenido" />
+      {
+        isRoleUser
+          ? ''
+          : ' Inicie sesion para continuar '
+       }
+      {
+        isRoleAdmin
+          ? ''
+          : ''
+      }
    <Col span={1}></Col>
    <Row>
       <Col span={1}></Col>

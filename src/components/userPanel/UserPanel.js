@@ -99,10 +99,8 @@ function UserPanel() {
         fetchData();
         /* const fetchData = async () => {
         const response = await axios.post(`http://localhost:8080/api/home?page=${number}`)
-        setData(response.data)
-
-    }
-    fetchData() */
+        setData(response.data)}
+        fetchData() */
         setRole(store.getState().Role)
 
     }, []);
@@ -112,7 +110,7 @@ function UserPanel() {
     return (
         <div>
             <h1>Panel de Usuario Autentificado</h1>
-            {//user@gmail.com Warning: Failed prop type: Invalid prop `dataSource` of type `boolean` supplied to `Table`, expected `array`.
+            {//user@gmail.com
                 isRoleUser
                     ? <Table
                         columns={columns}
