@@ -40,6 +40,7 @@ function UserPanel() {
 
     let current = 0
     let pageSize = 10
+    // eslint-disable-next-line
     let sortField = ''
     let sortOrder = ''
     const isRoleUser = role === 'USER';
@@ -55,6 +56,7 @@ function UserPanel() {
         current = pagination.current - 1
         sortField = sorter.field
         sortOrder = sorter.order
+        setLoading({ loading: true });
         fetchData();
         /* fetchData({
             results: pagination.pageSize,
