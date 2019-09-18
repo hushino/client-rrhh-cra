@@ -32,7 +32,6 @@ function Login(props) {
     setState(sd)
 
   }, [role, state]);
-
   const fetchData = async () => {
     const response = await axios.post('http://localhost:8080/api/auth/signin', payload)
     dispatch(imaginator(response.data))
@@ -45,6 +44,7 @@ function Login(props) {
         payload.usernameOrEmail = values.username;
         payload.password = values.password;
         fetchData();
+
       }
     });
   };
