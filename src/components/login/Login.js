@@ -12,7 +12,7 @@ function Login(props) {
   const [role, setRole] = useState()
   const [state, setState] = useState("nani")
 
-  const isRole = role === 'USER' | "ADMIN";
+  const isRole = role === 'USER' || role === "ADMIN";
 
   const payload = {
     usernameOrEmail: "user@gmail.comm",
