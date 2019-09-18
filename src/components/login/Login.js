@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { Checkbox, Form, Icon, Input, Button, Row, Col } from 'antd';
 import './Login.css';
@@ -26,12 +26,15 @@ function Login(props) {
     };
   }
 
+  const [, updateState] = React.useState();
+  const forceUpdate = useCallback(() => updateState({}), []);
+
   useEffect(() => {
     setRole(store.getState().Role)
     const sd = isRole ? "Estas conectado" : "No iniciaste sesion"
     setState(sd)
+  });
 
-  }, [role, state]);
   const fetchData = async () => {
     const response = await axios.post('http://localhost:8080/api/auth/signin', payload)
     dispatch(imaginator(response.data))
@@ -41,10 +44,11 @@ function Login(props) {
     e.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
+
         payload.usernameOrEmail = values.username;
         payload.password = values.password;
+        forceUpdate();
         fetchData();
-
       }
     });
   };

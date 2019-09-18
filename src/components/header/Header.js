@@ -49,7 +49,7 @@ function Header() {
                   ? <Menu.Item key="user" >
                     <Link to="/user">
                       <Icon type="gold" />
-                      Usuario Panel
+                      Panel Usuario
                                  </Link>
                   </Menu.Item>
                   : ''
@@ -59,7 +59,7 @@ function Header() {
                   ? <Menu.Item key="admin" >
                     <Link to="/admin">
                       <Icon type="appstore" />
-                      Administrador Panel
+                      Panel Administrador
                                  </Link>
                   </Menu.Item>
                   : ''

@@ -12,8 +12,7 @@ import store from './redux/store'
 function App() {
   const [data, setData] = useState([]); 
   const [role, setRole] = useState([])
-  const isRoleUser = role === 'USER';
-  const isRoleAdmin = role === 'ADMIN';
+  const isRoleUser = role === 'USER' || role === 'ADMIN';
   useEffect(() => {
     setRole(store.getState().Role)
     let isSubscribed = true
@@ -41,17 +40,12 @@ function App() {
   return (
  <React.Fragment>
       <PageHeader onBack={() => null} backIcon={<Icon type="appstore" />} title="RRHH" subTitle="Bienvenido" />
-      {
+      {/*  
         isRoleUser
           ? ''
-          : ' Inicie sesion para continuar '
-       }
-      {
-        isRoleAdmin
-          ? ''
-          : ''
-      }
-   <Col span={1}></Col>
+          : 'Inicie sesion para continuar' */}
+        
+   
    <Row>
       <Col span={1}></Col>
       <Col span={6}>
