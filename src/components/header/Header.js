@@ -8,6 +8,7 @@ import AdminPanel from '../adminPanel/AdminPanel';
 import NoPageFound from '../noPageFound/NoPageFound';
 import Viewpersona from '../persona/Viewpersona';
 import store from '../../redux/store';
+import Editarpersona from '../persona/Editarpersona';
 
 function Header() {
   //const [data, setData] = useState([]);
@@ -67,6 +68,7 @@ function Header() {
         <Route path="/admin/" component={AdminPanel} />
         <Route path="/user/" component={UserPanel} />
         <Route path="/viewpersona/:dataIndex/" component={Viewpersona} />
+        <Route path="/:dataIndex/editar" component={Editarpersona} />
         <Route component={NoPageFound} />
       </Switch>
     </Router>

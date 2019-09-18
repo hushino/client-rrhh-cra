@@ -1,7 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Card, Icon, Avatar, Row, Col, Layout } from 'antd';
+const { Meta } = Card;
+const { Header, Footer, Sider, Content } = Layout;
 
 function Viewpersona(props) {
+
     const [data, setData] = useState([])
     const { dataIndex } = props.match.params
     const fetchData = () => axios.get(`http://localhost:8080/api/viewpersona/${dataIndex}`)
@@ -18,15 +24,52 @@ function Viewpersona(props) {
 
         fetchData();
 
-    },[]);
+    }, []);
+
 
     return (
         <div>
-           { 
-            <li key={data.id}>
-              {data.nombre} : id  {data.id}
-            </li>
-            }
+            <Layout style={{ background: "white", height: "calc(100vh - 55px)" }}>
+
+                <Content style={{ padding: '0 50px' }}>
+                    <Row type="flex" gutter={16}>
+                        <Col>
+                            <Card
+                                style={{ marginTop: 12 }}
+
+                                actions={[
+                                   <Link to={`/${dataIndex}/editar`}>
+                                    <Icon type="edit" key="edit" /> </Link>,
+                                ]}
+                            >
+                                <Meta
+                                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                                    title={data.nombre}
+                                    description={[
+                                        "id: ", data.id,
+                                        " apellido: ",
+                                        data.apellido,
+                                        "id: ", data.id,
+                                        " apellido: ",
+                                        data.apellido, "id: ", data.id,
+                                        " apellido: ",
+                                        data.apellido,
+                                        "id: ", data.id,
+                                        " apellido: ",
+                                        data.apellido, "id: ", data.id,
+                                        " apellido: ",
+                                        data.apellido,
+                                        "id: ", data.id,
+                                        " apellido: ",
+                                        data.apellido
+                                    ]}
+                                />
+                            </Card>
+                        </Col>
+                    </Row>
+                </Content>
+                <Footer style={{ textAlign: 'center' }}>Red Design ©2019 Created by Hushino</Footer>
+            </Layout>
         </div>
     )
 

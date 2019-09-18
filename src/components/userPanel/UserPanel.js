@@ -78,8 +78,8 @@ function UserPanel() {
             asd.forEach(element => {
                 console.log('...filters ' + element);
             }); */
-            console.log('...sortField ' + current); // nombre
-            console.log('...sortOrder ' + pageSize); // ascend descend
+            //console.log('...sortField ' + current); // nombre
+            //console.log('...sortOrder ' + pageSize); // ascend descend
 
 
             setLoading({ loading: true });
