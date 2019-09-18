@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Checkbox, Form, Icon, Input, Button, Row, Col } from 'antd';
 import './Login.css';
 import { useSelector, useDispatch } from 'react-redux';
-
+//https://stackoverflow.com/questions/44608627/how-to-persist-jwt-token-throughout-session-until-user-logout
 function Login(props) {
   const dispatch = useDispatch();
 

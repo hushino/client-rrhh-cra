@@ -1,23 +1,106 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import store from '../../redux/store';
+import { Table } from 'antd';
+//`${name.data.apellido} ${name.data.nombre}`
+const columns = [
+    {
+        title: 'Nombre',
+        dataIndex: 'nombre',
+        sorter: true,
+        render: data => data,
+        width: '20%',
+    },
+    {
+        title: 'Apellido',
+        dataIndex: 'apellido',
+        filters: [{ text: 'Male', value: 'male' }, { text: 'Female', value: 'female' }],
+        width: '20%',
+    },
+    {
+        title: 'Dni',
+        dataIndex: 'dni',
+        width: '20%',
+    },
+    {
+        title: 'Id',
+        dataIndex: 'id',
+        width: '20%',
+    },
+];
+
 
 function UserPanel() {
-    const [data, setData] = useState([])
+    //const [data, setData] = useState([])
+    const [loading, setLoading] = useState(false)
     const [role, setRole] = useState([])
 
-    const number = 0
+
+
+    let current = 0
+    let pageSize = 10
+    let sortField = ''
+    let sortOrder = ''
     const isRoleUser = role === 'USER';
-    const isRoleAdmin = role === 'ADMIN';
+    //const isRoleAdmin = role === 'ADMIN';
+
+    const handleTableChange = (pagination, filters, sorter) => {
+        const pager = { ...loading.pagination };
+        pager.current = pagination.current;
+        setLoading({
+            pagination: pager,
+        });
+        pageSize = pagination.pageSize
+        current = pagination.current - 1
+        sortField = sorter.field
+        sortOrder = sorter.order
+        fetchData();
+        /* fetchData({
+            results: pagination.pageSize,
+            page: pagination.current,
+            sortField: sorter.field,
+            sortOrder: sorter.order,
+            ...filters,
+        }); */
+    };
+    const fetchData = () => axios.get(`http://localhost:8080/api/home?page=${current}&size=${pageSize}&sortOrder=${sortOrder}`)
+        .then(function (response) {
+            /* const asd = filters
+            asd.forEach(element => {
+                console.log('...filters ' + element);
+            }); */
+            //console.log('...sortField ' + sortField); // nombre
+            // console.log('...sortOrder ' + sortOrder); // ascend descend
+
+            /* console.log('...results ' + results);
+            console.log('...page ' + page); */
+            // handle success
+            //console.log('aaaaa ' + response.data.content);
+            //setData(response.data)
+            setLoading({ loading: true });
+            const pagination = { ...loading.pagination };
+            pagination.total = response.data.totalElements;
+            setLoading({
+                loading: false,
+                data: response.data.content,
+                pagination,
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+
+
 
     useEffect(() => {
+        fetchData();
+        /* const fetchData = async () => {
+        const response = await axios.post(`http://localhost:8080/api/home?page=${number}`)
+        setData(response.data)
 
-        const fetchData = async () => {
-            const response = await axios.post(`http://localhost:8080/api/home?page=${number}`)
-            setData(response.data)
-
-        }
-        fetchData()
+    }
+    fetchData() */
         setRole(store.getState().Role)
 
     }, []);
@@ -26,15 +109,18 @@ function UserPanel() {
 
     return (
         <div>
-            <h1>UserPanel</h1>
-            {//user@gmail.com
+            <h1>Panel de Usuario Autentificado</h1>
+            {//user@gmail.com Warning: Failed prop type: Invalid prop `dataSource` of type `boolean` supplied to `Table`, expected `array`.
                 isRoleUser
-                    ? data.map(item => (
-                        <li key={item.id}>
-                            {item.nombre} : {item.fecha}
-                        </li>
-                    ))
-                    : 'none'
+                    ? <Table
+                        columns={columns}
+                        rowKey={record => record.id}
+                        dataSource={loading.data}
+                        pagination={loading.pagination}
+                        loading={loading.loading}
+                        onChange={handleTableChange}
+                    />
+                    : <h5>Primero inicie sesion </h5>
             }
 
         </div>
