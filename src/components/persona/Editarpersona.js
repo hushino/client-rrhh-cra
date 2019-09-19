@@ -9,6 +9,7 @@ function Editarpersona(props) {
     const [data, setData] = useState([])
     const [post, setPost] = useState([])
     const [only, setOnly] = useState(0)
+    const [uploadImage, setUploadImage] = useState()
 
     const [imagestate, setImagestate] = useState({ loading: false })
 
@@ -107,10 +108,13 @@ function Editarpersona(props) {
         if (info.file.status === 'done') {
             // Get this url from response in real world.
             message.success(`${info.file.name} imagen cargada exitosamente`);
+
+
             const bodyFormData = new FormData();
             bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }));
-            //bodyFormData.append(new Blob('image', values.foto, { type: 'jpg/png' }))
             postImage(bodyFormData)
+
+            setUploadImage(info.file.originFileObj)
             getBase64(info.file.originFileObj, imageUrl =>
                 setImagestate({
                     imageUrl,
