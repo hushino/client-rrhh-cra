@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
-import { Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload } from 'antd';
+import { Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -9,12 +9,40 @@ function Editarpersona(props) {
     const [data, setData] = useState([])
     const [post, setPost] = useState([])
     const [only, setOnly] = useState(0)
+
+    const [imagestate, setImagestate] = useState({ loading: false })
+
     const { dataIndex } = props.match.params
 
     //console.log(dataIndex);
+    function getBase64(img, callback) {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result));
+        reader.readAsDataURL(img);
+    }
 
+    function beforeUpload(file) {
+        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJpgOrPng) {
+            message.error('Solo puedes subir archivos JPG/PNG !');
+        }
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+            message.error('La imagen debe pesar menos de 2MB!');
+        }
+
+        return isJpgOrPng && isLt2M;
+    }
 
     const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona/${dataIndex}`, values)
+        .then(function (response) {
+            console.log(response.data)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+
+    const postImage = (values) => axios.post(`http://localhost:3003/upload`, values)
         .then(function (response) {
             console.log(response.data)
         })
@@ -42,7 +70,7 @@ function Editarpersona(props) {
             apellido: data.apellido,
             legajo: data.legajo,
             dni: data.dni,
-            /* image: data.image, */
+            foto: data.foto,
             fecha: data.fecha,
         });
     }, [data]);
@@ -52,10 +80,43 @@ function Editarpersona(props) {
         e.preventDefault();
         props.form.validateFields((err, values) => {
             if (!err) {
-                postData(values);
+                console.log('valuess ' + values.foto)
+                const keys = {
+                    image: values
+                }
+                postImage(values.foto).then((e) => {
+                    console.log('valuess ' + e)
+                    values.foto = "una foto string"
+                    postData(values);
+                });
             }
         });
     };
+
+    const handleChange = info => {
+        if (info.file.status === 'uploading') {
+            setImagestate({ loading: true });
+            return;
+        }
+        if (info.file.status === 'done') {
+            // Get this url from response in real world.
+            message.success(`${info.file.name} imagen cargada exitosamente`);
+            getBase64(info.file.originFileObj, imageUrl =>
+                setImagestate({
+                    imageUrl,
+                    loading: false,
+                }),
+            );
+        }
+    };
+    const uploadButton = (
+        <div>
+            <Icon type={imagestate.loading ? 'loading' : 'plus'} />
+            <div className="ant-upload-text">Subir</div>
+        </div>
+    );
+    const { imageUrl } = imagestate;
+
     const { getFieldDecorator } = props.form;
     const normFile = e => {
         console.log('Upload event:', e);
@@ -67,13 +128,13 @@ function Editarpersona(props) {
 
     return (
         <div>
-            <Layout style={{ background: "white", height: "calc(190vh - 1px)" }}>
+            <Layout style={{ background: "white" }}>
 
                 <Content style={{ padding: '0 50px' }}>
                     <Row type="flex" gutter={16}>
                         <Col>
                             <h2>Actualizar datos de una persona</h2>
-                            <Form onSubmit={handleSubmit} className="update-form">
+                            <Form onSubmit={handleSubmit} className="update-form" enctype='multipart/form-data'>
 
                                 <Form.Item label="Nombre">
                                     {getFieldDecorator('nombre', {
@@ -119,20 +180,26 @@ function Editarpersona(props) {
                                     )}
                                 </Form.Item>
 
-                                {/*    <Form.Item label="foto" >
+                                <Form.Item label="Foto" >
                                     {getFieldDecorator('foto', {
                                         valuePropName: 'fileList',
                                         getValueFromEvent: normFile,
                                         rules: [{ required: true, message: 'Suba un archivo .png!' }],
                                     })(
-                                        <Upload name="foto" action="/upload.do" listType="picture">
-                                            <Button>
-                                                <Icon type="upload" /> Click para subir
-                                            </Button>
+                                        <Upload
+                                            name="avatar"
+                                            listType="picture-card"
+                                            className="avatar-uploader"
+                                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                            showUploadList={false}
+                                            beforeUpload={beforeUpload}
+                                            onChange={handleChange}
+                                        >
+                                            {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
                                         </Upload>,
                                     )}
-                                </Form.Item> */}
-                                <Form.Item label="fecha">
+                                </Form.Item>
+                                <Form.Item label="Fecha">
                                     {getFieldDecorator('fecha', {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
