@@ -9,7 +9,7 @@ function Editarpersona(props) {
     const [data, setData] = useState([])
     const [post, setPost] = useState([])
     const [only, setOnly] = useState(0)
-    const [uploadImage, setUploadImage] = useState()
+    const [uploadImage, setUploadImage] = useState({})
 
     const [imagestate, setImagestate] = useState({ loading: false })
 
@@ -83,12 +83,9 @@ function Editarpersona(props) {
         e.preventDefault();
         props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('valuess ' + values.foto)
-                const keys = {
-                    image: values
-                }
-                const bodyFormData = new FormData();
-                bodyFormData.append('image', new Blob([values.foto], { type: 'image/jpg' }));
+                /* const bodyFormData = new FormData();
+                bodyFormData.append('image', new Blob([uploadImage], { type: 'image/jpg' })); */
+                postImage(uploadImage)
                 //bodyFormData.append(new Blob('image', values.foto, { type: 'jpg/png' }))
                 //postImage(bodyFormData)
                 /*  postImage(values.foto).then((e) => {
@@ -112,9 +109,10 @@ function Editarpersona(props) {
 
             const bodyFormData = new FormData();
             bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }));
-            postImage(bodyFormData)
 
-            setUploadImage(info.file.originFileObj)
+            //postImage(info.file.originFileObj)
+            setUploadImage(bodyFormData)
+
             getBase64(info.file.originFileObj, imageUrl =>
                 setImagestate({
                     imageUrl,
