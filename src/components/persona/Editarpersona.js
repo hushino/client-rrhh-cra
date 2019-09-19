@@ -42,13 +42,15 @@ function Editarpersona(props) {
             console.log(error);
         })
 
-    const postImage = (values) => axios.post(`http://localhost:3003/upload`, values)
+    const postImage = (bodyFormData) => axios.post("http://localhost:3003/upload", bodyFormData)
         .then(function (response) {
-            console.log(response.data)
+            //handle success
+            console.log(response.data + "-----" + bodyFormData);
         })
-        .catch(function (error) {
-            console.log(error);
-        })
+        .catch(function (response) {
+            //handle error
+            console.log(response);
+        });
 
 
     useLayoutEffect(() => {
@@ -84,11 +86,15 @@ function Editarpersona(props) {
                 const keys = {
                     image: values
                 }
-                postImage(values.foto).then((e) => {
-                    console.log('valuess ' + e)
-                    values.foto = "una foto"
-                    postData(values);
-                });
+                const bodyFormData = new FormData();
+                bodyFormData.append('image', new Blob([values.foto], { type: 'image/jpg' }));
+                //bodyFormData.append(new Blob('image', values.foto, { type: 'jpg/png' }))
+                //postImage(bodyFormData)
+                /*  postImage(values.foto).then((e) => {
+                     console.log('valuess ' + e)
+                     values.foto = "una foto"
+                     postData(values);
+                 }); */
             }
         });
     };
@@ -101,6 +107,10 @@ function Editarpersona(props) {
         if (info.file.status === 'done') {
             // Get this url from response in real world.
             message.success(`${info.file.name} imagen cargada exitosamente`);
+            const bodyFormData = new FormData();
+            bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }));
+            //bodyFormData.append(new Blob('image', values.foto, { type: 'jpg/png' }))
+            postImage(bodyFormData)
             getBase64(info.file.originFileObj, imageUrl =>
                 setImagestate({
                     imageUrl,
@@ -118,13 +128,6 @@ function Editarpersona(props) {
     const { imageUrl } = imagestate;
 
     const { getFieldDecorator } = props.form;
-    /* const normFile = e => {
-        console.log('Upload event:', e);
-        if (Array.isArray(e)) {
-            return e;
-        }
-        return e && e.fileList;
-    }; */
 
     return (
         <div>
@@ -182,8 +185,6 @@ function Editarpersona(props) {
 
                                 <Form.Item label="Foto" >
                                     {getFieldDecorator('foto', {
-                                        /*   valuePropName: 'fileList',
-                                          getValueFromEvent: normFile, */
                                         rules: [{ required: true, message: 'Suba un archivo .png!' }],
                                     })(
                                         <Upload
