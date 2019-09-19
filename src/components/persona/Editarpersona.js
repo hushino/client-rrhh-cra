@@ -86,7 +86,7 @@ function Editarpersona(props) {
                 }
                 postImage(values.foto).then((e) => {
                     console.log('valuess ' + e)
-                    values.foto = "una foto string"
+                    values.foto = "una foto"
                     postData(values);
                 });
             }
@@ -118,13 +118,13 @@ function Editarpersona(props) {
     const { imageUrl } = imagestate;
 
     const { getFieldDecorator } = props.form;
-    const normFile = e => {
+    /* const normFile = e => {
         console.log('Upload event:', e);
         if (Array.isArray(e)) {
             return e;
         }
         return e && e.fileList;
-    };
+    }; */
 
     return (
         <div>
@@ -182,16 +182,16 @@ function Editarpersona(props) {
 
                                 <Form.Item label="Foto" >
                                     {getFieldDecorator('foto', {
-                                        valuePropName: 'fileList',
-                                        getValueFromEvent: normFile,
+                                        /*   valuePropName: 'fileList',
+                                          getValueFromEvent: normFile, */
                                         rules: [{ required: true, message: 'Suba un archivo .png!' }],
                                     })(
                                         <Upload
                                             name="avatar"
                                             listType="picture-card"
                                             className="avatar-uploader"
-                                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                                             showUploadList={false}
+                                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                                             beforeUpload={beforeUpload}
                                             onChange={handleChange}
                                         >
