@@ -6,16 +6,18 @@ const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 
 function Editarpersona(props) {
+
     const [data, setData] = useState([])
+
     const [uploadImage, setUploadImage] = useState({})
 
     const [imagestate, setImagestate] = useState({ loading: false })
 
     const { dataIndex } = props.match.params
-
+    const reader = new FileReader();
     //console.log(dataIndex);
     function getBase64(img, callback) {
-        const reader = new FileReader();
+
         reader.addEventListener('load', () => callback(reader.result));
         reader.readAsDataURL(img);
     }
@@ -44,7 +46,7 @@ function Editarpersona(props) {
     const postImage = (bodyFormData) => axios.post("http://localhost:3003/upload", bodyFormData)
         .then(function (response) {
             //console.log(response.data.filename)
-            if (response.data.filename != null) {
+            if (response.data.filename !== undefined) {
                 data.foto = response.data.filename
             }
             postData(data)
@@ -87,9 +89,7 @@ function Editarpersona(props) {
         props.form.validateFields((err, values) => {
             if (!err) {
                 //console.log(values.nombre) ok
-                //setUploadImage(data.foto)
                 setData(values)
-                //if (FormData ) subio img object no subio img
                 //console.log(uploadImage)
                 postImage(uploadImage)
             }
@@ -106,7 +106,7 @@ function Editarpersona(props) {
             message.success(`${info.file.name} imagen cargada exitosamente`);
 
             const bodyFormData = new FormData();
-            bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }));
+            bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }), data.nombre + data.dni + data.apellido + data.legajo);
 
             //postImage(info.file.originFileObj)
             setUploadImage(bodyFormData)
@@ -119,9 +119,8 @@ function Editarpersona(props) {
             );
         }
     };
+
     const uploadButton = (
-
-
         <div >
             <Icon type={imagestate.loading ? 'loading' : 'plus'} />
             <div className="ant-upload-text">Remplazar</div>
@@ -140,7 +139,7 @@ function Editarpersona(props) {
                     <Row type="flex" gutter={16}>
                         <Col>
                             <h2>Actualizar datos de una persona</h2>
-                            <Form onSubmit={handleSubmit} className="update-form" enctype='multipart/form-data'>
+                            <Form onSubmit={handleSubmit} className="update-form" >
 
                                 <Form.Item label="Nombre">
                                     {getFieldDecorator('nombre', {
