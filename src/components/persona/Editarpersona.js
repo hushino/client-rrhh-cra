@@ -14,6 +14,9 @@ function Editarpersona(props) {
     const [imagestate, setImagestate] = useState({ loading: false })
 
     const { dataIndex } = props.match.params
+
+    let ads = null;
+
     const reader = new FileReader();
     //console.log(dataIndex);
     function getBase64(img, callback) {
@@ -49,11 +52,13 @@ function Editarpersona(props) {
             if (response.data.filename !== undefined) {
                 data.foto = response.data.filename
             }
-            postData(data)
+            postData(ads)
         })
         .catch(function (response) {
             console.log(response);
-        })
+        })/* .then(() => {
+            postData(data)
+        }) */
 
 
     useLayoutEffect(() => {
@@ -88,7 +93,8 @@ function Editarpersona(props) {
         e.preventDefault();
         props.form.validateFields((err, values) => {
             if (!err) {
-                //console.log(values.nombre) ok
+                //console.log(values.nombre)//ok
+                ads = values
                 setData(values)
                 //console.log(uploadImage)
                 postImage(uploadImage)
