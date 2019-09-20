@@ -43,7 +43,10 @@ function Editarpersona(props) {
 
     const postImage = (bodyFormData) => axios.post("http://localhost:3003/upload", bodyFormData)
         .then(function (response) {
-            data.foto = response.data.filename
+            //console.log(response.data.filename)
+            if (response.data.filename != null) {
+                data.foto = response.data.filename
+            }
             postData(data)
         })
         .catch(function (response) {
@@ -86,6 +89,8 @@ function Editarpersona(props) {
                 //console.log(values.nombre) ok
                 //setUploadImage(data.foto)
                 setData(values)
+                //if (FormData ) subio img object no subio img
+                //console.log(uploadImage)
                 postImage(uploadImage)
             }
         });
