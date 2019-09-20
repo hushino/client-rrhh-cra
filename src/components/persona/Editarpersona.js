@@ -45,29 +45,30 @@ function Editarpersona(props) {
 
     const postImage = (bodyFormData) => axios.post("http://localhost:3003/upload", bodyFormData)
         .then(function (response) {
-            //handle success
-            console.log(response.data + "-----" + bodyFormData);
+            data.foto = response.data.filename
+            postData(data)
         })
         .catch(function (response) {
-            //handle error
             console.log(response);
-        });
+        })
 
 
     useLayoutEffect(() => {
         const getData = () => axios.get(`http://localhost:8080/api/viewpersona/${dataIndex}`)
             .then(function (response) {
-                console.log(response.data)
+                //console.log(response.data)
                 setData(response.data)
 
             })
             .catch(function (error) {
                 console.log(error);
             })
-        getData()
+        getData();
+
     }, [dataIndex])
 
     useEffect(() => {
+
         props.form.setFieldsValue({
             nombre: data.nombre,
             apellido: data.apellido,
@@ -83,16 +84,7 @@ function Editarpersona(props) {
         e.preventDefault();
         props.form.validateFields((err, values) => {
             if (!err) {
-                /* const bodyFormData = new FormData();
-                bodyFormData.append('image', new Blob([uploadImage], { type: 'image/jpg' })); */
                 postImage(uploadImage)
-                //bodyFormData.append(new Blob('image', values.foto, { type: 'jpg/png' }))
-                //postImage(bodyFormData)
-                /*  postImage(values.foto).then((e) => {
-                     console.log('valuess ' + e)
-                     values.foto = "una foto"
-                     postData(values);
-                 }); */
             }
         });
     };
@@ -124,7 +116,8 @@ function Editarpersona(props) {
     const uploadButton = (
         <div>
             <Icon type={imagestate.loading ? 'loading' : 'plus'} />
-            <div className="ant-upload-text">Subir</div>
+            <div className="ant-upload-text">Remplazar</div>
+            <img src={`http://localhost:3003/upload/image/` + data.foto} alt="avatar" style={{ width: '100%' }} />
         </div>
     );
     const { imageUrl } = imagestate;
@@ -198,7 +191,10 @@ function Editarpersona(props) {
                                             beforeUpload={beforeUpload}
                                             onChange={handleChange}
                                         >
+                                            {/* <img src={data.foto} alt="avatar" style={{ width: '100%' }} /> */}
+                                            {/* <img src={require('C:\\Users\\redmagic\\Desktop\\server\\server\\src\\public\\uploads\\18fed31b-31de-41d4-8576-4c1b89eb22a7-originalname-blob.png')} alt="avatar" style={{ width: '100%' }} /> */}
                                             {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+                                            {/* imageUrl ? <img src="http://localhost:3003/upload/image/{data.foto}" alt="avatar" style={{ width: '100%' }} /> : uploadButton */}
                                         </Upload>,
                                     )}
                                 </Form.Item>
