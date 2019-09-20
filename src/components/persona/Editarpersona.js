@@ -7,8 +7,6 @@ const { Header, Footer, Sider, Content } = Layout;
 
 function Editarpersona(props) {
     const [data, setData] = useState([])
-    const [post, setPost] = useState([])
-    const [only, setOnly] = useState(0)
     const [uploadImage, setUploadImage] = useState({})
 
     const [imagestate, setImagestate] = useState({ loading: false })
@@ -77,6 +75,7 @@ function Editarpersona(props) {
             foto: data.foto,
             fecha: data.fecha,
         });
+
     }, [data]);
 
 
@@ -84,6 +83,9 @@ function Editarpersona(props) {
         e.preventDefault();
         props.form.validateFields((err, values) => {
             if (!err) {
+                //console.log(values.nombre) ok
+                //setUploadImage(data.foto)
+                setData(values)
                 postImage(uploadImage)
             }
         });
@@ -97,7 +99,6 @@ function Editarpersona(props) {
         if (info.file.status === 'done') {
             // Get this url from response in real world.
             message.success(`${info.file.name} imagen cargada exitosamente`);
-
 
             const bodyFormData = new FormData();
             bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }));
@@ -114,7 +115,9 @@ function Editarpersona(props) {
         }
     };
     const uploadButton = (
-        <div>
+
+
+        <div >
             <Icon type={imagestate.loading ? 'loading' : 'plus'} />
             <div className="ant-upload-text">Remplazar</div>
             <img src={`http://localhost:3003/upload/image/` + data.foto} alt="avatar" style={{ width: '100%' }} />
@@ -191,10 +194,7 @@ function Editarpersona(props) {
                                             beforeUpload={beforeUpload}
                                             onChange={handleChange}
                                         >
-                                            {/* <img src={data.foto} alt="avatar" style={{ width: '100%' }} /> */}
-                                            {/* <img src={require('C:\\Users\\redmagic\\Desktop\\server\\server\\src\\public\\uploads\\18fed31b-31de-41d4-8576-4c1b89eb22a7-originalname-blob.png')} alt="avatar" style={{ width: '100%' }} /> */}
                                             {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
-                                            {/* imageUrl ? <img src="http://localhost:3003/upload/image/{data.foto}" alt="avatar" style={{ width: '100%' }} /> : uploadButton */}
                                         </Upload>,
                                     )}
                                 </Form.Item>
