@@ -37,6 +37,7 @@ const columns = [
         dataIndex: 'id',
         render: (dataIndex) => <Link to={`/viewpersona/${dataIndex}`}>Ver</Link>,
     },
+
 ];
 
 
@@ -85,7 +86,7 @@ function UserPanel() {
 
             setLoading({ loading: true });
             const pagination = { ...loading.pagination };
-            pagination.total = response.data.totalElements-10;
+            pagination.total = response.data.totalElements - 10;
             setLoading({
                 loading: false,
                 data: response.data.content,

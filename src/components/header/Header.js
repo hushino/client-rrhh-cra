@@ -9,6 +9,7 @@ import NoPageFound from '../noPageFound/NoPageFound';
 import Viewpersona from '../persona/Viewpersona';
 import store from '../../redux/store';
 import WrappedEditarPersonaForm from '../persona/Editarpersona';
+import WrappedCrearpersonaForm from '../persona/Crearpersona';
 
 function Header() {
   //const [data, setData] = useState([]);
@@ -69,6 +70,7 @@ function Header() {
         <Route path="/user/" component={UserPanel} />
         <Route path="/viewpersona/:dataIndex/" component={Viewpersona} />
         <Route path="/:dataIndex/editar" component={WrappedEditarPersonaForm} />
+        <Route path="/crearpersona" component={WrappedCrearpersonaForm} />
         <Route component={NoPageFound} />
       </Switch>
     </Router>

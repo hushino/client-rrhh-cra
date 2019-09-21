@@ -5,20 +5,23 @@ import { Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Uploa
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 
-function Editarpersona(props) {
-
+function Crearpersona(props) {
     const [data, setData] = useState([])
-
-    const [uploadImage, setUploadImage] = useState({})
-
     const [imagestate, setImagestate] = useState({ loading: false })
-
-    const { dataIndex } = props.match.params
-
+    const [uploadImage, setUploadImage] = useState({})
     let truedata = null;
-
     const reader = new FileReader();
     //console.log(dataIndex);
+
+    const payload = {
+        nombre: "user@gmail.comm",
+        apellido: "1233",
+        foto: "",
+        legajo: "",
+        dni: "",
+        fecha: "",
+    };
+
     function getBase64(img, callback) {
 
         reader.addEventListener('load', () => callback(reader.result));
@@ -37,71 +40,7 @@ function Editarpersona(props) {
 
         return isJpgOrPng && isLt2M;
     }
-
-    const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona/${dataIndex}`, values)
-        .then(function (response) {
-            console.log(response.data)
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-
-    const postImage = (bodyFormData) => axios.post("http://localhost:3003/upload", bodyFormData)
-        .then(function (response) {
-            //console.log(response.data.filename)
-            if (response.data.filename !== undefined) {
-                data.foto = response.data.filename
-            }
-            postData(truedata)
-        })
-        .catch(function (response) {
-            console.log(response);
-        })/* .then(() => {
-            postData(data)
-        }) */
-
-
-    useLayoutEffect(() => {
-        const getData = () => axios.get(`http://localhost:8080/api/viewpersona/${dataIndex}`)
-            .then(function (response) {
-                //console.log(response.data)
-                setData(response.data)
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-        getData();
-
-    }, [dataIndex])
-
-    useEffect(() => {
-
-        props.form.setFieldsValue({
-            nombre: data.nombre,
-            apellido: data.apellido,
-            legajo: data.legajo,
-            dni: data.dni,
-            foto: data.foto,
-            fecha: data.fecha,
-        });
-
-    }, [data]);
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        props.form.validateFields((err, values) => {
-            if (!err) {
-                //console.log(values.nombre)//ok
-                truedata = values
-                setData(values)
-                //console.log(uploadImage)
-                postImage(uploadImage)
-            }
-        });
-    };
-
+    useEffect(() => { }, []);
     const handleChange = info => {
         if (info.file.status === 'uploading') {
             setImagestate({ loading: true });
@@ -129,22 +68,60 @@ function Editarpersona(props) {
     const uploadButton = (
         <div >
             <Icon type={imagestate.loading ? 'loading' : 'plus'} />
-            <div className="ant-upload-text">Remplazar</div>
+            <div className="ant-upload-text">Subir</div>
             <img src={`http://localhost:3003/upload/image/` + data.foto} alt="avatar" style={{ width: '100%' }} />
         </div>
     );
+
+    const postData = (payload2) => axios.post(`http://localhost:8080/api/addPersona`, payload)
+        .then(function (response) {
+            console.log(response.data)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+
+    const postImage = (bodyFormData) => axios.post("http://localhost:3003/upload", bodyFormData)
+        .then(function (response) {
+            //console.log(response.data.filename)
+            if (response.data.filename !== undefined) {
+                //data.foto = response.data.filename
+                payload.foto = response.data.filename
+            }
+            //payload.foto = response.data.filename
+            postData(payload)
+        })
+        .catch(function (response) {
+            console.log(response);
+        })
+
     const { imageUrl } = imagestate;
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.form.validateFields((err, values) => {
+            if (!err) {
+                payload.apellido = values.apellido
+                payload.nombre = values.nombre
+                payload.dni = values.dni
+
+                payload.legajo = values.legajo
+                payload.fecha = values.fecha
+                //truedata = values
+                //setData(values)
+                //console.log(uploadImage)
+                postImage(uploadImage)
+            }
+        });
+    };
 
     const { getFieldDecorator } = props.form;
 
     return (
         <div>
             <Layout style={{ background: "white" }}>
-
                 <Content style={{ padding: '0 50px' }}>
                     <Row type="flex" gutter={16}>
                         <Col>
-                            <h2>Actualizar datos de una persona</h2>
                             <Form onSubmit={handleSubmit} className="update-form" >
 
                                 <Form.Item label="Nombre">
@@ -153,8 +130,7 @@ function Editarpersona(props) {
                                     })(
                                         <Input
                                             name="nombre"
-                                            placeholder={data.nombre}
-                                            setFieldsValue={data.nombre}
+                                            placeholder="nombre"
                                         />,
                                     )}
                                 </Form.Item>
@@ -164,7 +140,7 @@ function Editarpersona(props) {
                                     })(
                                         <Input
                                             type="text"
-                                            placeholder={data.apellido}
+                                            placeholder="apellido"
                                         />,
                                     )}
                                 </Form.Item>
@@ -174,8 +150,7 @@ function Editarpersona(props) {
                                     })(
                                         <Input
                                             type="text"
-                                            placeholder={data.legajo}
-                                            setFieldsValue={data.legajo}
+                                            placeholder="legajo"
                                         />,
                                     )}
                                 </Form.Item>
@@ -185,8 +160,7 @@ function Editarpersona(props) {
                                     })(
                                         <Input
                                             type="text"
-                                            placeholder={data.dni}
-                                            setFieldsValue={data.dni}
+                                            placeholder="dni"
                                         />,
                                     )}
                                 </Form.Item>
@@ -222,7 +196,7 @@ function Editarpersona(props) {
                                 <Form.Item>
                                     <Row></Row>
                                     <Button type="primary" htmlType="submit" className="update-form-button" >
-                                        Enviar Actualizacion
+                                        Enviar
                                     </Button>
                                 </Form.Item>
                             </Form>
@@ -234,5 +208,5 @@ function Editarpersona(props) {
         </div>
     )
 }
-const WrappedEditarPersonaForm = Form.create({ name: 'editarPersona' })(Editarpersona);
-export default WrappedEditarPersonaForm
+const WrappedCrearpersonaForm = Form.create({ name: 'crearpersona' })(Crearpersona);
+export default WrappedCrearpersonaForm
