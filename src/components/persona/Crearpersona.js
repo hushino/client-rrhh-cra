@@ -6,20 +6,21 @@ const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 
 function Crearpersona(props) {
-    const [data, setData] = useState([])
+    //const [data, setData] = useState([])
     const [imagestate, setImagestate] = useState({ loading: false })
     const [uploadImage, setUploadImage] = useState({})
     let truedata = null;
     const reader = new FileReader();
     //console.log(dataIndex);
+    const { getFieldDecorator } = props.form;
 
     const payload = {
-        nombre: "user@gmail.comm",
-        apellido: "1233",
-        foto: "",
-        legajo: "",
-        dni: "",
-        fecha: "",
+        nombre: "nombrefake",
+        apellido: "nombrefake",
+        foto: "nombrefakefoto",
+        legajo: "nombrefake",
+        dni: "nombre",
+        fecha: "nombre",
     };
 
     function getBase64(img, callback) {
@@ -29,6 +30,10 @@ function Crearpersona(props) {
     }
 
     function beforeUpload(file) {
+        /* if (data.nombre === "" || data.nombre == undefined || data.nombre === null || data.nombre == NaN) {
+            message.error('Escribe un nombre primero !');
+        } */
+
         const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
         if (!isJpgOrPng) {
             message.error('Solo puedes subir archivos JPG/PNG !');
@@ -37,23 +42,25 @@ function Crearpersona(props) {
         if (!isLt2M) {
             message.error('La imagen debe pesar menos de 2MB!');
         }
-
         return isJpgOrPng && isLt2M;
     }
-    useEffect(() => { }, []);
+
+    let bodyFormData = new FormData();
+
+    //useEffect(() => { }, []);
     const handleChange = info => {
+        /* if (payload.nombre === "" || isNaN(payload.nombre) || payload.nombre === null) {
+            message.error('Escribe un nombre primero !');
+            return;
+        } */
         if (info.file.status === 'uploading') {
             setImagestate({ loading: true });
             return;
         }
         if (info.file.status === 'done') {
-            // Get this url from response in real world.
             message.success(`${info.file.name} imagen cargada exitosamente`);
 
-            const bodyFormData = new FormData();
-            bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }), data.nombre + data.dni + data.apellido + data.legajo);
-
-            //postImage(info.file.originFileObj)
+            bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }));
             setUploadImage(bodyFormData)
 
             getBase64(info.file.originFileObj, imageUrl =>
@@ -63,17 +70,18 @@ function Crearpersona(props) {
                 }),
             );
         }
+
     };
 
     const uploadButton = (
         <div >
             <Icon type={imagestate.loading ? 'loading' : 'plus'} />
             <div className="ant-upload-text">Subir</div>
-            <img src={`http://localhost:3003/upload/image/` + data.foto} alt="avatar" style={{ width: '100%' }} />
+            {/*  <img src={`http://localhost:3003/upload/image/` + data.foto} alt="avatar" style={{ width: '100%' }} /> */}
         </div>
     );
 
-    const postData = (payload2) => axios.post(`http://localhost:8080/api/addPersona`, payload)
+    const postData = () => axios.post(`http://localhost:8080/api/addPersona`, payload)
         .then(function (response) {
             console.log(response.data)
         })
@@ -89,13 +97,16 @@ function Crearpersona(props) {
                 payload.foto = response.data.filename
             }
             //payload.foto = response.data.filename
-            postData(payload)
+            postData()
         })
         .catch(function (response) {
             console.log(response);
         })
 
+
     const { imageUrl } = imagestate;
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         props.form.validateFields((err, values) => {
@@ -106,16 +117,21 @@ function Crearpersona(props) {
 
                 payload.legajo = values.legajo
                 payload.fecha = values.fecha
-                //truedata = values
-                //setData(values)
+
+                for (let value of uploadImage.getAll('image')) {
+                    console.log('asd ' + value);
+                    bodyFormData.append('image', new Blob([value], { type: 'image/jpg' }), payload.nombre + payload.dni + payload.apellido + payload.legajo);
+                    setUploadImage(bodyFormData)
+                }
                 //console.log(uploadImage)
-                postImage(uploadImage)
+                postImage(bodyFormData)
             }
         });
     };
 
-    const { getFieldDecorator } = props.form;
-
+    const handleChange2 = info => {
+        console.log(info.nombre)
+    }
     return (
         <div>
             <Layout style={{ background: "white" }}>
@@ -124,7 +140,7 @@ function Crearpersona(props) {
                         <Col>
                             <Form onSubmit={handleSubmit} className="update-form" >
 
-                                <Form.Item label="Nombre">
+                                <Form.Item label="Nombre" >
                                     {getFieldDecorator('nombre', {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
@@ -188,8 +204,7 @@ function Crearpersona(props) {
                                     })(
                                         <Input
                                             type="date"
-                                            placeholder={data.fecha}
-                                            setFieldsValue={data.fecha}
+                                            placeholder="{data.fecha}"
                                         />,
                                     )}
                                 </Form.Item>
