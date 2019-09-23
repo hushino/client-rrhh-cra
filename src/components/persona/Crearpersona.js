@@ -119,19 +119,16 @@ function Crearpersona(props) {
                 payload.fecha = values.fecha
 
                 for (let value of uploadImage.getAll('image')) {
-                    console.log('asd ' + value);
+                    //console.log('asd ' + value);
                     bodyFormData.append('image', new Blob([value], { type: 'image/jpg' }), payload.nombre + payload.dni + payload.apellido + payload.legajo);
                     setUploadImage(bodyFormData)
                 }
-                //console.log(uploadImage)
                 postImage(bodyFormData)
             }
         });
     };
 
-    const handleChange2 = info => {
-        console.log(info.nombre)
-    }
+  
     return (
         <div>
             <Layout style={{ background: "white" }}>

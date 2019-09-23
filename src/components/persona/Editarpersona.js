@@ -52,6 +52,7 @@ function Editarpersona(props) {
             if (response.data.filename !== undefined) {
                 data.foto = response.data.filename
             }
+            data.foto = response.data.filename
             postData(truedata)
         })
         .catch(function (response) {

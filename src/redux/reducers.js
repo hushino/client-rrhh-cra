@@ -14,7 +14,11 @@ const myReducer = (state = initialState, action) => {
                 Authorization: 'Bearer ' + action.stateOfLife.accessToken,
                 Role: role
             };
-         
+        case 1:
+            return {
+                nombre: "",
+                apellido: "",
+            }
         default:
             return state;
     }
