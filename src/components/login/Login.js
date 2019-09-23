@@ -32,9 +32,11 @@ function Login(props) {
   useEffect(() => {
     // setRole(store.getState().Role)
     // const sd = isRole ? "Estas conectado" : "No iniciaste sesion"
-    //setState(sd)
+    // setState(sd)
   });
-
+  function refreshPage() {
+    window.location.reload();
+  }
   const fetchData = async () => {
     const response = await axios.post('http://localhost:8080/api/auth/signin', payload)
     dispatch(imaginator(response.data))
@@ -53,6 +55,8 @@ function Login(props) {
         payload.password = values.password;
         forceUpdate();
         fetchData();
+        setTimeout(function () { window.location.reload(); }, 1200);
+        //window.location.reload();
       }
     });
   };
@@ -60,7 +64,8 @@ function Login(props) {
 
   const logout = () => {
     localStorage.setItem("role", "");
-    forceUpdate();
+    //forceUpdate();
+    window.location.reload();
   }
   return (
     <div>

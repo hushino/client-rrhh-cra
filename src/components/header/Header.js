@@ -18,16 +18,13 @@ function Header() {
   const isRoleAdmin = localStorage.getItem("role") === 'ADMIN';
 
   const isAnyRole = localStorage.getItem("role") === 'USER' || localStorage.getItem("role") === "ADMIN";
-
-  const [, updateState] = React.useState();
-  const forceUpdate = useCallback(() => updateState({}), []);
-
+ 
   useEffect(() => {
     let reduxsub
     let isSubscribed = true
     if (isSubscribed) {
       reduxsub = store.subscribe(() => {
-        forceUpdate();
+       
         //console.log('header ' + store.getState().Role)
         //setData(store.getState().Role)
       });
