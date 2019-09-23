@@ -51,7 +51,6 @@ function UserPanel() {
         legajo: integer2,
     }
     /*  const megatron = (nombrepersona, apellidopersona) => {
- 
          if (!apellidopersona === "" && !nombrepersona === "") {
              console.log('megatron ' + nombrepersona, apellidopersona)
              fetchData(nombrepersona, apellidopersona)

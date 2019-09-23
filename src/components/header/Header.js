@@ -10,6 +10,8 @@ import Viewpersona from '../persona/Viewpersona';
 import store from '../../redux/store';
 import WrappedEditarPersonaForm from '../persona/Editarpersona';
 import WrappedCrearpersonaForm from '../persona/Crearpersona';
+import WrappedCrearlicenciaForm from '../persona/manyside/Agregarlicencia'
+
 
 function Header() {
   //const [data, setData] = useState([]);
@@ -93,6 +95,7 @@ function Header() {
         }
         <Route path="/viewpersona/:dataIndex/" component={Viewpersona} />
         <Route path="/:dataIndex/editar" component={WrappedEditarPersonaForm} />
+        <Route path="/:dataIndex/agregarlicencia" component={WrappedCrearlicenciaForm} />
         <Route path="/crearpersona" component={WrappedCrearpersonaForm} />
         <Route component={NoPageFound} />
       </Switch>
