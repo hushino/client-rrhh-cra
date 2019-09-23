@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Button, Row, Menu, Icon, PageHeader } from 'antd';
 import App from '../../App';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
@@ -13,16 +13,23 @@ import WrappedCrearpersonaForm from '../persona/Crearpersona';
 
 function Header() {
   //const [data, setData] = useState([]);
-  const [data, setData] = useState([]);
-  const isRoleUser = data === 'USER';
-  const isRoleAdmin = data === 'ADMIN' || data === 'USER';
+  /*  const [data, setData] = useState([]);
+   const isRoleUser = data === 'USER'; */
+  const isRoleAdmin = localStorage.getItem("role") === 'ADMIN';
+
+  const isAnyRole = localStorage.getItem("role") === 'USER' || localStorage.getItem("role") === "ADMIN";
+
+  const [, updateState] = React.useState();
+  const forceUpdate = useCallback(() => updateState({}), []);
+
   useEffect(() => {
     let reduxsub
     let isSubscribed = true
     if (isSubscribed) {
       reduxsub = store.subscribe(() => {
+        forceUpdate();
         //console.log('header ' + store.getState().Role)
-        setData(store.getState().Role)
+        //setData(store.getState().Role)
       });
     }
     return () => {
@@ -46,28 +53,47 @@ function Header() {
                   Inicio
                 </Link>
               </Menu.Item>
-
-              <Menu.Item key="user" >
-                <Link to="/user">
-                  <Icon type="gold" />
-                  Panel Usuario
+              {
+                isAnyRole
+                  ? <Menu.Item key="user" >
+                    <Link to="/user">
+                      <Icon type="gold" />
+                      Panel Usuario
                     </Link>
-              </Menu.Item>
+                  </Menu.Item>
+                  : ""
 
-              <Menu.Item key="admin" >
-                <Link to="/admin">
-                  <Icon type="appstore" />
-                  Panel Administrador
-                </Link>
-              </Menu.Item>
+              }
+
+              {
+                isRoleAdmin
+                  ? <Menu.Item key="admin" >
+                    <Link to="/admin">
+                      <Icon type="appstore" />
+                      Panel Administrador
+                    </Link>
+                  </Menu.Item>
+                  : ""
+              }
+
             </Menu>
           </div>
         </div>
       </nav>
       <Switch>
         <Route path="/" exact component={App} />
-        <Route path="/admin/" component={AdminPanel} />
-        <Route path="/user/" component={UserPanel} />
+        {
+          isAnyRole
+            ? <Route path="/user/" component={UserPanel} />
+            : ""
+
+        }
+        {
+          isRoleAdmin
+            ? <Route path="/admin/" component={AdminPanel} />
+            : ""
+
+        }
         <Route path="/viewpersona/:dataIndex/" component={Viewpersona} />
         <Route path="/:dataIndex/editar" component={WrappedEditarPersonaForm} />
         <Route path="/crearpersona" component={WrappedCrearpersonaForm} />
