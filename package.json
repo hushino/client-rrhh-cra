@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/dark-theme": "^1.0.3",
     "@types/react-highlight-words": "^0.16.0",
     "antd": "^3.23.2",
     "axios": "^0.19.0",

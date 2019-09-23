@@ -13,14 +13,7 @@ function UserPanel() {
     const [state, setState] = useState([])
     const [loading, setLoading] = useState(false)
     const [role, setRole] = useState([])
-    let nombre3 = "";
-    let apellido3 = "";
 
-
-    const [estado, setEstado] = useState({
-        nombre: "",
-        apellido: "",
-    })
     let current = 0
     let pageSize = 10
     // eslint-disable-next-line
@@ -28,9 +21,6 @@ function UserPanel() {
     let sortOrder = ''
     const isRoleUser = role === 'USER';
     //const isRoleAdmin = role === 'ADMIN';
-
-
-    //dsf
 
     const handleTableChange = (pagination, filters, sorter) => {
         const pager = { ...loading.pagination };
@@ -53,10 +43,12 @@ function UserPanel() {
         }); */
     };
     let integer = parseInt(localStorage.getItem("dni"), 10);
+    let integer2 = parseInt(localStorage.getItem("legajo"), 10);
     const urls = {
         nombre: localStorage.getItem("nombre"),
         apellido: localStorage.getItem("apellido"),
         dni: integer,
+        legajo: integer2,
     }
     /*  const megatron = (nombrepersona, apellidopersona) => {
  
@@ -97,6 +89,7 @@ function UserPanel() {
         localStorage.setItem("nombre", "");
         localStorage.setItem("apellido", "");
         localStorage.setItem("dni", "");
+        localStorage.setItem("legajo", "");
     }, []);
 
 
@@ -104,21 +97,23 @@ function UserPanel() {
         confirm();
         if (dataIndex === "nombre") {
             if (selectedKeys !== "") {
-                nombre3 = selectedKeys
-
                 localStorage.setItem("nombre", selectedKeys);
             }
         }
         if (dataIndex === "apellido") {
             if (selectedKeys !== "") {
-
                 localStorage.setItem("apellido", selectedKeys);
             }
         }
         if (dataIndex === "dni") {
             if (selectedKeys !== "") {
                 localStorage.setItem("dni", selectedKeys);
-                console.log("dni " + localStorage.getItem("dni"))
+            }
+        }
+        if (dataIndex === "legajo") {
+            if (selectedKeys !== "") {
+                localStorage.setItem("legajo", selectedKeys);
+                console.log("legajo " + localStorage.getItem("legajo"))
             }
         }
 
@@ -127,8 +122,10 @@ function UserPanel() {
 
     const handleReset = clearFilters => {
         clearFilters();
-        localStorage.setItem("apellido", "");
         localStorage.setItem("nombre", "");
+        localStorage.setItem("apellido", "");
+        localStorage.setItem("dni", "");
+        localStorage.setItem("legajo", "");
         setState({ searchText: '' });
     };
     let searchInput = null;
@@ -203,10 +200,10 @@ function UserPanel() {
             ...getColumnSearchProps('dni'),
         },
         {
-            title: 'Id',
-            dataIndex: 'id',
+            title: 'Legajo',
+            dataIndex: 'legajo',
             width: '20%',
-            ...getColumnSearchProps('id'),
+            ...getColumnSearchProps('legajo'),
         },
         {
             title: 'Accion',
