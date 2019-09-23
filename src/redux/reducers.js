@@ -10,15 +10,11 @@ const myReducer = (state = initialState, action) => {
             action.stateOfLife.roles.forEach(element => {
                 role = element.authority
             });
+            localStorage.setItem("authorization", 'Bearer ' + action.stateOfLife.accessToken);
             return {
                 Authorization: 'Bearer ' + action.stateOfLife.accessToken,
                 Role: role
             };
-        case 1:
-            return {
-                nombre: "",
-                apellido: "",
-            }
         default:
             return state;
     }

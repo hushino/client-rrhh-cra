@@ -4,6 +4,6 @@ import store from './store'
 export function setToken() {
     store.subscribe(() => {
         axios.defaults.headers.common['Authorization'] =
-            `Bearer ${store.getState().Authorization}`;
+            `Bearer ${localStorage.getItem("authorization")}`;
     });
 }

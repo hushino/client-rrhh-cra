@@ -9,10 +9,10 @@ import { useSelector, useDispatch } from 'react-redux';
 //https://stackoverflow.com/questions/44608627/how-to-persist-jwt-token-throughout-session-until-user-logout
 function Login(props) {
   const dispatch = useDispatch();
-  const [role, setRole] = useState()
-  const [state, setState] = useState("nani")
+  //const [role, setRole] = useState()
+  //const [state, setState] = useState("nani")
 
-  const isRole = role === 'USER' || role === "ADMIN";
+  const isAnyRole = localStorage.getItem("role") === 'USER' || localStorage.getItem("role") === "ADMIN";
   //console.log(props);
   const payload = {
     usernameOrEmail: "user@gmail.comm",
@@ -30,21 +30,25 @@ function Login(props) {
   const forceUpdate = useCallback(() => updateState({}), []);
 
   useEffect(() => {
-    setRole(store.getState().Role)
-    const sd = isRole ? "Estas conectado" : "No iniciaste sesion"
-    setState(sd)
+    // setRole(store.getState().Role)
+    // const sd = isRole ? "Estas conectado" : "No iniciaste sesion"
+    //setState(sd)
   });
 
   const fetchData = async () => {
     const response = await axios.post('http://localhost:8080/api/auth/signin', payload)
     dispatch(imaginator(response.data))
+    localStorage.getItem("role")
+    response.data.roles.forEach(element => {
+      localStorage.setItem("role", element.authority);
+    });
+    //console.log(localStorage.getItem("role"))
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
-
         payload.usernameOrEmail = values.username;
         payload.password = values.password;
         forceUpdate();
@@ -54,12 +58,17 @@ function Login(props) {
   };
   const { getFieldDecorator } = props.form;
 
+  const logout = () => {
+    localStorage.setItem("role", "");
+    forceUpdate();
+  }
   return (
     <div>
-
       {
-        isRole
-          ? state
+        isAnyRole
+          ? <Button type="danger" size="large" onClick={logout}>
+            Desconectarse
+            </Button>
           : <Form onSubmit={handleSubmit} className="login-form">
             <Form.Item>
               {getFieldDecorator('username', {
