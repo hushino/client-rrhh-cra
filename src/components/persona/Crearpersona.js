@@ -116,7 +116,7 @@ function Crearpersona(props) {
                 payload.dni = values.dni
 
                 payload.legajo = values.legajo
-                payload.fecha = values.fecha
+                payload.fecha = values.fecha.toString()
 
                 for (let value of uploadImage.getAll('image')) {
                     //console.log('asd ' + value);
