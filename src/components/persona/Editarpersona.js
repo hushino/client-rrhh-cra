@@ -86,6 +86,7 @@ function Editarpersona(props) {
             foto: data.foto,
             fecha: data.fecha,
         });
+        //console.log(data.foto)
 
     }, [data]);
 
@@ -128,11 +129,11 @@ function Editarpersona(props) {
     };
 
     const uploadButton = (
-        <div >
+        < div >
             <Icon type={imagestate.loading ? 'loading' : 'plus'} />
             <div className="ant-upload-text">Remplazar</div>
-            <img src={`http://localhost:3003/upload/image/` + data.foto} alt="avatar" style={{ width: '100%' }} />
-        </div>
+            <img src={`http://localhost:3003/upload/image/${data.foto}`} alt="avatar" style={{ width: '100%' }} />
+        </div >
     );
     const { imageUrl } = imagestate;
 
