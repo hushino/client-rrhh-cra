@@ -64,8 +64,6 @@ function Editarlicencia(props) {
             <Col>
                 <h2>Editar licencia actual</h2>
                 <Form onSubmit={handleSubmit} className="update-form" >
-
-               
                     <Form.Item label="fechaLicencia">
                         {getFieldDecorator('fechaLicencia', {
                             rules: [{ required: true, message: 'Ingrese un dato!' }],
