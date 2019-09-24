@@ -210,6 +210,12 @@ function UserPanel() {
             dataIndex: 'id',
             render: (dataIndex) => <Link to={`/viewpersona/${dataIndex}`}>Ver</Link>,
         },
+        {
+            title: 'Accion',
+            key: 'action2',
+            dataIndex: 'id',
+            render: (dataIndex) => <Link to={`/${dataIndex}/agregarlicencia/`}>Editar</Link>,
+        }
 
     ];
 

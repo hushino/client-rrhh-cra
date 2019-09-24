@@ -141,7 +141,7 @@ function Editarpersona(props) {
 
     return (
         <div>
-            <Layout style={{ background: "white" }}>
+            <Layout style={{ /* background: "white" */ }}>
 
                 <Content style={{ padding: '0 50px' }}>
                     <Row type="flex" gutter={16}>

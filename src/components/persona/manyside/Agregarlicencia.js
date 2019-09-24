@@ -6,16 +6,17 @@ const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 
 function Agregarlicencia(props) {
+    const { dataIndex } = props.match.params
     const { getFieldDecorator } = props.form;
-    const postLicencia = () => axios.post(`http://localhost:8080/api//updatepersona/${1}/licencia`, payload)
-    .then(function (response) {
-        console.log(response.data)
-    })
-    .catch(function (error) {
-        console.log(error);
-    })
+    const postLicencia = () => axios.post(`http://localhost:8080/api/updatepersona/${dataIndex}/licencia`, payload)
+        .then(function (response) {
+            console.log(response.data)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
     const payload = {
-        fechaLicencia: "nombrefake",
+        fecha_licencia: "nombrefake",
         numeroDeDias: "nombrefake",
         observaciones: "nombrefake",
         referencias: "nombrefake",
@@ -34,44 +35,44 @@ function Agregarlicencia(props) {
     };
     return (
         <div>
-        <Layout style={{ background: "white" }}>
-            <Content style={{ padding: '0 50px' }}>
-                <Row type="flex" gutter={16}>
-                    <Col>
-                        <Form onSubmit={handleSubmit} className="update-form" >
+            <Layout>
+                <Content style={{ padding: '0 50px' }}>
+                    <Row type="flex" gutter={16}>
+                        <Col>
+                            <Form onSubmit={handleSubmit} className="update-form" >
 
-                            <Form.Item label="Observaciones" >
-                                {getFieldDecorator('observaciones', {
-                                    rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                })(
-                                    <Input
-                                        name="observaciones"
-                                        placeholder="observaciones"
-                                    />,
-                                )}
-                            </Form.Item>
-                            <Form.Item label="Referencias">
-                                {getFieldDecorator('referencias', {
-                                    rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                })(
-                                    <Input
-                                        type="text"
-                                        placeholder="referencias"
-                                    />,
-                                )}
-                            </Form.Item>
-                            <Form.Item label="Numero de dias de licencia">
-                                {getFieldDecorator('numeroDeDias', {
-                                    rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                })(
-                                    <Input
-                                        type="number"
-                                        placeholder="numero de Dias"
-                                    />,
-                                )}
-                            </Form.Item>
-                            <Form.Item label="Fecha">
-                                    {getFieldDecorator('Fecha Licencia', {
+                                <Form.Item label="Observaciones" >
+                                    {getFieldDecorator('observaciones', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            name="observaciones"
+                                            placeholder="observaciones"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Referencias">
+                                    {getFieldDecorator('referencias', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="referencias"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Numero de dias de licencia">
+                                    {getFieldDecorator('numeroDeDias', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="number"
+                                            placeholder="numero de Dias"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Fecha">
+                                    {getFieldDecorator('fechaLicencia', {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input

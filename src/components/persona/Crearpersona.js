@@ -131,7 +131,7 @@ function Crearpersona(props) {
   
     return (
         <div>
-            <Layout style={{ background: "white" }}>
+            <Layout>
                 <Content style={{ padding: '0 50px' }}>
                     <Row type="flex" gutter={16}>
                         <Col>

@@ -7,10 +7,10 @@ const { Header, Footer, Sider, Content } = Layout;
 
 function AdminPanel() {
 
-    
+
     return (
         <div>
-            <Layout style={{ background: "white", height: "calc(100vh - 55px)" }}>
+            <Layout style={{ height: "calc(100vh - 55px)" }}>
                 <Content style={{ padding: '0 50px' }}>
                     <Row type="flex" gutter={16}>
                         <Col>
