@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
-import { Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
+import { Tabs, Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
+import WrappedEditarLicenciaForm from './manyside/Editarlicencia'
+
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
+const { TabPane } = Tabs;
 
 function Editarpersona(props) {
 
@@ -20,7 +23,6 @@ function Editarpersona(props) {
     const reader = new FileReader();
     //console.log(dataIndex);
     function getBase64(img, callback) {
-
         reader.addEventListener('load', () => callback(reader.result));
         reader.readAsDataURL(img);
     }
@@ -145,7 +147,9 @@ function Editarpersona(props) {
 
                 <Content style={{ padding: '0 50px' }}>
                     <Row type="flex" gutter={16}>
-                        <Col>
+                        <Tabs defaultActiveKey="1">
+                            <TabPane tab="Editar Persona" key="1">
+                            <Col>
                             <h2>Actualizar datos de una persona</h2>
                             <Form onSubmit={handleSubmit} className="update-form" >
 
@@ -229,6 +233,15 @@ function Editarpersona(props) {
                                 </Form.Item>
                             </Form>
                         </Col>
+                            </TabPane>
+                            <TabPane tab="Editar Licencia" key="2">
+                                <WrappedEditarLicenciaForm personaid={data.id}/>
+                            </TabPane>
+                            <TabPane tab="Tab 3" key="3">
+                                Content of Tab Pane 3
+                             </TabPane>
+                        </Tabs>
+                        
                     </Row>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Red Design ©2019 Created by Hushino</Footer>
