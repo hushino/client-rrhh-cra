@@ -1,5 +1,6 @@
 const { override, fixBabelImports, addLessLoader } = require('customize-cra');
-const darkTheme = require('@ant-design/dark-theme'); //https://github.com/ant-design/ant-design-dark-theme/blob/master/index.ts
+//const darkTheme = require('@ant-design/dark-theme'); //https://github.com/ant-design/ant-design-dark-theme/blob/master/index.ts
+
 module.exports = override(
     fixBabelImports('import', {
         libraryName: 'antd',
@@ -8,7 +9,7 @@ module.exports = override(
     }),
     addLessLoader({
         javascriptEnabled: true,
-        modifyVars: {
+        modifyVars: { 
             '@light': '#fff',
             '@dark': '#000',
             '@heading-color': 'fade(@light, 85)',
@@ -105,6 +106,7 @@ module.exports = override(
             '@skeleton-color': 'rgba(0,0,0,0.8)',
 
             // pro
-            '@pro-header-box-shadow': '@site-header-box-shadow', },
+            '@pro-header-box-shadow': '@site-header-box-shadow',
+         },
     }),
 );

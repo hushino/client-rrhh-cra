@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useCallback } from 'react';
-import { Button, Row, Menu, Icon, PageHeader } from 'antd';
+import { Button, Row, Menu, Icon, PageHeader, message } from 'antd';
 import App from '../../App';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import UserPanel from '../userPanel/UserPanel';
@@ -11,7 +11,7 @@ import store from '../../redux/store';
 import WrappedEditarPersonaForm from '../persona/Editarpersona';
 import WrappedCrearpersonaForm from '../persona/Crearpersona';
 import WrappedCrearlicenciaForm from '../persona/manyside/Agregarlicencia'
-
+//import '@ant-design/dark-theme' //https://github.com/ant-design/ant-design-dark-theme/blob/master/index.ts
 
 function Header() {
   //const [data, setData] = useState([]);
@@ -20,24 +20,41 @@ function Header() {
   const isRoleAdmin = localStorage.getItem("role") === 'ADMIN';
 
   const isAnyRole = localStorage.getItem("role") === 'USER' || localStorage.getItem("role") === "ADMIN";
- 
+
+  const setLight = () => localStorage.setItem("theme", "LIGHT");
+  const setDark = () => localStorage.setItem("theme", "DARK");
+  const isDark = localStorage.getItem("theme") === 'DARK';
+  const isLight = localStorage.getItem("theme") === 'LIGHT';
+  const [state, setState] = useState();
   useEffect(() => {
-    let reduxsub
+    /* let reduxsub
     let isSubscribed = true
     if (isSubscribed) {
-      reduxsub = store.subscribe(() => {
-       
-        //console.log('header ' + store.getState().Role)
-        //setData(store.getState().Role)
-      });
+      reduxsub = store.subscribe(() => {});
     }
     return () => {
       reduxsub()
       isSubscribed = false
-    }
+    } */
+    /* setDark()
+    if (isDark) {
+      setLight()
+
+    } */
 
   }, []);
-
+  /* const handleColorChange = () => {
+    window.less
+      .modifyVars(vars)
+      .then(() => {
+        // message.success(`Theme updated successfully`);
+        this.setState({ vars });
+        localStorage.setItem('app-theme', JSON.stringify(vars));
+      })
+      .catch(error => {
+        message.error('Failed to update theme');
+      });
+  }; */
   return (
     <Router>
       <nav>
@@ -74,7 +91,6 @@ function Header() {
                   </Menu.Item>
                   : ""
               }
-
             </Menu>
           </div>
         </div>
