@@ -11,7 +11,7 @@ function Editarlicencia(props) {
     const personaidd = props.personaid;
     const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona/${personaidd}/updatelicencia/${data.id}`, values)
         .then(function (response) {
-            console.log(response.data)
+            //console.log(response.data)
         })
         .catch(function (error) {
             console.log(error);
@@ -20,7 +20,7 @@ function Editarlicencia(props) {
         console.log(personaidd);
         const getData = () => axios.get(`http://localhost:8080/api/licencia/${personaidd}`)
             .then(function (response) {
-                console.log("datos de licencia ", response.data)
+                //console.log("datos de licencia ", response.data)
                 setData(response.data)
 
             })
@@ -37,8 +37,7 @@ function Editarlicencia(props) {
             fechaLicencia: data.fechaLicencia,
             referencias: data.referencias,
             numeroDeDias: data.numeroDeDias,
-            observaciones: data.observaciones,
-            createDate: data.createDate,
+            observaciones: data.observaciones
         });
         //console.log(data.foto)
 
