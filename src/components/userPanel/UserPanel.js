@@ -12,15 +12,17 @@ import AdminPanel from '../adminPanel/AdminPanel';
 function UserPanel() {
     const [state, setState] = useState([])
     const [loading, setLoading] = useState(false)
-    const [role, setRole] = useState([])
+    //const [role, setRole] = useState([])
 
     let current = 0
     let pageSize = 10
     // eslint-disable-next-line
     let sortField = ''
     let sortOrder = ''
-    const isRoleUser = role === 'USER';
-    //const isRoleAdmin = role === 'ADMIN';
+
+    const isRoleAdmin = localStorage.getItem("role") === 'ADMIN';
+
+    const isAnyRole = localStorage.getItem("role") === 'USER' || localStorage.getItem("role") === "ADMIN";
 
     const handleTableChange = (pagination, filters, sorter) => {
         const pager = { ...loading.pagination };
@@ -50,12 +52,6 @@ function UserPanel() {
         dni: integer,
         legajo: integer2,
     }
-    /*  const megatron = (nombrepersona, apellidopersona) => {
-         if (!apellidopersona === "" && !nombrepersona === "") {
-             console.log('megatron ' + nombrepersona, apellidopersona)
-             fetchData(nombrepersona, apellidopersona)
-         }
-     } */
 
     const fetchData = () => axios.post(`http://localhost:8080/api/home?page=${current}&size=${pageSize}&sortOrder=${sortOrder}`, urls)
         .then(function (response) {
@@ -84,7 +80,6 @@ function UserPanel() {
         })
     useEffect(() => {
         fetchData();
-        setRole(store.getState().Role)
         localStorage.setItem("nombre", "");
         localStorage.setItem("apellido", "");
         localStorage.setItem("dni", "");
@@ -216,12 +211,14 @@ function UserPanel() {
             dataIndex: 'id',
             render: (dataIndex) => <Link to={`/viewpersona/${dataIndex}`}>Ver</Link>,
         },
-        {
-            title: 'Accion',
-            key: 'action2',
-            dataIndex: 'id',
-            render: (dataIndex) => <Link to={`/${dataIndex}/agregarlicencia/`}>Editar</Link>,
-        }
+        isRoleAdmin ?
+            {
+                title: 'Accion',
+                key: 'action2',
+                dataIndex: 'id',
+                render: (dataIndex) => <Link to={`/${dataIndex}/agregarlicencia/`}>Editar</Link>
+
+            } : {}
 
     ];
 
