@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
-import { Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
+import { Tabs, Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
+const { TabPane } = Tabs;
 
 function Agregarlicencia(props) {
     const { dataIndex } = props.match.params
@@ -33,12 +34,16 @@ function Agregarlicencia(props) {
             }
         });
     };
+    
+
     return (
         <div>
             <Layout>
                 <Content style={{ padding: '0 50px' }}>
                     <Row type="flex" gutter={16}>
-                        <Col>
+                        <Tabs defaultActiveKey="1">
+                            <TabPane tab="Agregar licencia" key="1">
+                            <Col>
                             <Form onSubmit={handleSubmit} className="update-form" >
 
                                 <Form.Item label="Observaciones" >
@@ -89,6 +94,15 @@ function Agregarlicencia(props) {
                                 </Form.Item>
                             </Form>
                         </Col>
+                             </TabPane>
+                            <TabPane tab="Tab 2" key="2">
+                                Content of Tab Pane 2
+                            </TabPane>
+                            <TabPane tab="Tab 3" key="3">
+                                Content of Tab Pane 3
+                            </TabPane>
+                        </Tabs>
+                       
                     </Row>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Red Design ©2019 Created by Hushino</Footer>

@@ -12,6 +12,9 @@ function Viewpersona(props) {
     const [data, setData] = useState([])
     const { dataIndex } = props.match.params
     //console.log(dataIndex)
+    const isRoleAdmin = localStorage.getItem("role") === 'ADMIN';
+
+    const isAnyRole = localStorage.getItem("role") === 'USER' || localStorage.getItem("role") === "ADMIN";
 
     const fetchData = () => axios.get(`http://localhost:8080/api/viewpersona/${dataIndex}`)
         .then(function (response) {
@@ -33,37 +36,68 @@ function Viewpersona(props) {
                 <Content style={{ padding: '0 50px' }}>
                     <Row type="flex" gutter={16}>
                         <Col>
-                            <Card
-                                style={{ marginTop: 12 }}
+                        {
+                            isRoleAdmin   
+                                    ?<Card
+                                    style={{ marginTop: 12 }}
+                                    
+                                    actions={[
+                                        <Link to={`/${dataIndex}/editar`}>
+                                            <Icon type="edit" key="edit" /> </Link>,
+                                    ]}>
+                                    <Meta
+                                        avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                                        title={data.nombre}
+                                        description={[
+                                            "id: ", data.id,
+                                            " apellido: ",
+                                            data.apellido,
+                                            "id: ", data.id,
+                                            " apellido: ",
+                                            data.apellido, "id: ", data.id,
+                                            " apellido: ",
+                                            data.apellido,
+                                            "id: ", data.id,
+                                            " apellido: ",
+                                            data.apellido, "id: ", data.id,
+                                            " apellido: ",
+                                            data.apellido,
+                                            "id: ", data.id,
+                                            " apellido: ",
+                                            data.apellido
+                                        ]}
+                                    />
+                                </Card>
+                                    : <Card
+                                    style={{ marginTop: 12 }}
+                                    
+                                   >
+                                    <Meta
+                                        avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                                        title={data.nombre}
+                                        description={[
+                                            "id: ", data.id,
+                                            " apellido: ",
+                                            data.apellido,
+                                            "id: ", data.id,
+                                            " apellido: ",
+                                            data.apellido, "id: ", data.id,
+                                            " apellido: ",
+                                            data.apellido,
+                                            "id: ", data.id,
+                                            " apellido: ",
+                                            data.apellido, "id: ", data.id,
+                                            " apellido: ",
+                                            data.apellido,
+                                            "id: ", data.id,
+                                            " apellido: ",
+                                            data.apellido
+                                        ]}
+                                    />
+                                </Card>
 
-                                actions={[
-                                    <Link to={`/${dataIndex}/editar`}>
-                                        <Icon type="edit" key="edit" /> </Link>,
-                                ]}
-                            >
-                                <Meta
-                                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                                    title={data.nombre}
-                                    description={[
-                                        "id: ", data.id,
-                                        " apellido: ",
-                                        data.apellido,
-                                        "id: ", data.id,
-                                        " apellido: ",
-                                        data.apellido, "id: ", data.id,
-                                        " apellido: ",
-                                        data.apellido,
-                                        "id: ", data.id,
-                                        " apellido: ",
-                                        data.apellido, "id: ", data.id,
-                                        " apellido: ",
-                                        data.apellido,
-                                        "id: ", data.id,
-                                        " apellido: ",
-                                        data.apellido
-                                    ]}
-                                />
-                            </Card>
+                                }
+                            
                         </Col>
                     </Row>
                 </Content>
