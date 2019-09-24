@@ -72,7 +72,7 @@ function UserPanel() {
             //}
             setLoading({ loading: true });
             const pagination = { ...loading.pagination };
-            pagination.total = response.data.totalElements - 10;
+            pagination.total = response.data.totalElements; //-10 bad
             setLoading({
                 loading: false,
                 data: response.data.content,
@@ -203,6 +203,12 @@ function UserPanel() {
             dataIndex: 'legajo',
             width: '20%',
             ...getColumnSearchProps('legajo'),
+        },
+        {
+            title: 'ID',
+            dataIndex: 'id',
+            width: '20%',
+            ...getColumnSearchProps('id'),
         },
         {
             title: 'Accion',
