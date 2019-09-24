@@ -97,7 +97,6 @@ function Editarlicencia(props) {
                             />,
                         )}
                     </Form.Item>
-                    
 
                     <Form.Item label="observaciones">
                         {getFieldDecorator('observaciones', {
