@@ -3,6 +3,8 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
 import { Tabs, Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 import WrappedCrearAgregarAltasAscensosBajasForm from '../manyside/altasAscensosBajas/AgregarAltasAscensosBajas'
+import WrappedCrearAgregarConceptoConocimientosEspecialesClasificacionPremiosForm from '../manyside/ConceptoConocimientosEspecialesClasificacionPremios/AgregarConceptoConocimientosEspecialesClasificacionPremios'
+
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 const { TabPane } = Tabs;
@@ -100,8 +102,8 @@ function Agregarlicencia(props) {
                             <TabPane tab="Agregar Altas Ascensos Bajas" key="2">
                                 < WrappedCrearAgregarAltasAscensosBajasForm dataIndex={dataIndex} />
                             </TabPane>
-                            <TabPane tab="Tab 3" key="3">
-                                Content of Tab Pane 3
+                            <TabPane tab="Agregar Concepto Conocimientos Especiales Clasificacion Premios" key="3">
+                                <WrappedCrearAgregarConceptoConocimientosEspecialesClasificacionPremiosForm dataIndex={dataIndex} />
                             </TabPane>
                         </Tabs>
 

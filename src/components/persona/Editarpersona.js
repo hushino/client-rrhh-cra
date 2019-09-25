@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Tabs, Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 import WrappedEditarLicenciaForm from './manyside/Editarlicencia'
 import WrappedEditarAltasAscensosBajasForm from './manyside/altasAscensosBajas/EditarAltasAscensosBajas'
+import WrappedEditarConceptoConocimientosEspecialesClasificacionPremiosForm from './manyside/ConceptoConocimientosEspecialesClasificacionPremios/EditarConceptoConocimientosEspecialesClasificacionPremios'
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 const { TabPane } = Tabs;
@@ -239,6 +240,9 @@ function Editarpersona(props) {
                             </TabPane>
                             <TabPane tab="Editar Altas Ascensos Bajas" key="3">
                                 <WrappedEditarAltasAscensosBajasForm personaid={data.id} />
+                            </TabPane>
+                            <TabPane tab="Editar Concepto/Conocimientos/Especiales/Clasificacion/Premios" key="4">
+                                <WrappedEditarConceptoConocimientosEspecialesClasificacionPremiosForm  personaid={data.id}/>
                             </TabPane>
                         </Tabs>
                     </Row>
