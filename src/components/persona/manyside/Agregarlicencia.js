@@ -2,9 +2,11 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
 import { Tabs, Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
+import WrappedCrearAgregarAltasAscensosBajasForm from '../manyside/altasAscensosBajas/AgregarAltasAscensosBajas'
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 const { TabPane } = Tabs;
+
 
 function Agregarlicencia(props) {
     const { dataIndex } = props.match.params
@@ -34,7 +36,7 @@ function Agregarlicencia(props) {
             }
         });
     };
-    
+
 
     return (
         <div>
@@ -43,66 +45,66 @@ function Agregarlicencia(props) {
                     <Row type="flex" gutter={16}>
                         <Tabs defaultActiveKey="1">
                             <TabPane tab="Agregar licencia" key="1">
-                            <Col>
-                            <Form onSubmit={handleSubmit} className="update-form" >
+                                <Col>
+                                    <Form onSubmit={handleSubmit} className="update-form" >
 
-                                <Form.Item label="Observaciones" >
-                                    {getFieldDecorator('observaciones', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                    })(
-                                        <Input
-                                            name="observaciones"
-                                            placeholder="observaciones"
-                                        />,
-                                    )}
-                                </Form.Item>
-                                <Form.Item label="Referencias">
-                                    {getFieldDecorator('referencias', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                    })(
-                                        <Input
-                                            type="text"
-                                            placeholder="referencias"
-                                        />,
-                                    )}
-                                </Form.Item>
-                                <Form.Item label="Numero de dias de licencia">
-                                    {getFieldDecorator('numeroDeDias', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                    })(
-                                        <Input
-                                            type="number"
-                                            placeholder="numero de Dias"
-                                        />,
-                                    )}
-                                </Form.Item>
-                                <Form.Item label="Fecha">
-                                    {getFieldDecorator('fechaLicencia', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                    })(
-                                        <Input
-                                            type="date"
-                                            placeholder="fechaLicencia"
-                                        />,
-                                    )}
-                                </Form.Item>
-                                <Form.Item>
-                                    <Row></Row>
-                                    <Button type="primary" htmlType="submit" className="update-form-button" >
-                                        Enviar
+                                        <Form.Item label="Observaciones" >
+                                            {getFieldDecorator('observaciones', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    name="observaciones"
+                                                    placeholder="observaciones"
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Referencias">
+                                            {getFieldDecorator('referencias', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder="referencias"
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Numero de dias de licencia">
+                                            {getFieldDecorator('numeroDeDias', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder="numero de Dias"
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Fecha">
+                                            {getFieldDecorator('fechaLicencia', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="date"
+                                                    placeholder="fechaLicencia"
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item>
+                                            <Row></Row>
+                                            <Button type="primary" htmlType="submit" className="update-form-button" >
+                                                Enviar
                                     </Button>
-                                </Form.Item>
-                            </Form>
-                        </Col>
-                             </TabPane>
-                            <TabPane tab="Tab 2" key="2">
-                                Content of Tab Pane 2
+                                        </Form.Item>
+                                    </Form>
+                                </Col>
+                            </TabPane>
+                            <TabPane tab="Agregar Altas Ascensos Bajas" key="2">
+                                < WrappedCrearAgregarAltasAscensosBajasForm dataIndex={dataIndex} />
                             </TabPane>
                             <TabPane tab="Tab 3" key="3">
                                 Content of Tab Pane 3
                             </TabPane>
                         </Tabs>
-                       
+
                     </Row>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Red Design ©2019 Created by Hushino</Footer>

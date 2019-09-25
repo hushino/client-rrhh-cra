@@ -3,7 +3,7 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
 import { Tabs, Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 import WrappedEditarLicenciaForm from './manyside/Editarlicencia'
-
+import WrappedEditarAltasAscensosBajasForm from './manyside/altasAscensosBajas/EditarAltasAscensosBajas'
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 const { TabPane } = Tabs;
@@ -149,99 +149,98 @@ function Editarpersona(props) {
                     <Row type="flex" gutter={16}>
                         <Tabs defaultActiveKey="1">
                             <TabPane tab="Editar Persona" key="1">
-                            <Col>
-                            <h2>Actualizar datos de una persona</h2>
-                            <Form onSubmit={handleSubmit} className="update-form" >
+                                <Col>
+                                    <h2>Actualizar datos de una persona</h2>
+                                    <Form onSubmit={handleSubmit} className="update-form" >
 
-                                <Form.Item label="Nombre">
-                                    {getFieldDecorator('nombre', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                    })(
-                                        <Input
-                                            name="nombre"
-                                            placeholder={data.nombre}
-                                            setFieldsValue={data.nombre}
-                                        />,
-                                    )}
-                                </Form.Item>
-                                <Form.Item label="Apellido">
-                                    {getFieldDecorator('apellido', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                    })(
-                                        <Input
-                                            type="text"
-                                            placeholder={data.apellido}
-                                        />,
-                                    )}
-                                </Form.Item>
-                                <Form.Item label="Legajo">
-                                    {getFieldDecorator('legajo', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                    })(
-                                        <Input
-                                            type="text"
-                                            placeholder={data.legajo}
-                                            setFieldsValue={data.legajo}
-                                        />,
-                                    )}
-                                </Form.Item>
-                                <Form.Item label="DNI">
-                                    {getFieldDecorator('dni', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                    })(
-                                        <Input
-                                            type="text"
-                                            placeholder={data.dni}
-                                            setFieldsValue={data.dni}
-                                        />,
-                                    )}
-                                </Form.Item>
+                                        <Form.Item label="Nombre">
+                                            {getFieldDecorator('nombre', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    name="nombre"
+                                                    placeholder={data.nombre}
+                                                    setFieldsValue={data.nombre}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Apellido">
+                                            {getFieldDecorator('apellido', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.apellido}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Legajo">
+                                            {getFieldDecorator('legajo', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.legajo}
+                                                    setFieldsValue={data.legajo}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="DNI">
+                                            {getFieldDecorator('dni', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.dni}
+                                                    setFieldsValue={data.dni}
+                                                />,
+                                            )}
+                                        </Form.Item>
 
-                                <Form.Item label="Foto" >
-                                    {getFieldDecorator('foto', {
-                                        rules: [{ required: true, message: 'Suba un archivo .png!' }],
-                                    })(
-                                        <Upload
-                                            name="avatar"
-                                            listType="picture-card"
-                                            className="avatar-uploader"
-                                            showUploadList={false}
-                                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                                            beforeUpload={beforeUpload}
-                                            onChange={handleChange}
-                                        >
-                                            {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
-                                        </Upload>,
-                                    )}
-                                </Form.Item>
-                                <Form.Item label="Fecha">
-                                    {getFieldDecorator('fecha', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                    })(
-                                        <Input
-                                            type="date"
-                                            placeholder={data.fecha}
-                                            setFieldsValue={data.fecha}
-                                        />,
-                                    )}
-                                </Form.Item>
-                                <Form.Item>
-                                    <Row></Row>
-                                    <Button type="primary" htmlType="submit" className="update-form-button" >
-                                        Enviar Actualizacion
+                                        <Form.Item label="Foto" >
+                                            {getFieldDecorator('foto', {
+                                                rules: [{ required: true, message: 'Suba un archivo .png!' }],
+                                            })(
+                                                <Upload
+                                                    name="avatar"
+                                                    listType="picture-card"
+                                                    className="avatar-uploader"
+                                                    showUploadList={false}
+                                                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                                    beforeUpload={beforeUpload}
+                                                    onChange={handleChange}
+                                                >
+                                                    {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+                                                </Upload>,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Fecha">
+                                            {getFieldDecorator('fecha', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="date"
+                                                    placeholder={data.fecha}
+                                                    setFieldsValue={data.fecha}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item>
+                                            <Row></Row>
+                                            <Button type="primary" htmlType="submit" className="update-form-button" >
+                                                Enviar Actualizacion
                                     </Button>
-                                </Form.Item>
-                            </Form>
-                        </Col>
+                                        </Form.Item>
+                                    </Form>
+                                </Col>
                             </TabPane>
                             <TabPane tab="Editar Licencia" key="2">
-                                <WrappedEditarLicenciaForm personaid={data.id}/>
+                                <WrappedEditarLicenciaForm personaid={data.id} />
                             </TabPane>
-                            <TabPane tab="Tab 3" key="3">
-                                Content of Tab Pane 3
-                             </TabPane>
+                            <TabPane tab="Editar Altas Ascensos Bajas" key="3">
+                                <WrappedEditarAltasAscensosBajasForm personaid={data.id} />
+                            </TabPane>
                         </Tabs>
-                        
                     </Row>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Red Design ©2019 Created by Hushino</Footer>
