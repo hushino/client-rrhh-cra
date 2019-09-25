@@ -18,7 +18,7 @@ function ConceptoConocimientosEspecialesClasificacionPremios(props) {
             console.log(error);
         })
     useLayoutEffect(() => {
-        console.log(personaidd);
+        //console.log(personaidd);
         const getData = () => axios.get(`http://localhost:8080/api/conceptoConocimientosEspecialesClasificacionPremios/${personaidd}`)
             .then(function (response) {
                 //idManyside = response.data.id

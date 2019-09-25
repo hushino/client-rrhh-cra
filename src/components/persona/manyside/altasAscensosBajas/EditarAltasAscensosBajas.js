@@ -9,7 +9,7 @@ function EditarAltasAscensosBajas(props) {
     const personaidd = props.personaid;
     const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona/${personaidd}/updateAltasAscensosBajas/${data.id}`, values)
         .then(function (response) {
-            console.log(response.data)
+            //console.log(response.data)
         })
         .catch(function (error) {
             console.log(error);
