@@ -10,6 +10,8 @@ module.exports = override(
     addLessLoader({
         javascriptEnabled: true,
         modifyVars: { 
+            '@ant-descriptions-bordered': '#000',
+            '@ant-descriptions-item-label': '#000',
             '@light': '#fff',
             '@dark': '#000',
             '@heading-color': 'fade(@light, 85)',

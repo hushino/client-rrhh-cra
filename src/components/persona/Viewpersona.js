@@ -1,103 +1,142 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useLayoutEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Card, Icon, Avatar, Row, Col, Layout, Button } from 'antd';
-
+import { Card, Icon, Avatar, Row, Col, Layout, Button, Descriptions, Radio } from 'antd';
+import './style.css'
 const { Meta } = Card;
 const { Footer, Content } = Layout;
 
 function Viewpersona(props) {
-    const [data, setData] = useState([])
+    const [data, setData] = useState(
+        [{
+            licencias: {
+                "id": 1,
+                "fechaLicencia": "10122019",
+                "referencias": "referencias234234",
+                "numeroDeDias": 6545,
+                "observaciones": "Una observacion",
+                "createDate": "2019-09-11T03:00:00.000+0000",
+                "updateDate": "2019-09-11T03:00:00.000+0000"
+            }
+        }]
+
+    )
+    const [state, setState] = useState('default')
     const { dataIndex } = props.match.params
     //console.log(dataIndex)
     const isRoleAdmin = localStorage.getItem("role") === 'ADMIN';
 
     const isAnyRole = localStorage.getItem("role") === 'USER' || localStorage.getItem("role") === "ADMIN";
-
+    const onChange = e => {
+        console.log('size checked', e.target.value);
+        setState({
+            size: e.target.value,
+        });
+    };
     const fetchData = () => axios.get(`http://localhost:8080/api/viewpersona/${dataIndex}`)
         .then(function (response) {
             console.log(response.data)
-            setData(response.data)
+            //let data2 = Array.from(response.data)
+            setData([response.data])
+
+
+
         })
         .catch(function (error) {
             console.log(error);
         })
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         fetchData();
-    }, []);
+    }, [])
+
+
+    /*   useEffect(() => {
+      }, []); */
 
     return (
         <div>
             <Layout style={{ /* background: "white", */ height: "calc(100vh - 55px)" }}>
-
                 <Content style={{ padding: '0 50px' }}>
                     <Row type="flex" gutter={16}>
                         <Col>
-                        {
-                            isRoleAdmin   
-                                    ?<Card
-                                    style={{ marginTop: 12 }}
-                                    
-                                    actions={[
-                                        <Link to={`/${dataIndex}/editar`}>
-                                            <Icon type="edit" key="edit" /> </Link>,
-                                    ]}>
-                                    <Meta
-                                        avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                                        title={data.nombre}
-                                        description={[
-                                            "id: ", data.id,
-                                            " apellido: ",
-                                            data.apellido,
-                                            "id: ", data.id,
-                                            " apellido: ",
-                                            data.apellido, "id: ", data.id,
-                                            " apellido: ",
-                                            data.apellido,
-                                            "id: ", data.id,
-                                            " apellido: ",
-                                            data.apellido, "id: ", data.id,
-                                            " apellido: ",
-                                            data.apellido,
-                                            "id: ", data.id,
-                                            " apellido: ",
-                                            data.apellido
-                                        ]}
-                                    />
-                                </Card>
-                                    : <Card
-                                    style={{ marginTop: 12 }}
-                                    
-                                   >
-                                    <Meta
-                                        avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                                        title={data.nombre}
-                                        description={[
-                                            "id: ", data.id,
-                                            " apellido: ",
-                                            data.apellido,
-                                            "id: ", data.id,
-                                            " apellido: ",
-                                            data.apellido, "id: ", data.id,
-                                            " apellido: ",
-                                            data.apellido,
-                                            "id: ", data.id,
-                                            " apellido: ",
-                                            data.apellido, "id: ", data.id,
-                                            " apellido: ",
-                                            data.apellido,
-                                            "id: ", data.id,
-                                            " apellido: ",
-                                            data.apellido
-                                        ]}
-                                    />
-                                </Card>
+                            <div style={{ marginTop: 12 }}>
+                                <Radio.Group onChange={onChange} value={state.size}>
+                                    <Radio value="default">Por defecto</Radio>
+                                    <Radio value="middle">Medio</Radio>
+                                    <Radio value="small">Compacto</Radio>
+                                </Radio.Group>
+                                <br />
+                                <br />
+                                <Descriptions bordered title="Informacion de una persona" size={state.size}>
+                                    <Descriptions.Item label="Nombre">{data.nombre}</Descriptions.Item>
+                                    <Descriptions.Item label="Apellido">{data.apellido}</Descriptions.Item>
+                                    <Descriptions.Item label="Legajo">{data.legajo}</Descriptions.Item>
+                                    <Descriptions.Item label="DNI">{data.dni}</Descriptions.Item>
+                                    <Descriptions.Item label="Licencia">{  /*  data.licencias.map(licencias2 =>  licencias2.referencias  ) */}</Descriptions.Item>
+                                    <Descriptions.Item label="Licencia2">
+                                        {
+                                            data.map(licencias2 => (
+                                                /* console.log("averrrr2 " + licencias2.licencias.numeroDeDias ) */
+                                                <li key={licencias2.licencias}>
+                                                   {  console.log(licencias2.licencias)}
+                                                  {/*   {licencias2.map(lic => (
+                                                        <li key={lic.id}>
+                                                            {console.log(lic.numeroDeDias)}
+                                                        </li>
+                                                    ))} */}
+                                                </li>
+                                            ))
+                                        }
+                                        {
 
-                                }
-                            
+                                            /*  
+                                              licencias2.licencias.numeroDeDia
+                                            
+                                            data.licencias.map(licencias => (
+                                                       <li >
+                                                            {licencias.referencias}
+                                                          </li>
+                                                       ))  */
+                                            /*  data.licencias ? undefined :
+                                             data.licencias.map(licencias => (
+                                              <li key={licencias}>
+                                                   {licencias.referencias}
+                                                 </li>
+                                              ))   */
+                                        }
+
+                                    </Descriptions.Item>
+                                    {/*  <Descriptions.Item label="Config Info">
+                                        Data disk type: MongoDB
+                                    <br />
+                                        Database version: 3.4
+                                    <br />
+                                        Package: dds.mongo.mid
+                                    <br />
+                                        Storage space: 10 GB
+                                    <br />
+                                        Replication_factor:3
+                                    <br />
+                                        Region: East China 1<br />
+                                    </Descriptions.Item> */}
+                                </Descriptions>
+                                <br />
+                                <br />
+
+                                {
+                                    isRoleAdmin
+                                        ?
+                                        <Descriptions title="Accion" size={state.size} >
+                                            <Descriptions.Item label="Editar">
+                                                <Link to={`/${dataIndex}/editar`}>
+                                                    <Icon type="edit" key="edit" /></Link>
+                                            </Descriptions.Item>
+                                        </Descriptions>
+                                        : ""}
+                            </div>
                         </Col>
                     </Row>
                 </Content>
