@@ -6,6 +6,7 @@ import WrappedEditarLicenciaForm from './manyside/Editarlicencia'
 import WrappedEditarAltasAscensosBajasForm from './manyside/altasAscensosBajas/EditarAltasAscensosBajas'
 import WrappedEditarConceptoConocimientosEspecialesClasificacionPremiosForm from './manyside/ConceptoConocimientosEspecialesClasificacionPremios/EditarConceptoConocimientosEspecialesClasificacionPremios'
 import WrappedEditarEmbargoForm from './manyside/embargos/EditarEmbargo'
+import WrappedEditarGarantiaForm from './manyside/garantia/EditarGarantia'
 
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
@@ -248,6 +249,9 @@ function Editarpersona(props) {
                             </TabPane>
                             <TabPane tab="Editar Embargo" key="5">
                                 <WrappedEditarEmbargoForm  personaid={data.id}/>
+                            </TabPane>
+                            <TabPane tab="Editar Garantia" key="6">
+                                <WrappedEditarGarantiaForm  personaid={data.id}/>
                             </TabPane>
                           
                         </Tabs>

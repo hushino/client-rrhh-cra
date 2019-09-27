@@ -5,6 +5,7 @@ import { Tabs, Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio,
 import WrappedCrearAgregarAltasAscensosBajasForm from '../manyside/altasAscensosBajas/AgregarAltasAscensosBajas'
 import WrappedCrearAgregarConceptoConocimientosEspecialesClasificacionPremiosForm from '../manyside/ConceptoConocimientosEspecialesClasificacionPremios/AgregarConceptoConocimientosEspecialesClasificacionPremios'
 import WrappedAgregarembargosForm from '../manyside/embargos/Agregarembargos'
+import WrappedAgregarGarantiaForm from '../manyside/garantia/AgregarGarantia'
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 const { TabPane } = Tabs;
@@ -105,11 +106,14 @@ function Agregarlicencia(props) {
                             <TabPane tab="Agregar Concepto Conocimientos Especiales Clasificacion Premios" key="3">
                                 <WrappedCrearAgregarConceptoConocimientosEspecialesClasificacionPremiosForm dataIndex={dataIndex} />
                             </TabPane>
-                            <TabPane tab="Agregar  embargos " key="4">
+                            <TabPane tab="Agregar Embargos" key="4">
                                 <WrappedAgregarembargosForm dataIndex={dataIndex} />
                             </TabPane>
+                            <TabPane tab="Agregar Garantia" key="5">
+                                <WrappedAgregarGarantiaForm dataIndex={dataIndex} />
+                            </TabPane>
+                        
                         </Tabs>
-
                     </Row>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Red Design ©2019 Created by Hushino</Footer>
