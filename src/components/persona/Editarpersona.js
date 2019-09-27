@@ -5,6 +5,8 @@ import { Tabs, Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio,
 import WrappedEditarLicenciaForm from './manyside/Editarlicencia'
 import WrappedEditarAltasAscensosBajasForm from './manyside/altasAscensosBajas/EditarAltasAscensosBajas'
 import WrappedEditarConceptoConocimientosEspecialesClasificacionPremiosForm from './manyside/ConceptoConocimientosEspecialesClasificacionPremios/EditarConceptoConocimientosEspecialesClasificacionPremios'
+import WrappedEditarEmbargoForm from './manyside/embargos/EditarEmbargo'
+
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 const { TabPane } = Tabs;
@@ -244,6 +246,10 @@ function Editarpersona(props) {
                             <TabPane tab="Editar Concepto/Conocimientos/Especiales/Clasificacion/Premios" key="4">
                                 <WrappedEditarConceptoConocimientosEspecialesClasificacionPremiosForm  personaid={data.id}/>
                             </TabPane>
+                            <TabPane tab="Editar Embargo" key="5">
+                                <WrappedEditarEmbargoForm  personaid={data.id}/>
+                            </TabPane>
+                          
                         </Tabs>
                     </Row>
                 </Content>

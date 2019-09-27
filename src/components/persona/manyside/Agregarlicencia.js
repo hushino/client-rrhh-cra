@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Tabs, Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 import WrappedCrearAgregarAltasAscensosBajasForm from '../manyside/altasAscensosBajas/AgregarAltasAscensosBajas'
 import WrappedCrearAgregarConceptoConocimientosEspecialesClasificacionPremiosForm from '../manyside/ConceptoConocimientosEspecialesClasificacionPremios/AgregarConceptoConocimientosEspecialesClasificacionPremios'
-
+import WrappedAgregarembargosForm from '../manyside/embargos/Agregarembargos'
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 const { TabPane } = Tabs;
@@ -104,6 +104,9 @@ function Agregarlicencia(props) {
                             </TabPane>
                             <TabPane tab="Agregar Concepto Conocimientos Especiales Clasificacion Premios" key="3">
                                 <WrappedCrearAgregarConceptoConocimientosEspecialesClasificacionPremiosForm dataIndex={dataIndex} />
+                            </TabPane>
+                            <TabPane tab="Agregar  embargos " key="4">
+                                <WrappedAgregarembargosForm dataIndex={dataIndex} />
                             </TabPane>
                         </Tabs>
 
