@@ -42,9 +42,9 @@ function Viewpersona(props) {
         fetchData();
     }, [])
 
-
     /* useEffect(() => {
       }, []); */
+
     let partners = data.licencias && data.licencias.length > 0 ?
         data.licencias.map(licencias2 =>
             <span key={licencias2.id}>
@@ -70,8 +70,7 @@ function Viewpersona(props) {
                                     <Descriptions.Item label="Apellido">{data.apellido}</Descriptions.Item>
                                     <Descriptions.Item label="Legajo">{data.legajo}</Descriptions.Item>
                                     <Descriptions.Item label="DNI">{data.dni}</Descriptions.Item>
-                                    <Descriptions.Item label="Licencia">{  /*  data.licencias.map(licencias2 =>  licencias2.referencias  ) */}</Descriptions.Item>
-                                    <Descriptions.Item label="Licencia2">
+                                    <Descriptions.Item label="Licencia">
                                         {partners}
                                     </Descriptions.Item>
                                     {/*  <Descriptions.Item label="Config Info">
