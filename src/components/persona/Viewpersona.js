@@ -10,17 +10,7 @@ const { Footer, Content } = Layout;
 
 function Viewpersona(props) {
     const [data, setData] = useState(
-        [{
-            licencias: {
-                "id": 1,
-                "fechaLicencia": "10122019",
-                "referencias": "referencias234234",
-                "numeroDeDias": 6545,
-                "observaciones": "Una observacion",
-                "createDate": "2019-09-11T03:00:00.000+0000",
-                "updateDate": "2019-09-11T03:00:00.000+0000"
-            }
-        }]
+        []
 
     )
     const [state, setState] = useState('default')
@@ -39,7 +29,7 @@ function Viewpersona(props) {
         .then(function (response) {
             console.log(response.data)
             //let data2 = Array.from(response.data)
-            setData([response.data])
+            setData(response.data)
 
 
 
@@ -53,9 +43,14 @@ function Viewpersona(props) {
     }, [])
 
 
-    /*   useEffect(() => {
+    /* useEffect(() => {
       }, []); */
-
+    let partners = data.licencias && data.licencias.length > 0 ?
+        data.licencias.map(licencias2 =>
+            <span key={licencias2.id}>
+                {licencias2.fechaLicencia}
+            </span>
+        ) : <span>cargando...</span>;
     return (
         <div>
             <Layout style={{ /* background: "white", */ height: "calc(100vh - 55px)" }}>
@@ -77,37 +72,7 @@ function Viewpersona(props) {
                                     <Descriptions.Item label="DNI">{data.dni}</Descriptions.Item>
                                     <Descriptions.Item label="Licencia">{  /*  data.licencias.map(licencias2 =>  licencias2.referencias  ) */}</Descriptions.Item>
                                     <Descriptions.Item label="Licencia2">
-                                        {
-                                            data.map(licencias2 => (
-                                                /* console.log("averrrr2 " + licencias2.licencias.numeroDeDias ) */
-                                                <li key={licencias2.licencias}>
-                                                   {  console.log(licencias2.licencias)}
-                                                  {/*   {licencias2.map(lic => (
-                                                        <li key={lic.id}>
-                                                            {console.log(lic.numeroDeDias)}
-                                                        </li>
-                                                    ))} */}
-                                                </li>
-                                            ))
-                                        }
-                                        {
-
-                                            /*  
-                                              licencias2.licencias.numeroDeDia
-                                            
-                                            data.licencias.map(licencias => (
-                                                       <li >
-                                                            {licencias.referencias}
-                                                          </li>
-                                                       ))  */
-                                            /*  data.licencias ? undefined :
-                                             data.licencias.map(licencias => (
-                                              <li key={licencias}>
-                                                   {licencias.referencias}
-                                                 </li>
-                                              ))   */
-                                        }
-
+                                        {partners}
                                     </Descriptions.Item>
                                     {/*  <Descriptions.Item label="Config Info">
                                         Data disk type: MongoDB
