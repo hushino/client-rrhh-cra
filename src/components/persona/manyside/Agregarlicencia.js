@@ -6,6 +6,8 @@ import WrappedCrearAgregarAltasAscensosBajasForm from '../manyside/altasAscensos
 import WrappedCrearAgregarConceptoConocimientosEspecialesClasificacionPremiosForm from '../manyside/ConceptoConocimientosEspecialesClasificacionPremios/AgregarConceptoConocimientosEspecialesClasificacionPremios'
 import WrappedAgregarembargosForm from '../manyside/embargos/Agregarembargos'
 import WrappedAgregarGarantiaForm from '../manyside/garantia/AgregarGarantia'
+import WrappedAgregarOtrosServiciosPrestadosForm from '../manyside/otrosServiciosPrestados/AgregarOtrosServiciosPrestados'
+import WrappedAgregarPenasDisciplinariasSufridasForm from './penasDisciplinariasSufridas/AgregarPenasDisciplinariasSufridas'
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 const { TabPane } = Tabs;
@@ -111,6 +113,12 @@ function Agregarlicencia(props) {
                             </TabPane>
                             <TabPane tab="Agregar Garantia" key="5">
                                 <WrappedAgregarGarantiaForm dataIndex={dataIndex} />
+                            </TabPane>
+                            <TabPane tab="Agregar Otros Servicios Prestados" key="6">
+                                <WrappedAgregarOtrosServiciosPrestadosForm dataIndex={dataIndex} />
+                            </TabPane>
+                            <TabPane tab="Agregar Penas Disciplinarias Sufridas" key="7">
+                                <WrappedAgregarPenasDisciplinariasSufridasForm dataIndex={dataIndex} />
                             </TabPane>
                         
                         </Tabs>

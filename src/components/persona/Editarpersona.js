@@ -7,7 +7,8 @@ import WrappedEditarAltasAscensosBajasForm from './manyside/altasAscensosBajas/E
 import WrappedEditarConceptoConocimientosEspecialesClasificacionPremiosForm from './manyside/ConceptoConocimientosEspecialesClasificacionPremios/EditarConceptoConocimientosEspecialesClasificacionPremios'
 import WrappedEditarEmbargoForm from './manyside/embargos/EditarEmbargo'
 import WrappedEditarGarantiaForm from './manyside/garantia/EditarGarantia'
-
+import WrappedEditarOtrosServiciosPrestadosForm from './manyside/otrosServiciosPrestados/EditarOtrosServiciosPrestados'
+import WrappedEditarPenasDisciplinariasSufridasForm from './manyside/penasDisciplinariasSufridas/EditarPenasDisciplinariasSufridas'
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 const { TabPane } = Tabs;
@@ -252,6 +253,12 @@ function Editarpersona(props) {
                             </TabPane>
                             <TabPane tab="Editar Garantia" key="6">
                                 <WrappedEditarGarantiaForm  personaid={data.id}/>
+                            </TabPane>
+                            <TabPane tab="Editar Otros Servicios Prestados" key="7">
+                                <WrappedEditarOtrosServiciosPrestadosForm  personaid={data.id}/>
+                            </TabPane>
+                            <TabPane tab="Editar Penas Disciplinarias Sufridas" key="8">
+                                <WrappedEditarPenasDisciplinariasSufridasForm  personaid={data.id}/>
                             </TabPane>
                           
                         </Tabs>
