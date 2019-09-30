@@ -7,6 +7,7 @@ const { Header, Footer, Sider, Content } = Layout;
 //console.log(props.personaid) 
 function Editarlicencia(props) {
     let truedata = null;
+    let nombreusuario = "null"
     const [data, setData] = useState([])
     const personaidd = props.personaid;
     const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona/${personaidd}/updatelicencia/${data.id}`, values)
@@ -17,12 +18,11 @@ function Editarlicencia(props) {
             console.log(error);
         })
     useLayoutEffect(() => {
-        console.log(personaidd);
+        //console.log(personaidd);
         const getData = () => axios.get(`http://localhost:8080/api/licencia/${personaidd}`)
             .then(function (response) {
                 //console.log("datos de licencia ", response.data)
                 setData(response.data)
-
             })
             .catch(function (error) {
                 console.log(error);
@@ -31,13 +31,16 @@ function Editarlicencia(props) {
 
     }, [personaidd])
 
-    useEffect(() => {
 
+    useEffect(() => {
+    nombreusuario = () => localStorage.getItem("nombreusuario");
+    //console.log(localStorage.getItem("nombreusuario"))
         props.form.setFieldsValue({
             fechaLicencia: data.fechaLicencia,
             referencias: data.referencias,
             numeroDeDias: data.numeroDeDias,
-            observaciones: data.observaciones
+            observaciones: data.observaciones,
+            usuariosMod: localStorage.getItem("nombreusuario")
         });
         //console.log(data.foto)
 
@@ -109,11 +112,23 @@ function Editarlicencia(props) {
                             />,
                         )}
                     </Form.Item>
+
+                    <Form.Item label="usuariosmod">
+                        {getFieldDecorator('usuariosmod')(
+                            <Input
+                            type="hidden"
+                                placeholder="{data.usuario}"
+                                setFieldsValue={localStorage.getItem("nombreusuario")}
+                            />,
+                        )}
+                    </Form.Item>
+
+                    
                     <Form.Item>
                         <Row></Row>
                         <Button type="primary" htmlType="submit" className="update-form-button" >
                             Enviar Actualizacion
-                                    </Button>
+                        </Button>
                     </Form.Item>
                 </Form>
             </Col>

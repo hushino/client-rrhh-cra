@@ -28,8 +28,10 @@ function Agregarlicencia(props) {
         numeroDeDias: "nombrefake",
         observaciones: "nombrefake",
         referencias: "nombrefake",
+        usuariosMod: "usuariosModfake",
     };
     const handleSubmit = (e) => {
+        const nombreusuario = localStorage.getItem("nombreusuario")
         e.preventDefault();
         props.form.validateFields((err, values) => {
             if (!err) {
@@ -37,6 +39,7 @@ function Agregarlicencia(props) {
                 payload.referencias = values.referencias
                 payload.numeroDeDias = values.numeroDeDias
                 payload.fechaLicencia = values.fechaLicencia
+                payload.usuariosMod = nombreusuario
                 postLicencia()
             }
         });
