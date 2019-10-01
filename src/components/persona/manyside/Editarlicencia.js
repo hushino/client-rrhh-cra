@@ -33,8 +33,8 @@ function Editarlicencia(props) {
 
 
     useEffect(() => {
-    nombreusuario = () => localStorage.getItem("nombreusuario");
-     console.log(nombreusuario)
+        nombreusuario = localStorage.getItem("nombreusuario");
+        console.log(localStorage.getItem("nombreusuario"))
         props.form.setFieldsValue({
             fechaLicencia: data.fechaLicencia,
             referencias: data.referencias,
@@ -116,14 +116,14 @@ function Editarlicencia(props) {
                     <Form.Item label="usuariosMod">
                         {getFieldDecorator('usuariosMod')(
                             <Input
-                            type="hidden"
+                                type="hidden"
                                 placeholder="{data.usuario}"
                                 setFieldsValue={localStorage.getItem("nombreusuario")}
                             />,
                         )}
                     </Form.Item>
 
-                    
+
                     <Form.Item>
                         <Row></Row>
                         <Button type="primary" htmlType="submit" className="update-form-button" >
