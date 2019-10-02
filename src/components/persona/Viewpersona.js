@@ -5,6 +5,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Card, Icon, Avatar, Row, Col, Layout, Button, Descriptions, Radio } from 'antd';
 import './style.css'
+import _ from 'lodash';
 const { Meta } = Card;
 const { Footer, Content } = Layout;
 
@@ -25,14 +26,39 @@ function Viewpersona(props) {
             size: e.target.value,
         });
     };
+    let usuariomoded= "cargando..."
     const fetchData = () => axios.get(`http://localhost:8080/api/viewpersona/${dataIndex}`)
         .then(function (response) {
             console.log(response.data)
             //let data2 = Array.from(response.data)
+            usuariomoded = response.data.usuariosModPersona.split("|"); 
+            console.log(usuariomoded)
+
+            let sad = usuariomoded.toString().split(",")
+            //console.log(sad)
+            let df = _.compact(sad)
+
+            console.log(df)
+           let da =  _.zipObject(df, _.map(df, function() { }));
+
+            console.log(da)
+            var arr = [
+                {
+                  "name": "blah"
+                }, 
+                {
+                  "version": "v1.0.0"
+                }
+              ]
+              
+              var obj = arr.reduce(function(acc, val) {
+                var key = Object.keys(val)[0];
+                acc[key] = val[key];
+                return acc;
+              }, {})
+              
+              console.log(obj)
             setData(response.data)
-
-
-
         })
         .catch(function (error) {
             console.log(error);
@@ -103,6 +129,11 @@ function Viewpersona(props) {
                             </div>
                         </Col>
                     </Row>
+                    <Row type="flex" gutter={16}>
+                        <Col>
+                            <h1>{usuariomoded}</h1>
+                        </Col>
+                        </Row>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Red Design ©2019 Created by Hushino</Footer>
             </Layout>

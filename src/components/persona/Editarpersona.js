@@ -92,6 +92,7 @@ function Editarpersona(props) {
             dni: data.dni,
             foto: data.foto,
             fecha: data.fecha,
+            usuariosModPersona: localStorage.getItem("nombreusuario")
         });
         //console.log(data.foto)
 
@@ -230,6 +231,15 @@ function Editarpersona(props) {
                                                 />,
                                             )}
                                         </Form.Item>
+                                        <Form.Item label="">
+                        {getFieldDecorator('usuariosModPersona')(
+                            <Input
+                                type="hidden"
+                                placeholder="{data.usuario}"
+                                setFieldsValue={localStorage.getItem("nombreusuario")}
+                            />,
+                        )}
+                    </Form.Item>
                                         <Form.Item>
                                             <Row></Row>
                                             <Button type="primary" htmlType="submit" className="update-form-button" >
