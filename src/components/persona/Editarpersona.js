@@ -92,6 +92,7 @@ function Editarpersona(props) {
             dni: data.dni,
             foto: data.foto,
             fecha: data.fecha,
+            usuariosModPersona: localStorage.getItem("nombreusuario")
         });
         //console.log(data.foto)
 
@@ -230,6 +231,15 @@ function Editarpersona(props) {
                                                 />,
                                             )}
                                         </Form.Item>
+                                        <Form.Item label="">
+                                            {getFieldDecorator('usuariosModPersona')(
+                                                <Input
+                                                    type="hidden"
+                                                    placeholder="{data.usuario}"
+                                                    setFieldsValue={localStorage.getItem("nombreusuario")}
+                                                />,
+                                            )}
+                                        </Form.Item>
                                         <Form.Item>
                                             <Row></Row>
                                             <Button type="primary" htmlType="submit" className="update-form-button" >
@@ -246,21 +256,21 @@ function Editarpersona(props) {
                                 <WrappedEditarAltasAscensosBajasForm personaid={data.id} />
                             </TabPane>
                             <TabPane tab="Editar Concepto/Conocimientos/Especiales/Clasificacion/Premios" key="4">
-                                <WrappedEditarConceptoConocimientosEspecialesClasificacionPremiosForm  personaid={data.id}/>
+                                <WrappedEditarConceptoConocimientosEspecialesClasificacionPremiosForm personaid={data.id} />
                             </TabPane>
                             <TabPane tab="Editar Embargo" key="5">
-                                <WrappedEditarEmbargoForm  personaid={data.id}/>
+                                <WrappedEditarEmbargoForm personaid={data.id} />
                             </TabPane>
                             <TabPane tab="Editar Garantia" key="6">
-                                <WrappedEditarGarantiaForm  personaid={data.id}/>
+                                <WrappedEditarGarantiaForm personaid={data.id} />
                             </TabPane>
                             <TabPane tab="Editar Otros Servicios Prestados" key="7">
-                                <WrappedEditarOtrosServiciosPrestadosForm  personaid={data.id}/>
+                                <WrappedEditarOtrosServiciosPrestadosForm personaid={data.id} />
                             </TabPane>
                             <TabPane tab="Editar Penas Disciplinarias Sufridas" key="8">
-                                <WrappedEditarPenasDisciplinariasSufridasForm  personaid={data.id}/>
+                                <WrappedEditarPenasDisciplinariasSufridasForm personaid={data.id} />
                             </TabPane>
-                          
+
                         </Tabs>
                     </Row>
                 </Content>
