@@ -29,7 +29,6 @@ function Viewpersona(props) {
     const fetchData = () => axios.get(`http://localhost:8080/api/viewpersona/${dataIndex}`)
         .then(function (response) {
             console.log(response.data)
-           
             setData(response.data)
         })
         .catch(function (error) {
@@ -57,6 +56,15 @@ function Viewpersona(props) {
             </span>
         ) : <span>cargando...</span>;
     
+    
+       const eliminar = () => axios.delete(`http://localhost:8080/api/delete/${dataIndex}`)
+        .then(function (response) {
+            console.log(response.data)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        
     return (
         <div>
             <Layout style={{ /* background: "white", */ height: "calc(100vh - 55px)" }}>
@@ -95,7 +103,6 @@ function Viewpersona(props) {
                                 </Descriptions>
                                 <br />
                                 <br />
-
                                 {
                                     isRoleAdmin
                                         ?
@@ -104,14 +111,19 @@ function Viewpersona(props) {
                                                 <Link to={`/${dataIndex}/editar`}>
                                                     <Icon type="edit" key="edit" /></Link>
                                             </Descriptions.Item>
+                                            <Descriptions.Item label="Eliminar">
+                                                    <Icon type="delete" key="eliminar" />
+                                                <Button type="primary" onClick={function (e) { eliminar() }}>Eliminar</Button>
+                                            </Descriptions.Item>
                                         </Descriptions>
                                         : ""}
+                                
                             </div>
                         </Col>
                     </Row>
                     <Row type="flex" gutter={16}>
                         <Col>
-                            <h1>{usuriosmod}</h1>
+                            <h4>{usuriosmod}</h4>
                         </Col>
                     </Row>
                 </Content>

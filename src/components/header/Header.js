@@ -11,6 +11,7 @@ import store from '../../redux/store';
 import WrappedEditarPersonaForm from '../persona/Editarpersona';
 import WrappedCrearpersonaForm from '../persona/Crearpersona';
 import WrappedCrearlicenciaForm from '../persona/manyside/Agregarlicencia'
+//import WrappedEliminarpersonaForm from '../persona/manyside/Eliminarpersona'
 //import '@ant-design/dark-theme' //https://github.com/ant-design/ant-design-dark-theme/blob/master/index.ts
 
 function Header() {
@@ -113,6 +114,7 @@ function Header() {
         <Route path="/:dataIndex/editar" component={WrappedEditarPersonaForm} />
         <Route path="/:dataIndex/agregarlicencia" component={WrappedCrearlicenciaForm} />
         <Route path="/crearpersona" component={WrappedCrearpersonaForm} />
+        {/* <Route path="/:dataIndex/eliminar" component={WrappedEliminarpersonaForm} /> */}
         <Route component={NoPageFound} />
       </Switch>
     </Router>
