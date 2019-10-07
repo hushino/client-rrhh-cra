@@ -26,38 +26,10 @@ function Viewpersona(props) {
             size: e.target.value,
         });
     };
-    let usuariomoded = "cargando..."
     const fetchData = () => axios.get(`http://localhost:8080/api/viewpersona/${dataIndex}`)
         .then(function (response) {
             console.log(response.data)
-            //let data2 = Array.from(response.data)
-            usuariomoded = response.data.usuariosModPersona.split("|");
-            console.log(usuariomoded)
-
-            let sad = usuariomoded.toString().split(",")
-            //console.log(sad)
-            let df = _.compact(sad)
-
-            console.log(df)
-            let da = _.zipObject(df, _.map(df, function () { }));
-
-            console.log(da)
-            var arr = [
-                {
-                    "name": "blah"
-                },
-                {
-                    "version": "v1.0.0"
-                }
-            ]
-
-            var obj = arr.reduce(function (acc, val) {
-                var key = Object.keys(val)[0];
-                acc[key] = val[key];
-                return acc;
-            }, {})
-
-            console.log(obj)
+           
             setData(response.data)
         })
         .catch(function (error) {
@@ -77,6 +49,14 @@ function Viewpersona(props) {
                 {licencias2.fechaLicencia}
             </span>
         ) : <span>cargando...</span>;
+    
+        let usuriosmod = data.detailUserTracks && data.detailUserTracks.length > 0 ?
+        data.detailUserTracks.map(detailUserTracks2 =>
+            <span key={detailUserTracks2.id}>
+                {detailUserTracks2.name}
+            </span>
+        ) : <span>cargando...</span>;
+    
     return (
         <div>
             <Layout style={{ /* background: "white", */ height: "calc(100vh - 55px)" }}>
@@ -131,7 +111,7 @@ function Viewpersona(props) {
                     </Row>
                     <Row type="flex" gutter={16}>
                         <Col>
-                            <h1>{usuariomoded}</h1>
+                            <h1>{usuriosmod}</h1>
                         </Col>
                     </Row>
                 </Content>
