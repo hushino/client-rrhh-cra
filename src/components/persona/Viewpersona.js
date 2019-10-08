@@ -48,23 +48,23 @@ function Viewpersona(props) {
                 {licencias2.fechaLicencia}
             </span>
         ) : <span>cargando...</span>;
-    
-        let usuriosmod = data.detailUserTracks && data.detailUserTracks.length > 0 ?
+
+    let usuriosmod = data.detailUserTracks && data.detailUserTracks.length > 0 ?
         data.detailUserTracks.map(detailUserTracks2 =>
             <span key={detailUserTracks2.id}>
                 {detailUserTracks2.name}
             </span>
         ) : <span>cargando...</span>;
-    
-    
-       const eliminar = () => axios.delete(`http://localhost:8080/api/delete/${dataIndex}`)
+
+
+    const eliminar = () => axios.delete(`http://localhost:8080/api/delete/${dataIndex}`)
         .then(function (response) {
             console.log(response.data)
         })
         .catch(function (error) {
             console.log(error);
         })
-        
+
     return (
         <div>
             <Layout style={{ /* background: "white", */ height: "calc(100vh - 55px)" }}>
@@ -109,15 +109,17 @@ function Viewpersona(props) {
                                         <Descriptions title="Accion" size={state.size} >
                                             <Descriptions.Item label="Editar">
                                                 <Link to={`/${dataIndex}/editar`}>
-                                                    <Icon type="edit" key="edit" /></Link>
+
+                                                    <Button type="primary"> <Icon type="edit" key="edit" /> </Button>
+                                                </Link>
                                             </Descriptions.Item>
                                             <Descriptions.Item label="Eliminar">
-                                                    <Icon type="delete" key="eliminar" />
-                                                <Button type="primary" onClick={function (e) { eliminar() }}>Eliminar</Button>
+                                             
+                                                <Button type="primary" onClick={function (e) { eliminar() }}>  <Icon type="delete" key="delete" /> </Button>
                                             </Descriptions.Item>
                                         </Descriptions>
                                         : ""}
-                                
+
                             </div>
                         </Col>
                     </Row>
