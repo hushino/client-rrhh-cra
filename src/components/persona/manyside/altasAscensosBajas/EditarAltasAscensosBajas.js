@@ -34,7 +34,8 @@ function EditarAltasAscensosBajas(props) {
             cargo: data.cargo,
             fecha: data.fecha,
             expediente: data.expediente,
-            observaciones: data.observaciones
+            observaciones: data.observaciones,
+            prestaservicioen: data.prestaservicioen
         });
 
     }, [data]);
@@ -97,6 +98,17 @@ function EditarAltasAscensosBajas(props) {
                         type="text"
                         placeholder={data.observaciones}
                         setFieldsValue={data.observaciones}
+                    />,
+                )}
+            </Form.Item>
+            <Form.Item label="Presta servicio en:">
+                {getFieldDecorator('prestaservicioen', {
+                    rules: [{ required: true, message: 'Ingrese un dato!' }],
+                })(
+                    <Input
+                        type="text"
+                        placeholder={data.prestaservicioen}
+                        setFieldsValue={data.prestaservicioen}
                     />,
                 )}
             </Form.Item>

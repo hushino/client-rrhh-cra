@@ -21,6 +21,39 @@ function Crearpersona(props) {
         legajo: "nombrefake",
         dni: "nombre",
         fecha: "nombre",
+        apodo: "nombre",
+        cuit: "nombre",
+        soltero: "nombre",
+        casado: "nombre",
+        conviviente: "nombre",
+        viudo: "nombre",
+        domicilio: "nombre",
+        lugar: "nombre",
+        calle: "nombre",
+        numero: "nombre",
+        telefonofijo: "nombre",
+        numerodecelular: "nombre",
+        oficioprofecion: "nombre",
+        niveldeestudios: "nombre",
+        gruposanguineo: "nombre",
+        donante: "nombre",
+        diabetes: "nombre",
+        hipertension: "nombre",
+        alergias: "nombre",
+        asma: "nombre",
+        otros: "nombre",
+        fechadeingreso: "nombre",
+        resolucion: "nombre",
+        categoria: "nombre",
+        item: "nombre",
+        planta: "nombre",
+        area: "nombre",
+        direccion: "nombre",
+        annos: "nombre",
+        meses: "nombre",
+        dias: "nombre",
+        realizocomputodeservicios: "nombre",
+        poseeconocimientoenmaquinasviales: "nombre",
     };
 
     function getBase64(img, callback) {
@@ -118,6 +151,40 @@ function Crearpersona(props) {
                 payload.legajo = values.legajo
                 payload.fecha = values.fecha.toString()
 
+                payload.apodo = values.apodo
+                payload.cuit = values.cuit
+                payload.soltero = values.soltero
+                payload.casado = values.casado
+                payload.conviviente = values.conviviente
+                payload.viudo = values.viudo
+                payload.domicilio = values.domicilio
+                payload.lugar = values.lugar
+                payload.calle = values.calle
+                payload.numero = values.numero
+                payload.telefonofijo = values.telefonofijo
+                payload.numerodecelular = values.numerodecelular
+                payload.oficioprofecion = values.oficioprofecion
+                payload.niveldeestudios = values.niveldeestudios
+                payload.gruposanguineo = values.gruposanguineo
+                payload.donante = values.donante
+                payload.diabetes = values.diabetes
+                payload.hipertension = values.hipertension
+                payload.alergias = values.alergias
+                payload.asma = values.asma
+                payload.otros = values.otros
+                payload.fechadeingreso = values.fechadeingreso
+                payload.resolucion = values.resolucion
+                payload.categoria = values.categoria
+                payload.item = values.item
+                payload.planta = values.planta
+                payload.area = values.area
+                payload.direccion = values.direccion
+                payload.annos = values.annos
+                payload.meses = values.meses
+                payload.dias = values.dias
+                payload.realizocomputodeservicios = values.realizocomputodeservicios
+                payload.poseeconocimientoenmaquinasviales = values.poseeconocimientoenmaquinasviales
+
                 for (let value of uploadImage.getAll('image')) {
                     //console.log('asd ' + value);
                     bodyFormData.append('image', new Blob([value], { type: 'image/jpg' }), payload.nombre + payload.dni + payload.apellido + payload.legajo);
@@ -128,7 +195,7 @@ function Crearpersona(props) {
         });
     };
 
-  
+
     return (
         <div>
             <Layout>
@@ -205,6 +272,343 @@ function Crearpersona(props) {
                                         />,
                                     )}
                                 </Form.Item>
+
+                                <Form.Item label="Apodo">
+                                    {getFieldDecorator('apodo', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="apodo"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Cuit">
+                                    {getFieldDecorator('cuit', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="number"
+                                            placeholder="cuit"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <h3>Estado civil</h3>
+                                <Form.Item label="Soltero">
+                                    {getFieldDecorator('soltero', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="soltero"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Casado">
+                                    {getFieldDecorator('casado', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="casado"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Conviviente">
+                                    {getFieldDecorator('conviviente', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="conviviente"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Viudo">
+                                    {getFieldDecorator('viudo', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="viudo"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <h3>Docimicilio Real</h3>
+                                <Form.Item label="Domicilio">
+                                    {getFieldDecorator('domicilio', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="domicilio"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Lugar">
+                                    {getFieldDecorator('lugar', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="lugar"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Calle">
+                                    {getFieldDecorator('calle', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="calle"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Numero de calle">
+                                    {getFieldDecorator('calle', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="numero de calle"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Telefono fijo">
+                                    {getFieldDecorator('telefonofijo', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="telefono fijo"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Numero de celular">
+                                    {getFieldDecorator('numerodecelular', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="numero de celular"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Oficio/Profecion">
+                                    {getFieldDecorator('oficioprofecion', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="oficio/profecion"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Nivel de estudios">
+                                    {getFieldDecorator('niveldeestudios', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="nivel de estudios"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Grupo sanguineo">
+                                    {getFieldDecorator('gruposanguineo', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="gruposanguineo"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Donante">
+                                    {getFieldDecorator('donante', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="donante"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Diabetes">
+                                    {getFieldDecorator('diabetes', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="diabetes"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Hipertension">
+                                    {getFieldDecorator('Hipertension', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="hipertension"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Alergias">
+                                    {getFieldDecorator('alergias', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="alergias"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Asma">
+                                    {getFieldDecorator('asma', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="asma"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Otros">
+                                    {getFieldDecorator('otros', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="otros"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Fecha de Ingreso">
+                                    {getFieldDecorator('fechadeingreso', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="date"
+                                            placeholder="fecha de Ingreso"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Resolucion">
+                                    {getFieldDecorator('resolucion', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="resolucion"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Categoria">
+                                    {getFieldDecorator('categoria', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="categoria"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Item">
+                                    {getFieldDecorator('item', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="item"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Planta">
+                                    {getFieldDecorator('planta', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="planta"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <h3>Presta servicio actualmente en:</h3>
+                                <Form.Item label="Area">
+                                    {getFieldDecorator('area', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="area"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Direccion">
+                                    {getFieldDecorator('direccion', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="direccion"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <h3>Presta servicio en otras institucion publica o privada</h3>
+                                <Form.Item label="Años">
+                                    {getFieldDecorator('annos', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="number"
+                                            placeholder="años"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Meses">
+                                    {getFieldDecorator('meses', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="number"
+                                            placeholder="categoria"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Dias">
+                                    {getFieldDecorator('categoria', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="number"
+                                            placeholder="dias"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Realizo computo de servicios">
+                                    {getFieldDecorator('realizocomputodeservicios', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="realizo computo de servicios"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Posee conocimientos en maquinas viales">
+                                    {getFieldDecorator('categoria', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="especificar"
+                                        />,
+                                    )}
+                                </Form.Item>
+
+
                                 <Form.Item>
                                     <Row></Row>
                                     <Button type="primary" htmlType="submit" className="update-form-button" >

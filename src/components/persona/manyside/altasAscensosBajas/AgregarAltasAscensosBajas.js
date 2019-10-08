@@ -20,6 +20,7 @@ function AgregarAltasAscensosBajas(props) {
         fecha: "nombrefake",
         observaciones: "nombrefake",
         expediente: "nombrefake",
+        prestaservicioen: "nombrefake",
     };
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,6 +30,7 @@ function AgregarAltasAscensosBajas(props) {
                 payload.fecha = values.fecha
                 payload.observaciones = values.observaciones
                 payload.expediente = values.expediente
+                payload.prestaservicioen = values.prestaservicioen
                 postLicencia()
             }
         });
@@ -73,6 +75,16 @@ function AgregarAltasAscensosBajas(props) {
                     <Input
                         type="text"
                         placeholder="expediente"
+                    />,
+                )}
+            </Form.Item>
+            <Form.Item label="Presta servicio en:">
+                {getFieldDecorator('prestaservicioen', {
+                    rules: [{ required: true, message: 'Ingrese un dato!' }],
+                })(
+                    <Input
+                        type="text"
+                        placeholder="presta servicio en"
                     />,
                 )}
             </Form.Item>
