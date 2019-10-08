@@ -229,7 +229,7 @@ function Crearpersona(props) {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="text"
+                                            type="number"
                                             placeholder="legajo"
                                         />,
                                     )}
@@ -239,7 +239,7 @@ function Crearpersona(props) {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="text"
+                                            type="number"
                                             placeholder="dni"
                                         />,
                                     )}
@@ -366,7 +366,7 @@ function Crearpersona(props) {
                                     )}
                                 </Form.Item>
                                 <Form.Item label="Numero de calle">
-                                    {getFieldDecorator('calle', {
+                                    {getFieldDecorator('numero', {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
@@ -446,7 +446,7 @@ function Crearpersona(props) {
                                     )}
                                 </Form.Item>
                                 <Form.Item label="Hipertension">
-                                    {getFieldDecorator('Hipertension', {
+                                    {getFieldDecorator('hipertension', {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
@@ -573,12 +573,12 @@ function Crearpersona(props) {
                                     })(
                                         <Input
                                             type="number"
-                                            placeholder="categoria"
+                                            placeholder="meses"
                                         />,
                                     )}
                                 </Form.Item>
                                 <Form.Item label="Dias">
-                                    {getFieldDecorator('categoria', {
+                                    {getFieldDecorator('dias', {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
