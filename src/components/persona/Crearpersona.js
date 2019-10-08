@@ -20,7 +20,7 @@ function Crearpersona(props) {
         foto: "nombrefakefoto",
         legajo: "nombrefake",
         dni: "nombre",
-        fecha: "nombre",
+        /* fecha: "nombre", */
         apodo: "nombre",
         cuit: "nombre",
         soltero: "nombre",
@@ -149,7 +149,7 @@ function Crearpersona(props) {
                 payload.dni = values.dni
 
                 payload.legajo = values.legajo
-                payload.fecha = values.fecha.toString()
+                //payload.fecha = values.fecha.toString()
 
                 payload.apodo = values.apodo
                 payload.cuit = values.cuit
@@ -184,6 +184,13 @@ function Crearpersona(props) {
                 payload.dias = values.dias
                 payload.realizocomputodeservicios = values.realizocomputodeservicios
                 payload.poseeconocimientoenmaquinasviales = values.poseeconocimientoenmaquinasviales
+
+                payload.casoemergenciacelular = values.casoemergenciacelular
+                payload.casoemergenciacelular2 = values.casoemergenciacelular2
+                payload.casoemergenciafijo2 = values.casoemergenciafijo2
+                payload.casoemergenciafijo = values.casoemergenciafijo
+                payload.casoemergencianombre = values.casoemergencianombre
+                payload.casoemergencianombre2 = values.casoemergencianombre2
 
                 for (let value of uploadImage.getAll('image')) {
                     //console.log('asd ' + value);
@@ -262,7 +269,7 @@ function Crearpersona(props) {
                                         </Upload>,
                                     )}
                                 </Form.Item>
-                                <Form.Item label="Fecha">
+                                {/*  <Form.Item label="Fecha">
                                     {getFieldDecorator('fecha', {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
@@ -272,7 +279,7 @@ function Crearpersona(props) {
                                         />,
                                     )}
                                 </Form.Item>
-
+ */}
                                 <Form.Item label="Apodo">
                                     {getFieldDecorator('apodo', {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
@@ -608,6 +615,67 @@ function Crearpersona(props) {
                                     )}
                                 </Form.Item>
 
+                                <h1>Contactos en caso de emergencia</h1>
+                                <Form.Item label="En caso de emergencia celular">
+                                    {getFieldDecorator('casoemergenciacelular', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="number"
+                                            placeholder="en caso emergencia numero celular"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="En caso de emergencia celular">
+                                    {getFieldDecorator('casoemergenciacelular2', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="number"
+                                            placeholder="en caso emergencia numero celular 2"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="En caso de emergencia telefono fijo">
+                                    {getFieldDecorator('casoemergenciafijo', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="En caso de emergencia fijo"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="En caso de emergencia telefono fijo 2">
+                                    {getFieldDecorator('casoemergenciafijo2', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="En caso de emergencia fijo 2"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="En caso emergencia nombre">
+                                    {getFieldDecorator('casoemergencianombre', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="En caso emergencia nombre"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="En caso emergencia nombre 2">
+                                    {getFieldDecorator('casoemergencianombre2', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="En caso emergencia nombre 2"
+                                        />,
+                                    )}
+                                </Form.Item>
 
                                 <Form.Item>
                                     <Row></Row>
