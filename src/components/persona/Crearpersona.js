@@ -714,7 +714,7 @@ function Crearpersona(props) {
                                     })(
                                         <Input
                                             type="number"
-                                            placeholder="familiar a cargo dni 2"
+                                            placeholder="familiar a cargo dni"
                                         />,
                                     )}
                                 </Form.Item>
