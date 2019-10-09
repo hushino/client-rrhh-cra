@@ -62,8 +62,14 @@
   "build": {
     "appId": "rrhh.redmagic",
     "extends": null,
-   
-   
+    "directories": {
+      "buildResources": "public"
+    },
+    "win": {
+      "publish": [
+        "github"
+      ]
+    },
     "mac": {
       "category": "rrhh.app.gestion.web"
     }

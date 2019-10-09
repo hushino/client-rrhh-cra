@@ -29,10 +29,10 @@ function createWindow() {
     // Emitted when the window is closed.
 
 
-    appExpress.use(express.static(path.join(__dirname, '../build/')));
+    appExpress.use(express.static(path.join(__dirname, '../build')));
 
     appExpress.get('/*', function (req, res) {
-        res.sendFile(path.join(__dirname, 'build', 'index.html'));
+        res.sendFile(path.join(__dirname, '../build', 'index.html'));
     });
 
     appExpress.listen(9000);
