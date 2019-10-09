@@ -1,7 +1,7 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
-
+const { autoUpdater } = require("electron-updater")
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -21,7 +21,7 @@ function createWindow() {
     mainWindow.loadURL('http://localhost:3000/')
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
-
+    autoUpdater.checkForUpdatesAndNotify()
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {
         // Dereference the window object, usually you would store windows

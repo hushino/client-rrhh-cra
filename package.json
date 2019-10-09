@@ -12,6 +12,7 @@
     "axios": "^0.19.0",
     "babel-plugin-import": "^1.12.1",
     "customize-cra": "^0.7.0",
+    "electron-updater": "^4.1.2",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "lodash": "^4.17.15",
@@ -26,12 +27,15 @@
     "redux": "^4.0.4"
   },
   "scripts": {
+    "githubtoken": "a32984b93cb5089973a2a2b3d839535209f323c2",
     "start2": "electron .",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "test": "react-app-rewired test",
+    "publish": "electron-builder --win -p always",
+    "release": "build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -55,6 +59,12 @@
   },
   "build": {
     "appId": "rrhh.redmagic",
+    "extends": null,
+    "win": {
+      "publish": [
+        "github"
+      ]
+    },
     "mac": {
       "category": "rrhh.app.gestion.web"
     }
