@@ -127,7 +127,7 @@ function Viewpersona(props) {
         })
 
     return (
-        <Layout style={{ /* background: "white", */  }}>
+        <Layout style={{ /* background: "white", */ }}>
             <Content style={{ padding: '0 50px' }}>
                 <Row type="flex" gutter={16}>
                     <Col>
@@ -233,6 +233,9 @@ function Viewpersona(props) {
                 </Row>
                 <Row type="flex" gutter={16}>
                     <Col>
+                        <div>
+                            Usuarios que han echo cambios aqui:
+                        </div>
                         <h4>{usuriosmod}</h4>
                     </Col>
                 </Row>

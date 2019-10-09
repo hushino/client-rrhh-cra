@@ -5,6 +5,10 @@ const { autoUpdater } = require("electron-updater")
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+const express = require('express');
+const appExpress = express();
+
+
 
 function createWindow() {
     // Create the browser window.
@@ -17,12 +21,23 @@ function createWindow() {
     })
 
     // and load the index.html of the app.
-    //mainWindow.loadFile('index.html')
-    mainWindow.loadURL('http://localhost:3000/')
+    //mainWindow.loadFile(path.join(__dirname, '../build/index.html'))
+    mainWindow.loadURL('http://localhost:9000/')
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
     autoUpdater.checkForUpdatesAndNotify()
     // Emitted when the window is closed.
+
+
+    appExpress.use(express.static(path.join(__dirname, '../build/')));
+
+    appExpress.get('/*', function (req, res) {
+        res.sendFile(path.join(__dirname, 'build', '../build/index.html'));
+    });
+
+    appExpress.listen(9000);
+
+
     mainWindow.on('closed', function () {
         // Dereference the window object, usually you would store windows
         // in an array if your app supports multi windows, this is the time
