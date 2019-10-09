@@ -32,7 +32,7 @@ function createWindow() {
     appExpress.use(express.static(path.join(__dirname, '../build/')));
 
     appExpress.get('/*', function (req, res) {
-        res.sendFile(path.join(__dirname, 'build', '../build/index.html'));
+        res.sendFile(path.join(__dirname, 'build', 'index.html'));
     });
 
     appExpress.listen(9000);
@@ -63,6 +63,10 @@ app.on('activate', function () {
     // dock icon is clicked and there are no other windows open.
     if (mainWindow === null) createWindow()
 })
-
+/* "win": {
+    "publish": [
+        "github"
+    ]
+}, */
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

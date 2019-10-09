@@ -63,11 +63,7 @@
     "appId": "rrhh.redmagic",
     "extends": null,
    
-    "win": {
-      "publish": [
-        "github"
-      ]
-    },
+   
     "mac": {
       "category": "rrhh.app.gestion.web"
     }
