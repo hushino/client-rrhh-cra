@@ -54,6 +54,10 @@ function Crearpersona(props) {
         dias: "nombre",
         realizocomputodeservicios: "nombre",
         poseeconocimientoenmaquinasviales: "nombre",
+        familiaracargonombre2: "nombre",
+        familiaracargonombre: "nombre",
+        familiaracargodni2: "nombre",
+        familiaracargodni: "nombre",
     };
 
     function getBase64(img, callback) {
@@ -191,6 +195,12 @@ function Crearpersona(props) {
                 payload.casoemergenciafijo = values.casoemergenciafijo
                 payload.casoemergencianombre = values.casoemergencianombre
                 payload.casoemergencianombre2 = values.casoemergencianombre2
+
+                payload.familiaracargodni = values.familiaracargodni
+                payload.familiaracargodni2 = values.familiaracargodni2
+                payload.familiaracargonombre = values.familiaracargonombre
+                payload.familiaracargonombre2 = values.familiaracargonombre2
+
 
                 for (let value of uploadImage.getAll('image')) {
                     //console.log('asd ' + value);
@@ -673,6 +683,48 @@ function Crearpersona(props) {
                                         <Input
                                             type="text"
                                             placeholder="En caso emergencia nombre 2"
+                                        />,
+                                    )}
+                                </Form.Item>
+
+                                <h3>Familiares a cargo:</h3>
+                                <Form.Item label="Familiar acargo nombre">
+                                    {getFieldDecorator('familiaracargonombre', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="familiar a cargo nombre"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Familiar acargo nombre 2">
+                                    {getFieldDecorator('familiaracargonombre2', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="familiar a cargo nombre 2"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Familiar acargo DNI">
+                                    {getFieldDecorator('familiaracargodni', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="number"
+                                            placeholder="familiar a cargo dni 2"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Familiar acargo DNI 2">
+                                    {getFieldDecorator('familiaracargodni2', {
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="number"
+                                            placeholder="familiar a cargo dni 2"
                                         />,
                                     )}
                                 </Form.Item>

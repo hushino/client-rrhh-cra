@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
 import { Row, Form, Input, Button } from 'antd';
-
+const { TextArea } = Input;
 
 function AgregarConceptoConocimientosEspecialesClasificacionPremios(props) {
 
@@ -36,7 +36,7 @@ function AgregarConceptoConocimientosEspecialesClasificacionPremios(props) {
                 {getFieldDecorator('referencias', {
                     rules: [{ required: true, message: 'Ingrese un dato!' }],
                 })(
-                    <Input
+                    <TextArea rows={4}
                         name="referencias"
                         placeholder="referencias"
                     />,
@@ -52,7 +52,7 @@ function AgregarConceptoConocimientosEspecialesClasificacionPremios(props) {
                     />,
                 )}
             </Form.Item>
-            
+
             <Form.Item>
                 <Row></Row>
                 <Button type="primary" htmlType="submit" className="update-form-button" >

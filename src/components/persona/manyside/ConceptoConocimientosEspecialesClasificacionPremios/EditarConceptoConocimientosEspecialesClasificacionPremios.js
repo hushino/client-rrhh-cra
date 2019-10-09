@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useLayoutEffect,useRef } from 'react';
-import {Row, Form, Input, Button} from 'antd';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { Row, Form, Input, Button } from 'antd';
 import axios from 'axios';
-
+const { TextArea } = Input;
 function ConceptoConocimientosEspecialesClasificacionPremios(props) {
- 
+
     let truedata = null;
     let idManyside = null
     const refContainer = useRef(null);
@@ -57,39 +57,38 @@ function ConceptoConocimientosEspecialesClasificacionPremios(props) {
     return (
         <Form onSubmit={handleSubmit} className="update-form" >
 
-        <Form.Item label="Referencias" >
-            {getFieldDecorator('referencias', {
-                rules: [{ required: true, message: 'Ingrese un dato!' }],
-            })(
-                <Input
-                    name="referencias"
-                    placeholder={data.referencias}
-                    setFieldsValue={data.referencias}
-                />,
-            )}
-        </Form.Item>
-        <Form.Item label="Fecha">
-            {getFieldDecorator('fecha', {
-                rules: [{ required: true, message: 'Ingrese un dato!' }],
-            })(
-                <Input
-                    type="date"
-                    placeholder={data.fecha}
-                    setFieldsValue={data.fecha}
-                />,
-            )}
-        </Form.Item>
-        
-        <Form.Item>
-            <Row></Row>
-            <Button type="primary" htmlType="submit" className="update-form-button" >
-                Enviar
+            <Form.Item label="Referencias" >
+                {getFieldDecorator('referencias', {
+                    rules: [{ required: true, message: 'Ingrese un dato!' }],
+                })(
+                    <TextArea rows={4}
+                        name="referencias"
+                        placeholder={data.referencias}
+                        setFieldsValue={data.referencias}
+                    />,
+                )}
+            </Form.Item>
+            <Form.Item label="Fecha">
+                {getFieldDecorator('fecha', {
+                    rules: [{ required: true, message: 'Ingrese un dato!' }],
+                })(
+                    <Input
+                        type="date"
+                        placeholder={data.fecha}
+                        setFieldsValue={data.fecha}
+                    />,
+                )}
+            </Form.Item>
+
+            <Form.Item>
+                <Row></Row>
+                <Button type="primary" htmlType="submit" className="update-form-button" >
+                    Enviar
             </Button>
-        </Form.Item>
-    </Form> 
- )
+            </Form.Item>
+        </Form>
+    )
 }
 const WrappedEditarConceptoConocimientosEspecialesClasificacionPremiosForm = Form.create({ name: 'EditarConceptoConocimientosEspecialesClasificacionPremios' })(ConceptoConocimientosEspecialesClasificacionPremios);
 export default WrappedEditarConceptoConocimientosEspecialesClasificacionPremiosForm
 
- 

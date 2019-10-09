@@ -127,6 +127,11 @@ function Editarpersona(props) {
             realizocomputodeservicios: data.realizocomputodeservicios,
             poseeconocimientoenmaquinasviales: data.poseeconocimientoenmaquinasviales,
 
+            familiaracargodni: data.familiaracargodni,
+            familiaracargodni2: data.familiaracargodni2,
+            familiaracargonombre: data.familiaracargonombre,
+            familiaracargonombre2: data.familiaracargonombre2,
+
         });
         //console.log(data.foto)
 
@@ -706,6 +711,51 @@ function Editarpersona(props) {
                                                     type="text"
                                                     placeholder={data.casoemergencianombre2}
                                                     setFieldsValue={data.casoemergencianombre2}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <h3>Familiares a cargo:</h3>
+                                        <Form.Item label="Familiar acargo nombre">
+                                            {getFieldDecorator('familiaracargonombre', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.casoemergencianombre}
+                                                    setFieldsValue={data.casoemergencianombre}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Familiar acargo nombre 2">
+                                            {getFieldDecorator('familiaracargonombre2', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.casoemergencianombre2}
+                                                    setFieldsValue={data.casoemergencianombre2}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Familiar acargo DNI">
+                                            {getFieldDecorator('familiaracargodni', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.familiaracargodni}
+                                                    setFieldsValue={data.familiaracargodni}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Familiar acargo DNI 2">
+                                            {getFieldDecorator('familiaracargodni2', {
+                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.familiaracargodni2}
+                                                    setFieldsValue={data.familiaracargodni2}
                                                 />,
                                             )}
                                         </Form.Item>
