@@ -6,6 +6,7 @@ import { Row, Form, Input, Button } from 'antd';
 function EditarAltasAscensosBajas(props) {
     let truedata = null;
     const [data, setData] = useState([])
+    let ide
     const personaidd = props.personaid;
     const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona/${personaidd}/updateAltasAscensosBajas/${data.id}`, values)
         .then(function (response) {
@@ -18,6 +19,7 @@ function EditarAltasAscensosBajas(props) {
         console.log(personaidd);
         const getData = () => axios.get(`http://localhost:8080/api/altasAscensosBajas/${personaidd}`)
             .then(function (response) {
+                ide = response.data
                 setData(response.data)
 
             })

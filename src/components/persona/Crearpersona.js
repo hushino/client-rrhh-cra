@@ -641,7 +641,7 @@ function Crearpersona(props) {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="text"
+                                            type="number"
                                             placeholder="En caso de emergencia fijo"
                                         />,
                                     )}
@@ -651,7 +651,7 @@ function Crearpersona(props) {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="text"
+                                            type="number"
                                             placeholder="En caso de emergencia fijo 2"
                                         />,
                                     )}
