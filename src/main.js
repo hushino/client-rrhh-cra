@@ -22,7 +22,6 @@ function createWindow() {
 
     // and load the index.html of the app.
     //mainWindow.loadFile(path.join(__dirname, '../build/index.html'))
-    mainWindow.loadURL('http://localhost:9000/')
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
     autoUpdater.checkForUpdatesAndNotify()
@@ -34,8 +33,8 @@ function createWindow() {
     appExpress.get('/*', function (req, res) {
         res.sendFile(path.join(__dirname, '../build', 'index.html'));
     });
-
     appExpress.listen(9000);
+    mainWindow.loadURL('http://localhost:9000/')
 
 
     mainWindow.on('closed', function () {
