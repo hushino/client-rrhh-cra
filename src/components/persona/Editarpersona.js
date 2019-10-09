@@ -721,8 +721,8 @@ function Editarpersona(props) {
                                             })(
                                                 <Input
                                                     type="text"
-                                                    placeholder={data.casoemergencianombre}
-                                                    setFieldsValue={data.casoemergencianombre}
+                                                    placeholder={data.familiaracargonombre}
+                                                    setFieldsValue={data.familiaracargonombre}
                                                 />,
                                             )}
                                         </Form.Item>
@@ -732,8 +732,8 @@ function Editarpersona(props) {
                                             })(
                                                 <Input
                                                     type="text"
-                                                    placeholder={data.casoemergencianombre2}
-                                                    setFieldsValue={data.casoemergencianombre2}
+                                                    placeholder={data.familiaracargonombre2}
+                                                    setFieldsValue={data.familiaracargonombre2}
                                                 />,
                                             )}
                                         </Form.Item>

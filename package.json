@@ -2,6 +2,8 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "main": "src/main.js",
+  "author": "IVAN ESTEBAN NESTERUK",
   "dependencies": {
     "@ant-design/dark-theme": "^1.0.3",
     "@types/react-highlight-words": "^0.16.0",
@@ -24,8 +26,11 @@
     "redux": "^4.0.4"
   },
   "scripts": {
+    "start2": "electron .",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
@@ -43,5 +48,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^6.0.12",
+    "electron-builder": "^21.2.0"
+  },
+  "build": {
+    "appId": "rrhh.redmagic",
+    "mac": {
+      "category": "rrhh.app.gestion.web"
+    }
   }
 }
