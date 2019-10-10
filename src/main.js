@@ -35,7 +35,14 @@ function createWindow() {
     });
     appExpress.listen(9000);
     mainWindow.loadURL('http://localhost:9000/')
-
+    /*   const startUrl =
+          process.env.ELECTRON_START_URL ||
+          url.format({
+              pathname: path.join(__dirname, "/../build/index.html"),
+              protocol: "file:",
+              slashes: true
+          })
+      mainWindow.loadURL(startUrl) */
 
     mainWindow.on('closed', function () {
         // Dereference the window object, usually you would store windows

@@ -5,6 +5,7 @@
   "main": "src/main.js",
   "author": "IVAN ESTEBAN NESTERUK",
   "start_url": "./",
+  "homepage": "./",
   "dependencies": {
     "@ant-design/dark-theme": "^1.0.3",
     "@types/react-highlight-words": "^0.16.0",
@@ -61,6 +62,9 @@
   },
   "build": {
     "appId": "rrhh.redmagic",
+    "directories": {
+      "buildResources": "public"
+    },
     "extends": null,
     "win": {
       "publish": [
