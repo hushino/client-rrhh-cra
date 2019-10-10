@@ -4,11 +4,36 @@ const path = require('path')
 const { autoUpdater } = require("electron-updater")
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+const log = require("electron-log")
 const express = require('express');
 const appExpress = express();
 
+let mainWindow
 
+autoUpdater.logger = log
+log.transports.file.level = "debug"
+autoUpdater.logger.transports.file.level = 'info';
+autoUpdater.on('checking-for-update', () => {
+    sendStatusToWindow('Checking for update...');
+})
+autoUpdater.on('update-available', (info) => {
+    sendStatusToWindow('Update available.');
+})
+autoUpdater.on('update-not-available', (info) => {
+    sendStatusToWindow('Update not available.');
+})
+autoUpdater.on('error', (err) => {
+    sendStatusToWindow('Error in auto-updater. ' + err);
+})
+autoUpdater.on('download-progress', (progressObj) => {
+    let log_message = "Download speed: " + progressObj.bytesPerSecond;
+    log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+    log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+    sendStatusToWindow(log_message);
+})
+autoUpdater.on('update-downloaded', (info) => {
+    sendStatusToWindow('Update downloaded');
+});
 
 function createWindow() {
     // Create the browser window.
@@ -24,6 +49,7 @@ function createWindow() {
     //mainWindow.loadFile(path.join(__dirname, '../build/index.html'))
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
+
     autoUpdater.checkForUpdatesAndNotify()
     // Emitted when the window is closed.
 
