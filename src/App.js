@@ -3,7 +3,7 @@
 import React, { useEffect, useState  } from 'react';
 import './App.css';
 import axios from 'axios';
-import {PageHeader,Row, Col,Icon  } from 'antd';
+import {PageHeader,Row, Col,Icon,Input,Button  } from 'antd';
 import WrappedNormalLoginForm from './components/login/Login';
 import { useSelector, connect } from 'react-redux' 
 import store from './redux/store'
@@ -12,7 +12,24 @@ import store from './redux/store'
 function App() {
   const [data, setData] = useState([]); 
   const [role, setRole] = useState([])
+  const [state, setState] = useState({ vars: { '@primary-color': '#dddddd' } })
   const isRoleUser = role === 'USER' || role === 'ADMIN';
+
+  //const state = { vars: { '@primary-color': '#dddddd' } }
+  const onChange = (e) => {
+    const color = e.target.value;
+    if (color.match(/^#[a-f0-9]{3,6}$/i)) {
+      const vars = state.vars;
+      vars['@primary-color'] = color;
+      setState({ vars });
+    }
+  }
+  const updateVars = () => {
+    window.less.modifyVars(state.vars).then(() => {
+      console.log('Theme updated successfully');
+    });
+  }
+
   useEffect(() => {
     setRole(store.getState().Role)
     let isSubscribed = true
@@ -51,7 +68,13 @@ function App() {
       <Col span={6}>
        <WrappedNormalLoginForm />
       </Col>
-   </Row>
+      </Row>
+      <Row>
+        <Col xs={16}>Primary Color: <Input onChange={onChange} /></Col>
+        <Col xs={24}><Button type="primary" onClick={updateVars}>Update Vars</Button></Col>
+
+      </Row>
+
 </React.Fragment>
   );
 }
