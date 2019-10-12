@@ -63,18 +63,17 @@ function App() {
           : 'Inicie sesion para continuar' */}
         
    
-   <Row>
+    <Row>
       <Col span={1}></Col>
       <Col span={6}>
        <WrappedNormalLoginForm />
       </Col>
       </Row>
-      <Row>
+     {/*  <Row>
         <Col xs={16}>Primary Color: <Input onChange={onChange} /></Col>
         <Col xs={24}><Button type="primary" onClick={updateVars}>Update Vars</Button></Col>
-
       </Row>
-
+ */}
 </React.Fragment>
   );
 }

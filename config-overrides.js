@@ -7,17 +7,14 @@ const options = {
     stylesDir: path.join(__dirname, './src/styles'),
     antDir: path.join(__dirname, './node_modules/antd'),
     colorFilePath: path.join(__dirname, './public/color.less'),
+
     themeVariables: ['@primary-color', '@secondary-color', '@text-color-secondary', '@text-color']
-  }
-  module.exports = function override(config, env) {
-    config = updateConfig(config, env, options,fixBabelImports('import', {
-        libraryName: 'antd',
-        libraryDirectory: 'es',
-        style: true,
-    }),)
+}
+/* module.exports = function override(config, env) {
+    config = updateConfig(config, env, options)
     return config;
-  };
-/* module.exports = override(
+}; */
+module.exports = override(
     fixBabelImports('import', {
         libraryName: 'antd',
         libraryDirectory: 'es',
@@ -25,7 +22,7 @@ const options = {
     }),
     addLessLoader({
         javascriptEnabled: true,
-        modifyVars: { 
+        modifyVars: {
             '@ant-descriptions-bordered': '#000',
             '@ant-descriptions-item-label': '#000',
             '@light': '#fff',
@@ -125,6 +122,6 @@ const options = {
 
             // pro
             '@pro-header-box-shadow': '@site-header-box-shadow',
-         },
+        },
     }),
-); */
+); 

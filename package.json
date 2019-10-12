@@ -10,7 +10,6 @@
     "@ant-design/dark-theme": "^1.0.3",
     "@rescripts/cli": "0.0.12",
     "@rescripts/rescript-env": "0.0.10",
-    "@rescripts/rescript-use-babel-config": "0.0.8",
     "@types/react-highlight-words": "^0.16.0",
     "antd": "^3.23.2",
     "antd-theme-webpack-plugin": "^1.3.0",
