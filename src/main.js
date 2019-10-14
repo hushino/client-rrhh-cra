@@ -11,27 +11,43 @@ const appExpress = express();
 let mainWindow
 const notifier = require('node-notifier');
 // String
-//notifier.notify('Message');
+notifier.notify('Message');
 
-// Object
-/* notifier.notify({
-    title: 'My notification',
-    message: 'Hello, there!'
-}); */
+
 
 autoUpdater.logger = log
 log.transports.file.level = "debug"
 autoUpdater.logger.transports.file.level = 'info';
 autoUpdater.on('checking-for-update', () => {
+    // Object
+    notifier.notify({
+        title: 'Update',
+        message: 'Checking for update...'
+    });
     sendStatusToWindow('Checking for update...');
 })
 autoUpdater.on('update-available', (info) => {
+    // Object
+    notifier.notify({
+        title: 'Update',
+        message: 'Update available.'
+    });
     sendStatusToWindow('Update available.');
 })
 autoUpdater.on('update-not-available', (info) => {
+    // Object
+    notifier.notify({
+        title: 'Update',
+        message: 'Update not available.'
+    });
     sendStatusToWindow('Update not available.');
 })
 autoUpdater.on('error', (err) => {
+    // Object
+    notifier.notify({
+        title: 'Update',
+        message: 'Error in auto-updater. '
+    });
     sendStatusToWindow('Error in auto-updater. ' + err);
 })
 autoUpdater.on('download-progress', (progressObj) => {
@@ -41,6 +57,11 @@ autoUpdater.on('download-progress', (progressObj) => {
     sendStatusToWindow(log_message);
 })
 autoUpdater.on('update-downloaded', (info) => {
+    // Object
+    notifier.notify({
+        title: 'Update',
+        message: 'Update downloaded, Reinicia la aplicacion para instalarla automaticamente'
+    });
     sendStatusToWindow('Update downloaded');
 });
 
