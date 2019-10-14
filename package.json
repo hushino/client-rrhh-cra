@@ -38,7 +38,6 @@
     "redux": "^4.0.4"
   },
   "scripts": {
-    "githubtoken": "a32984b93cb5089973a2a2b3d839535209f323c2",
     "start2": "electron .",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",

@@ -20,7 +20,6 @@ autoUpdater.on('checking-for-update', () => {
         title: 'Update',
         message: 'Checking for update...'
     }); */
-    sendStatusToWindow('Checking for update...');
 })
 autoUpdater.on('update-available', (info) => {
     // Object
@@ -28,33 +27,29 @@ autoUpdater.on('update-available', (info) => {
         title: 'Update',
         message: 'Update available.'
     }); */
-    sendStatusToWindow('Update available.');
 })
 autoUpdater.on('update-not-available', (info) => {
     // Object
-    /* notifier.notify({
+    notifier.notify({
         title: 'Update',
         message: 'Actualizaciones no disponibles'
-    }); */
-    sendStatusToWindow('Update not available.');
+    });
 })
 autoUpdater.on('error', (err) => {
     // Object
-    /*  notifier.notify({
-         title: 'Update',
-         message: 'Error in auto-updater. '
-     }); */
-    sendStatusToWindow('Error in auto-updater. ' + err);
+    notifier.notify({
+        title: 'Update',
+        message: 'Error in auto-updater. ' + err
+    });
 })
 autoUpdater.on('download-progress', (progressObj) => {
     let log_message = "Download speed: " + progressObj.bytesPerSecond;
     log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
     log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
-    notifier.notify({
-        title: 'RRHH-LEGAJO-ACTUALIZACION',
-        message: 'Descarga: ' + log_message
-    });
-    sendStatusToWindow(log_message);
+    /*  notifier.notify({
+         title: 'RRHH-LEGAJO-ACTUALIZACION',
+         message: 'Descarga: ' + log_message
+     }); */
 })
 autoUpdater.on('update-downloaded', (info) => {
     // Object
@@ -62,7 +57,6 @@ autoUpdater.on('update-downloaded', (info) => {
         title: 'RRHH-LEGAJO-ACTUALIZACION',
         message: 'Actualizacion descargada, Reinicia la aplicacion para instalarla automaticamente.'
     });
-    sendStatusToWindow('Update downloaded');
 });
 
 function createWindow() {
@@ -76,7 +70,7 @@ function createWindow() {
             preload: path.join(__dirname, 'preload.js')
         }
     })
-
+    mainWindow.removeMenu()
     //mainWindow.setIgnoreMouseEvents(true)
     // and load the index.html of the app.
     //mainWindow.loadFile(path.join(__dirname, '../build/index.html'))
