@@ -46,10 +46,10 @@ autoUpdater.on('download-progress', (progressObj) => {
     let log_message = "Download speed: " + progressObj.bytesPerSecond;
     log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
     log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
-    /*  notifier.notify({
-         title: 'RRHH-LEGAJO-ACTUALIZACION',
-         message: 'Descarga: ' + log_message
-     }); */
+    /* notifier.notify({
+        title: 'RRHH-LEGAJO-ACTUALIZACION',
+        message: 'Descarga: ' + log_message
+    }); */
 })
 autoUpdater.on('update-downloaded', (info) => {
     // Object
