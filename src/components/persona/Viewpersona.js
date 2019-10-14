@@ -168,7 +168,7 @@ function Viewpersona(props) {
         doc.text("Item: " + data.item, 10, 260)
         doc.text("Planta: " + data.planta, 10, 270)
         doc.text("Direccion: " + data.direccion, 10, 280)
-        doc.text("Annos: " + data.annos, 10, 290)
+        doc.text("Años: " + data.annos, 10, 290)
         const ads = doc.addPage()
         ads.text("Meses: " + data.meses, 10, 10)
         ads.text("Familiar a cargo nombre: " + data.familiaracargonombre, 10, 20)
