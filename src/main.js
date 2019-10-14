@@ -11,13 +11,14 @@ const appExpress = express();
 let mainWindow
 const notifier = require('node-notifier');
 // String
-notifier.notify('Message');
+//notifier.notify('Message');
 
 // Object
-notifier.notify({
+/* notifier.notify({
     title: 'My notification',
     message: 'Hello, there!'
-});
+}); */
+
 autoUpdater.logger = log
 log.transports.file.level = "debug"
 autoUpdater.logger.transports.file.level = 'info';
@@ -45,18 +46,21 @@ autoUpdater.on('update-downloaded', (info) => {
 
 function createWindow() {
     // Create the browser window.
+
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
+        /*  frame: false, */
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
     })
 
+    //mainWindow.setIgnoreMouseEvents(true)
     // and load the index.html of the app.
     //mainWindow.loadFile(path.join(__dirname, '../build/index.html'))
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    //mainWindow.webContents.openDevTools()
 
     autoUpdater.checkForUpdatesAndNotify()
     // Emitted when the window is closed.

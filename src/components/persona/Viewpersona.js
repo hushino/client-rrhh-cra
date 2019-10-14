@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Card, Icon, Avatar, Row, Col, Layout, Button, Descriptions, Radio } from 'antd';
 import './style.css'
 import _ from 'lodash';
+import * as jsPDF from 'jspdf'
+
 const { Meta } = Card;
 const { Footer, Content } = Layout;
 
@@ -36,6 +38,14 @@ function Viewpersona(props) {
         })
 
     useLayoutEffect(() => {
+
+        /*   var doc = new jsPDF({
+              orientation: 'landscape',
+          })
+  
+          doc.text('Hello world!', 10, 10)
+          doc.save('a4.pdf') */
+
         fetchData();
     }, [])
 
@@ -126,6 +136,54 @@ function Viewpersona(props) {
             console.log(error);
         })
 
+    const activateLasers = () => {
+        var doc = new jsPDF({
+            /*   orientation: 'landscape', */
+        })
+
+        doc.text("Nombre: " + data.nombre, 10, 10)
+        doc.text("Apellido: " + data.apellido, 10, 15)
+        doc.text("Legajo: " + data.legajo, 10, 20)
+        doc.text("Apodo: " + data.apodo, 10, 25)
+        doc.text("Cuit: " + data.cuit, 10, 30)
+        doc.text("Soltero: " + data.soltero, 10, 35)
+        doc.text("Casado: " + data.casado, 10, 40)
+        doc.text("Conviviente: " + data.conviviente, 10, 45)
+        doc.text("Viudo: " + data.viudo, 10, 50)
+        doc.text("Domicilio: " + data.domicilio, 10, 55)
+        doc.text("Calle: " + data.calle, 10, 60)
+        doc.text("Numero: " + data.numero, 10, 65)
+        doc.text("Telefono fijo: " + data.telefonofijo, 10, 70)
+        doc.text("Numero de celular: " + data.numerodecelular, 10, 75)
+        doc.text("Oficio/Profecion: " + data.oficioprofecion, 10, 80)
+        doc.text("Nivel de estudios: " + data.niveldeestudios, 10, 85)
+        doc.text("Grupo sanguineo: " + data.gruposanguineo, 10, 90)
+        doc.text("Diabetes: " + data.diabetes, 10, 95)
+        doc.text("Hipertension: " + data.hipertension, 10, 100)
+        doc.text("Alergias: " + data.alergias, 10, 105)
+        doc.text("Asma: " + data.asma, 10, 110)
+        doc.text("Fechadeingreso: " + data.fechadeingreso, 10, 115)
+        doc.text("Resolucion: " + data.resolucion, 10, 120)
+        doc.text("Categoria: " + data.categoria, 10, 125)
+        doc.text("Item: " + data.item, 10, 130)
+        doc.text("Planta: " + data.planta, 10, 135)
+        doc.text("Direccion: " + data.direccion, 10, 140)
+        doc.text("Annos: " + data.annos, 10, 145)
+        doc.text("Meses: " + data.meses, 10, 150)
+        doc.text("Familiar a cargo nombre: " + data.familiaracargonombre, 10, 155)
+        doc.text("Familiar a cargo dni: " + data.familiaracargodni, 10, 160)
+        doc.text("Familiar a cargo nombre 2: " + data.familiaracargonombre2, 10, 165)
+        doc.text("Familiar a cargo dni 2: " + data.familiaracargodni2, 10, 170)
+        doc.text("Realizo computo de servicios: " + data.realizocomputodeservicios, 10, 175)
+        doc.text("Posee conocimiento en maquinas viales: " + data.poseeconocimientoenmaquinasviales, 10, 180)
+        doc.text("En caso emergencia celular: " + data.casoemergenciacelular, 10, 185)
+        doc.text("En caso emergencia celular 2: " + data.casoemergenciacelular2, 10, 190)
+        doc.text("En caso emergencia fijo: " + data.casoemergenciafijo, 10, 195)
+        doc.text("En caso emergencia fijo2: " + data.casoemergenciafijo2, 10, 200)
+        doc.text("En caso emergencia nombre: " + data.casoemergencianombre, 10, 205)
+        doc.text("En caso emergencia nombre 2: " + data.casoemergencianombre2, 10, 210)
+        doc.save('a4.pdf')
+    }
     return (
         <Layout style={{ /* background: "white", */ }}>
             <Content style={{ padding: '0 50px' }}>
@@ -137,6 +195,10 @@ function Viewpersona(props) {
                                 <Radio value="middle">Medio</Radio>
                                 <Radio value="small">Compacto</Radio>
                             </Radio.Group>
+                            <div>
+                                <br />
+                                <Button onClick={activateLasers} type="primary">Desacargar PDF</Button>
+                            </div>
                             <br />
                             <br />
                             <Descriptions bordered title="Informacion de una persona" size={state.size}>
@@ -176,7 +238,7 @@ function Viewpersona(props) {
                                 <Descriptions.Item label="Familiar acargo DNI">{data.familiaracargodni}</Descriptions.Item>
                                 <Descriptions.Item label="Familiar acargo DNI 2">{data.familiaracargodni2}</Descriptions.Item>
                                 <Descriptions.Item label="Realizo computo de servicios">{data.realizocomputodeservicios}</Descriptions.Item>
-                                <Descriptions.Item label="Posee conocimientos en maquinas viales">{data.categoria}</Descriptions.Item>
+                                <Descriptions.Item label="Posee conocimientos en maquinas viales">{data.poseeconocimientoenmaquinasviales}</Descriptions.Item>
                                 <Descriptions.Item label="En caso de emergencia celular">{data.casoemergenciacelular}</Descriptions.Item>
                                 <Descriptions.Item label="En caso de emergencia celular 2">{data.casoemergenciacelular2}</Descriptions.Item>
                                 <Descriptions.Item label="En caso de emergencia telefono fijo">{data.casoemergenciafijo}</Descriptions.Item>
