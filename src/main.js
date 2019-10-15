@@ -37,10 +37,10 @@ autoUpdater.on('update-not-available', (info) => {
 })
 autoUpdater.on('error', (err) => {
     // Object
-    notifier.notify({
+    /* notifier.notify({
         title: 'Update',
         message: 'Error in auto-updater. ' + err
-    });
+    }); */
 })
 autoUpdater.on('download-progress', (progressObj) => {
     let log_message = "Download speed: " + progressObj.bytesPerSecond;
