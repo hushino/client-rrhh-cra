@@ -387,7 +387,7 @@ function Crearpersona(props) {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="text"
+                                            type="number"
                                             placeholder="numero de calle"
                                         />,
                                     )}
@@ -397,7 +397,7 @@ function Crearpersona(props) {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="text"
+                                            type="number"
                                             placeholder="telefono fijo"
                                         />,
                                     )}
@@ -407,7 +407,7 @@ function Crearpersona(props) {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="text"
+                                            type="number"
                                             placeholder="numero de celular"
                                         />,
                                     )}
@@ -438,7 +438,7 @@ function Crearpersona(props) {
                                     })(
                                         <Input
                                             type="text"
-                                            placeholder="gruposanguineo"
+                                            placeholder="grupo sanguineo"
                                         />,
                                     )}
                                 </Form.Item>
@@ -615,7 +615,7 @@ function Crearpersona(props) {
                                     )}
                                 </Form.Item>
                                 <Form.Item label="Posee conocimientos en maquinas viales">
-                                    {getFieldDecorator('categoria', {
+                                    {getFieldDecorator('poseeconocimientoenmaquinasviales', {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input

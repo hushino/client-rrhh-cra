@@ -30,10 +30,10 @@ autoUpdater.on('update-available', (info) => {
 })
 autoUpdater.on('update-not-available', (info) => {
     // Object
-    notifier.notify({
+    /* notifier.notify({
         title: 'Update',
         message: 'Actualizaciones no disponibles'
-    });
+    }); */
 })
 autoUpdater.on('error', (err) => {
     // Object
