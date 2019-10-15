@@ -66,13 +66,13 @@ function App() {
         </Col>
       </Row>
 
-      <Particles params={{
+      <Particles /* params={{
         "particles": {
           "line_linked": {
             "color": "#000"
           },
           "number": {
-            "value": 150
+            "value": 90
           },
           "size": {
             "value": 5
@@ -86,10 +86,53 @@ function App() {
             }
           }
         }
-      }}
+      }} */
+        params={{
+          "particles": {
+            "number": {
+              "value": 190,
+              "density": {
+                "enable": true,
+                "value_area": 1500
+              }
+            },
+            "color": {
+              "value": "#000"
+            },
+            "line_linked": {
+              "enable": true,
+              "color": "#000",
+              "opacity": 0.3
+            },
+            "size": {
+              "value": 2
+            },
+            "opacity": {
+              "anim": {
+                "enable": true,
+                "speed": 1,
+                "opacity_min": 0.05
+              }
+            }
+          },
+          "interactivity": {
+            "events": {
+              "onclick": {
+                "enable": true,
+                "mode": "push"
+              }
+            },
+            "modes": {
+              "push": {
+                "particles_nb": 1
+              }
+            }
+          },
+          "retina_detect": true
+        }}
         style={{
           width: '100%',
-          background: `#fff`
+          background: `transparent`
         }}
       />
 
