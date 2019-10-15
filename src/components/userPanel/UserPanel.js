@@ -165,7 +165,7 @@ function UserPanel() {
         },
         render: text => (
             <Highlighter
-                highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+                highlightStyle={{ /* backgroundColor: '#ffc069', */ padding: 0 }}
                 searchWords={[state.searchText]}
                 autoEscape
                 textToHighlight={text.toString()}

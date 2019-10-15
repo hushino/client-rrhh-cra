@@ -3,11 +3,14 @@
 import React, { useEffect, useState  } from 'react';
 import './App.css';
 import axios from 'axios';
-import {PageHeader,Row, Col,Icon,Input,Button  } from 'antd';
+import { PageHeader, Row, Col, Icon, Input, Button, Layout } from 'antd';
+import Particles from 'react-particles-js';
+
 import WrappedNormalLoginForm from './components/login/Login';
 import { useSelector, connect } from 'react-redux' 
 import store from './redux/store'
- 
+import Theme from './components/ColorPicker/theme'
+const { Header, Content, Footer, Sider } = Layout;
  
 function App() {
   const [data, setData] = useState([]); 
@@ -15,21 +18,7 @@ function App() {
   const [state, setState] = useState({ vars: { '@primary-color': '#dddddd' } })
   const isRoleUser = role === 'USER' || role === 'ADMIN';
 
-  //const state = { vars: { '@primary-color': '#dddddd' } }
-  const onChange = (e) => {
-    const color = e.target.value;
-    if (color.match(/^#[a-f0-9]{3,6}$/i)) {
-      const vars = state.vars;
-      vars['@primary-color'] = color;
-      setState({ vars });
-    }
-  }
-  const updateVars = () => {
-    window.less.modifyVars(state.vars).then(() => {
-      console.log('Theme updated successfully');
-    });
-  }
-
+  
   useEffect(() => {
     setRole(store.getState().Role)
     let isSubscribed = true
@@ -61,14 +50,49 @@ function App() {
         isRoleUser
           ? ''
           : 'Inicie sesion para continuar' */}
-        
+     
    
     <Row>
       <Col span={1}></Col>
       <Col span={6}>
        <WrappedNormalLoginForm />
-      </Col>
+        </Col>
       </Row>
+      <Row type="flex" justify="start">
+        <Col span={6}>
+          <br />
+          <br />
+     {/*      <Theme></Theme> */}
+        </Col>
+      </Row>
+
+      <Particles params={{
+        "particles": {
+          "line_linked": {
+            "color": "#000"
+          },
+          "number": {
+            "value": 150
+          },
+          "size": {
+            "value": 5
+          }
+        },
+        "interactivity": {
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "repulse" //"grab" | "push" | "remove" | "bubble" | "repulse"
+            }
+          }
+        }
+      }}
+        style={{
+          width: '100%',
+          background: `#fff`
+        }}
+      />
+
      {/*  <Row>
         <Col xs={16}>Primary Color: <Input onChange={onChange} /></Col>
         <Col xs={24}><Button type="primary" onClick={updateVars}>Update Vars</Button></Col>

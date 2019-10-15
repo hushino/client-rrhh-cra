@@ -5,7 +5,6 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Card, Icon, Avatar, Row, Col, Layout, Button, Descriptions, Radio } from 'antd';
 import './style.css'
-import _ from 'lodash';
 import * as jsPDF from 'jspdf'
 
 const { Meta } = Card;
@@ -16,7 +15,7 @@ function Viewpersona(props) {
         []
 
     )
-    const [state, setState] = useState('default')
+    const [state, setState] = useState('small')
     const { dataIndex } = props.match.params
     //console.log(dataIndex)
     const isRoleAdmin = localStorage.getItem("role") === 'ADMIN';
