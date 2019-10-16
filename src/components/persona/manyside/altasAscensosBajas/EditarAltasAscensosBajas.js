@@ -8,7 +8,7 @@ function EditarAltasAscensosBajas(props) {
     const [data, setData] = useState([])
     let ide
     const personaidd = props.personaid;
-    const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona/${personaidd}/updateAltasAscensosBajas/${data.id}`, values)
+    const postData = (values) => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${personaidd}/updateAltasAscensosBajas/${data.id}`, values)
         .then(function (response) {
             //console.log(response.data)
         })
@@ -17,7 +17,7 @@ function EditarAltasAscensosBajas(props) {
         })
     useLayoutEffect(() => {
         console.log(personaidd);
-        const getData = () => axios.get(`http://localhost:8080/api/altasAscensosBajas/${personaidd}`)
+        const getData = () => axios.get(`http://localhost:8080/rrhh-server/api/altasAscensosBajas/${personaidd}`)
             .then(function (response) {
                 ide = response.data
                 setData(response.data)

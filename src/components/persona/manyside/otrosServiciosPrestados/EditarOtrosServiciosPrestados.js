@@ -9,7 +9,7 @@ function EditarOtrosServiciosPrestados(props) {
     let truedata = null;
     const [data, setData] = useState([])
     const personaidd = props.personaid;
-    const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona/${personaidd}/updateOtrosServiciosPrestados/${data.id}`, values)
+    const postData = (values) => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${personaidd}/updateOtrosServiciosPrestados/${data.id}`, values)
         .then(function (response) {
             //console.log(response.data)
         })
@@ -18,7 +18,7 @@ function EditarOtrosServiciosPrestados(props) {
         })
     useLayoutEffect(() => {
         console.log(personaidd);
-        const getData = () => axios.get(`http://localhost:8080/api/otrosServiciosPrestados/${personaidd}`)
+        const getData = () => axios.get(`http://localhost:8080/rrhh-server/api/otrosServiciosPrestados/${personaidd}`)
             .then(function (response) {
                 setData(response.data)
 

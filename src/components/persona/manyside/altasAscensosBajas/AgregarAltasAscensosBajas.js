@@ -8,7 +8,7 @@ function AgregarAltasAscensosBajas(props) {
 
     const { dataIndex } = props
     const { getFieldDecorator } = props.form;
-    const postLicencia = () => axios.post(`http://localhost:8080/api/updatepersona/${dataIndex}/altasAscensosBajas`, payload)
+    const postLicencia = () => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${dataIndex}/altasAscensosBajas`, payload)
         .then(function (response) {
             console.log(response.data)
         })

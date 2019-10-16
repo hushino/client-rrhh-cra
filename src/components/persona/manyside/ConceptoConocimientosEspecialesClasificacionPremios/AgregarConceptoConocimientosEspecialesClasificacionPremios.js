@@ -8,7 +8,7 @@ function AgregarConceptoConocimientosEspecialesClasificacionPremios(props) {
 
     const { dataIndex } = props
     const { getFieldDecorator } = props.form;
-    const postLicencia = () => axios.post(`http://localhost:8080/api/updatepersona/${dataIndex}/conceptoConocimientosEspecialesClasificacionPremios`, payload)
+    const postLicencia = () => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${dataIndex}/conceptoConocimientosEspecialesClasificacionPremios`, payload)
         .then(function (response) {
             console.log(response.data)
         })

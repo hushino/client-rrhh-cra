@@ -9,7 +9,7 @@ function AgregarOtrosServiciosPrestados(props) {
     
     const { dataIndex } = props
     const { getFieldDecorator } = props.form;
-    const postOtrosServicios = () => axios.post(`http://localhost:8080/api/updatepersona/${dataIndex}/otrosServiciosPrestados`, payload)
+    const postOtrosServicios = () => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${dataIndex}/otrosServiciosPrestados`, payload)
         .then(function (response) {
             console.log(response.data)
         })

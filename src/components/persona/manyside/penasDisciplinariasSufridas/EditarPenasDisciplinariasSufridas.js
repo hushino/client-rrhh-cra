@@ -8,7 +8,7 @@ function EditarPenasDisciplinariasSufridas(props){
 let truedata = null;
 const [data, setData] = useState([])
 const personaidd = props.personaid;
-const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona/${personaidd}/penasDisciplinariasSufridas/${data.id}`, values)
+const postData = (values) => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${personaidd}/penasDisciplinariasSufridas/${data.id}`, values)
     .then(function (response) {
         //console.log(response.data)
     })
@@ -17,7 +17,7 @@ const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona
     })
 useLayoutEffect(() => {
     console.log(personaidd);
-    const getData = () => axios.get(`http://localhost:8080/api/penasDisciplinariasSufridas/${personaidd}`)
+    const getData = () => axios.get(`http://localhost:8080/rrhh-server/api/penasDisciplinariasSufridas/${personaidd}`)
         .then(function (response) {
             setData(response.data)
 

@@ -118,7 +118,7 @@ function Crearpersona(props) {
         </div>
     );
 
-    const postData = () => axios.post(`http://localhost:8080/api/addPersona`, payload)
+    const postData = () => axios.post(`http://localhost:8080/rrhh-server/api/addPersona`, payload)
         .then(function (response) {
             console.log(response.data)
         })

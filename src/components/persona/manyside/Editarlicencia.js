@@ -10,7 +10,7 @@ function Editarlicencia(props) {
     let nombreusuario = "null"
     const [data, setData] = useState([])
     const personaidd = props.personaid;
-    const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona/${personaidd}/updatelicencia/${data.id}`, values)
+    const postData = (values) => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${personaidd}/updatelicencia/${data.id}`, values)
         .then(function (response) {
             //console.log(response.data)
         })
@@ -19,7 +19,7 @@ function Editarlicencia(props) {
         })
     useLayoutEffect(() => {
         //console.log(personaidd);
-        const getData = () => axios.get(`http://localhost:8080/api/licencia/${personaidd}`)
+        const getData = () => axios.get(`http://localhost:8080/rrhh-server/api/licencia/${personaidd}`)
             .then(function (response) {
                 //console.log("datos de licencia ", response.data)
                 setData(response.data)

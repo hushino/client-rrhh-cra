@@ -53,7 +53,7 @@ function UserPanel() {
         legajo: integer2,
     }
 
-    const fetchData = () => axios.post(`http://localhost:8080/api/home?page=${current}&size=${pageSize}&sortOrder=${sortOrder}`, urls)
+    const fetchData = () => axios.post(`http://localhost:8080/rrhh-server/api/home?page=${current}&size=${pageSize}&sortOrder=${sortOrder}`, urls)
         .then(function (response) {
             /* const asd = filters
             asd.forEach(element => {

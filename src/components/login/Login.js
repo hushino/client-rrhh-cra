@@ -39,7 +39,7 @@ function Login(props) {
     window.location.reload();
   }
   const fetchData = async () => {
-    const response = await axios.post('http://localhost:8080/api/auth/signin', payload)
+    const response = await axios.post('http://localhost:8080/rrhh-server/api/auth/signin', payload)
     dispatch(imaginator(response.data))
     localStorage.getItem("role")
     response.data.roles.forEach(element => {

@@ -16,7 +16,7 @@ const { TabPane } = Tabs;
 function Agregarlicencia(props) {
     const { dataIndex } = props.match.params
     const { getFieldDecorator } = props.form;
-    const postLicencia = () => axios.post(`http://localhost:8080/api/updatepersona/${dataIndex}/licencia`, payload)
+    const postLicencia = () => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${dataIndex}/licencia`, payload)
         .then(function (response) {
             console.log(response.data)
         })

@@ -10,7 +10,7 @@ function ConceptoConocimientosEspecialesClasificacionPremios(props) {
     const refContainer = useRef(null);
     const [data, setData] = useState([])
     const personaidd = props.personaid;
-    const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona/${personaidd}/conceptoConocimientosEspecialesClasificacionPremios/${refContainer.current}`, values)
+    const postData = (values) => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${personaidd}/conceptoConocimientosEspecialesClasificacionPremios/${refContainer.current}`, values)
         .then(function (response) {
             //console.log(response.data)
         })
@@ -19,7 +19,7 @@ function ConceptoConocimientosEspecialesClasificacionPremios(props) {
         })
     useLayoutEffect(() => {
         //console.log(personaidd);
-        const getData = () => axios.get(`http://localhost:8080/api/conceptoConocimientosEspecialesClasificacionPremios/${personaidd}`)
+        const getData = () => axios.get(`http://localhost:8080/rrhh-server/api/conceptoConocimientosEspecialesClasificacionPremios/${personaidd}`)
             .then(function (response) {
                 //idManyside = response.data.id
                 refContainer.current = response.data.id

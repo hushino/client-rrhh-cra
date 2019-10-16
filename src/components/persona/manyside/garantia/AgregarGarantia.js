@@ -7,7 +7,7 @@ import { Row, Form, Input, Button } from 'antd';
 function AgregarGarantia(props) {
     const { dataIndex } = props
     const { getFieldDecorator } = props.form;
-    const postEmbargo = () => axios.post(`http://localhost:8080/api/updatepersona/${dataIndex}/garantia`, payload)
+    const postEmbargo = () => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${dataIndex}/garantia`, payload)
         .then(function (response) {
             console.log(response.data)
         })
