@@ -6,8 +6,6 @@ const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 
 function AdminPanel() {
-
-
     return (
         <div>
             <Layout style={{ height: "calc(100vh - 55px)" }}>
