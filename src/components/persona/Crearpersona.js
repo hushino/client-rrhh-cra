@@ -157,10 +157,10 @@ function Crearpersona(props) {
         })
     }
     const onClickHandler = (data) => {
-        /*const data = new FormData()
-        for (var x = 0; x < this.state.selectedFile.length; x++) {
-            data.append('file', this.state.selectedFile[x])
-        }  */
+     
+        for (let x = 0; x < state.selectedFile.length; x++) {
+            data.append('file', state.selectedFile[x])
+        }  
         axios.post("http://localhost:3003/upload", data, {
             // receive two    parameter endpoint url ,form data
         }).then(res => { // then print response status
@@ -169,7 +169,7 @@ function Crearpersona(props) {
             //console.log(res)
 
             setTimeout(function () {
-                payload.foto = res.data[0].filename
+                payload.foto = res.data.filename
                 postData()
             }, 200);
             // postData()
