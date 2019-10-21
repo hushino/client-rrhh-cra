@@ -1,126 +1,125 @@
+/* eslint-disable react/no-direct-mutation-state */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, Component } from 'react';
 import axios from 'axios';
 import { Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 
-function Crearpersona(props) {
+class Crearpersona extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { selectedFile: null };
+    }
     //const [data, setData] = useState([])
-    const [imagestate, setImagestate] = useState({ loading: false })
+    /* const [imagestate, setImagestate] = useState({ loading: false })
     const [uploadImage, setUploadImage] = useState({})
     const [state, setState] = useState({})
 
-    let truedata = null;
+    let truedata = null; 
     const reader = new FileReader();
     //console.log(dataIndex);
-    const { getFieldDecorator } = props.form;
+    const { getFieldDecorator } = props.form;*/
 
-    const payload = {
+    payload = {
         nombre: "nombrefake",
         apellido: "nombrefake",
         foto: "nombrefakefoto",
         legajo: "nombrefake",
-        dni: "nombre",
+        dni: 23,
         /* fecha: "nombre", */
-        apodo: "nombre",
-        cuit: "nombre",
-        soltero: "nombre",
-        casado: "nombre",
-        conviviente: "nombre",
-        viudo: "nombre",
-        domicilio: "nombre",
-        lugar: "nombre",
-        calle: "nombre",
-        numero: "nombre",
-        telefonofijo: "nombre",
-        numerodecelular: "nombre",
-        oficioprofecion: "nombre",
-        niveldeestudios: "nombre",
-        gruposanguineo: "nombre",
-        donante: "nombre",
-        diabetes: "nombre",
-        hipertension: "nombre",
-        alergias: "nombre",
-        asma: "nombre",
-        otros: "nombre",
-        fechadeingreso: "nombre",
-        resolucion: "nombre",
-        categoria: "nombre",
-        item: "nombre",
-        planta: "nombre",
-        area: "nombre",
-        direccion: "nombre",
-        annos: "nombre",
-        meses: "nombre",
-        dias: "nombre",
-        realizocomputodeservicios: "nombre",
-        poseeconocimientoenmaquinasviales: "nombre",
-        familiaracargonombre2: "nombre",
-        familiaracargonombre: "nombre",
-        familiaracargodni2: "nombre",
-        familiaracargodni: "nombre",
+        apodo: "apodo",
+        cuit: 423,
+        soltero: "soltero",
+        casado: "casado",
+        conviviente: "conviviente",
+        viudo: "viudo",
+        domicilio: "domicilio",
+        lugar: "lugar",
+        calle: "calle",
+        numero: 432,
+        telefonofijo: 23,
+        numerodecelular: 23,
+        oficioprofecion: "oficioprofecion",
+        niveldeestudios: "niveldeestudios",
+        gruposanguineo: "gruposanguineo",
+        donante: "donante",
+        diabetes: "diabetes",
+        hipertension: "hipertension",
+        alergias: "alergias",
+        asma: "asma",
+        otros: "otros",
+        fechadeingreso: "fechadeingreso",
+        resolucion: "resolucion",
+        categoria: "categoria",
+        item: "item",
+        planta: "planta",
+        area: "area",
+        direccion: "direccion",
+        annos: 23,
+        meses: 43,
+        dias: 23,
+        realizocomputodeservicios: "realizocomputodeservicios",
+        poseeconocimientoenmaquinasviales: "poseeconocimientoenmaquinasviales",
+        familiaracargonombre2: "familiaracargonombre2",
+        familiaracargonombre: "familiaracargonombre",
+        familiaracargodni2: 34,
+        familiaracargodni: 43,
     };
 
-    function getBase64(img, callback) {
-
-        reader.addEventListener('load', () => callback(reader.result));
-        reader.readAsDataURL(img);
-    }
-
-    function beforeUpload(file) {
-        /* if (data.nombre === "" || data.nombre == undefined || data.nombre === null || data.nombre == NaN) {
-            message.error('Escribe un nombre primero !');
-        } */
-
-        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-        if (!isJpgOrPng) {
-            message.error('Solo puedes subir archivos JPG/PNG !');
-        }
-        const isLt2M = file.size / 1024 / 1024 < 2;
-        if (!isLt2M) {
-            message.error('La imagen debe pesar menos de 2MB!');
-        }
-        return isJpgOrPng && isLt2M;
-    }
-
-    let bodyFormData = new FormData();
+    /*  function getBase64(img, callback) {
+ 
+         reader.addEventListener('load', () => callback(reader.result));
+         reader.readAsDataURL(img);
+     }
+  */
+    /*   function beforeUpload(file) {
+          
+  
+          const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+          if (!isJpgOrPng) {
+              message.error('Solo puedes subir archivos JPG/PNG !');
+          }
+          const isLt2M = file.size / 1024 / 1024 < 2;
+          if (!isLt2M) {
+              message.error('La imagen debe pesar menos de 2MB!');
+          }
+          return isJpgOrPng && isLt2M;
+      }
+   */
+    bodyFormData = new FormData();
 
     //useEffect(() => { }, []);
-    const handleChange = info => {
-        /* if (payload.nombre === "" || isNaN(payload.nombre) || payload.nombre === null) {
-            message.error('Escribe un nombre primero !');
-            return;
-        } */
-        if (info.file.status === 'uploading') {
-            setImagestate({ loading: true });
-            return;
-        }
-        if (info.file.status === 'done') {
-            message.success(`${info.file.name} imagen cargada exitosamente`);
+    /* handleChange = info => {
+       
+       if (info.file.status === 'uploading') {
+           setImagestate({ loading: true });
+           return;
+       }
+       if (info.file.status === 'done') {
+           message.success(`${info.file.name} imagen cargada exitosamente`);
 
-            bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }));
-            setUploadImage(bodyFormData)
+           bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }));
+           setUploadImage(bodyFormData)
 
-            getBase64(info.file.originFileObj, imageUrl =>
-                setImagestate({
-                    imageUrl,
-                    loading: false,
-                }),
-            );
-        }
+           getBase64(info.file.originFileObj, imageUrl =>
+               setImagestate({
+                   imageUrl,
+                   loading: false,
+               }),
+           );
+       }
 
-    };
+   }; */
 
-    const uploadButton = (
+    /* const uploadButton = (
         <div >
             <Icon type={imagestate.loading ? 'loading' : 'plus'} />
             <div className="ant-upload-text">Subir</div>
-            {/*  <img src={`http://localhost:3003/upload/image/` + data.foto} alt="avatar" style={{ width: '100%' }} /> */}
         </div>
-    );
+    ); */
 
-    const postData = () => axios.post(`http://localhost:8080/rrhh-server/api/addPersona`, payload)
+    postData = () => axios.post(`http://localhost:8080/rrhh-server/api/addPersona`, this.payload)
         .then(function (response) {
             console.log(response.data)
         })
@@ -143,101 +142,98 @@ function Crearpersona(props) {
         }) */
 
 
-    const { imageUrl } = imagestate;
+    //const { imageUrl } = imagestate;
     /* let state = ({
         selectedFile: 0,
     }) */
-    const onChangeHandler3 = event => {
+    onChangeHandler3 = event => {
         console.log(event.target.files[0])
         //console.log(event.target.files[1])
         //console.log(event.target.files[2])
-        setState({
-            selectedFile: event.target.files[0],
+        this.state = {
+            selectedFile: event.target.files,
             //selectedFile: event.target.files[0]
-        })
+        }
     }
-    const onClickHandler = (data) => {
-     
-        for (let x = 0; x < state.selectedFile.length; x++) {
-            data.append('file', state.selectedFile[x])
-        }  
+    onClickHandler = (data) => {
+
+        /* for (let x = 0; x < this.state.selectedFile.length; x++) {
+            data.append('file', this.state.selectedFile[x])
+        } */
         axios.post("http://localhost:3003/upload", data, {
             // receive two    parameter endpoint url ,form data
         }).then(res => { // then print response status
             //console.log(res.statusText)
             console.log(res.data)
             //console.log(res)
-
-            setTimeout(function () {
-                payload.foto = res.data.filename
-                postData()
-            }, 200);
+            this.payload.foto = res.data[0].filename
+            this.postData()
             // postData()
 
         })
     }
 
-    const handleSubmit = (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
-        props.form.validateFields((err, values) => {
+        this.props.form.validateFields((err, values) => {
             if (!err) {
                 const data = new FormData()
                 //state.selectedFile.length = 2
-                for (let x = 0; x < state.selectedFile.length; x++) {
-                    data.append('file', state.selectedFile[x])
+                for (let x = 0; x < this.state.selectedFile.length; x++) {
+                    data.append('file', this.state.selectedFile[x])
                 }
-                payload.apellido = values.apellido
-                payload.nombre = values.nombre
-                payload.dni = values.dni
+                this.payload.apellido = values.apellido
+                this.payload.nombre = values.nombre
+                this.payload.dni = values.dni
 
-                payload.legajo = values.legajo
+                this.payload.legajo = values.legajo
                 //payload.fecha = values.fecha.toString()
 
-                payload.apodo = values.apodo
-                payload.cuit = values.cuit
-                payload.soltero = values.soltero
-                payload.casado = values.casado
-                payload.conviviente = values.conviviente
-                payload.viudo = values.viudo
-                payload.domicilio = values.domicilio
-                payload.lugar = values.lugar
-                payload.calle = values.calle
-                payload.numero = values.numero
-                payload.telefonofijo = values.telefonofijo
-                payload.numerodecelular = values.numerodecelular
-                payload.oficioprofecion = values.oficioprofecion
-                payload.niveldeestudios = values.niveldeestudios
-                payload.gruposanguineo = values.gruposanguineo
-                payload.donante = values.donante
-                payload.diabetes = values.diabetes
-                payload.hipertension = values.hipertension
-                payload.alergias = values.alergias
-                payload.asma = values.asma
-                payload.otros = values.otros
-                payload.fechadeingreso = values.fechadeingreso
-                payload.resolucion = values.resolucion
-                payload.categoria = values.categoria
-                payload.item = values.item
-                payload.planta = values.planta
-                payload.area = values.area
-                payload.direccion = values.direccion
-                payload.annos = values.annos
-                payload.meses = values.meses
-                payload.dias = values.dias
-                payload.realizocomputodeservicios = values.realizocomputodeservicios
-                payload.poseeconocimientoenmaquinasviales = values.poseeconocimientoenmaquinasviales
+                this.payload.apodo = values.apodo
+                this.payload.cuit = values.cuit
+                this.payload.soltero = values.soltero
+                this.payload.casado = values.casado
+                this.payload.conviviente = values.conviviente
+                this.payload.viudo = values.viudo
+                this.payload.domicilio = values.domicilio
+                this.payload.lugar = values.lugar
+                this.payload.calle = values.calle
+                this.payload.numero = values.numero
+                this.payload.telefonofijo = values.telefonofijo
+                this.payload.numerodecelular = values.numerodecelular
+                this.payload.oficioprofecion = values.oficioprofecion
+                this.payload.niveldeestudios = values.niveldeestudios
+                this.payload.gruposanguineo = values.gruposanguineo
+                this.payload.donante = values.donante
+                this.payload.diabetes = values.diabetes
+                this.payload.hipertension = values.hipertension
+                this.payload.alergias = values.alergias
+                this.payload.asma = values.asma
+                this.payload.otros = values.otros
+                this.payload.fechadeingreso = values.fechadeingreso
+                this.payload.resolucion = values.resolucion
+                this.payload.categoria = values.categoria
+                this.payload.item = values.item
+                this.payload.planta = values.planta
+                this.payload.area = values.area
+                this.payload.direccion = values.direccion
+                this.payload.annos = values.annos
+                this.meses = values.meses
+                this.payload.dias = values.dias
+                this.realizocomputodeservicios = values.realizocomputodeservicios
+                this.payload.poseeconocimientoenmaquinasviales = values.poseeconocimientoenmaquinasviales
 
-                payload.casoemergenciacelular = values.casoemergenciacelular
-                payload.casoemergenciacelular2 = values.casoemergenciacelular2
-                payload.casoemergenciafijo2 = values.casoemergenciafijo2
-                payload.casoemergenciafijo = values.casoemergenciafijo
-                payload.casoemergencianombre = values.casoemergencianombre
-                payload.casoemergencianombre2 = values.casoemergencianombre2
+                this.casoemergenciacelular = values.casoemergenciacelular
+                this.casoemergenciacelular2 = values.casoemergenciacelular2
+                this.casoemergenciafijo2 = values.casoemergenciafijo2
+                this.casoemergenciafijo = values.casoemergenciafijo
+                this.casoemergencianombre = values.casoemergencianombre
+                this.casoemergencianombre2 = values.casoemergencianombre2
 
-                payload.familiaracargodni = values.familiaracargodni
-                payload.familiaracargodni2 = values.familiaracargodni2
-                payload.familiaracargonombre = values.familiaracargonombre
-                payload.familiaracargonombre2 = values.familiaracargonombre2
+                this.familiaracargodni = values.familiaracargodni
+                this.familiaracargodni2 = values.familiaracargodni2
+                this.familiaracargonombre = values.familiaracargonombre
+                this.familiaracargonombre2 = values.familiaracargonombre2
 
 
                 /*  for (let value of uploadImage.getAll('image')) {
@@ -245,29 +241,30 @@ function Crearpersona(props) {
                      bodyFormData.append('image', new Blob([value], { type: 'image/jpg' }), payload.nombre + payload.dni + payload.apellido + payload.legajo);
                      setUploadImage(bodyFormData)
                  } */
-                
-                
-                setTimeout(function () { onClickHandler(data) }, 200);
+
+                this.onClickHandler(data)
+                // setTimeout(function () { this.onClickHandler(data) }, 100);
                 // onClickHandler(data)
                 //  postImage(data)
             }
         });
     };
 
-
-    return (
-        <div>
+    render() {
+        const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
+        return (<div>
             <Layout>
                 <Content style={{ padding: '0 50px' }}>
                     <Row type="flex" gutter={16}>
                         <Col>
-                            <Form onSubmit={handleSubmit} className="update-form" >
+                            <Form onSubmit={this.handleSubmit} className="update-form" >
 
                                 <Form.Item label="Nombre" >
                                     {getFieldDecorator('nombre', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
+                                            type="text"
                                             name="nombre"
                                             placeholder="nombre"
                                         />,
@@ -275,7 +272,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Apellido">
                                     {getFieldDecorator('apellido', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -285,7 +282,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Legajo">
                                     {getFieldDecorator('legajo', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -295,7 +292,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="DNI">
                                     {getFieldDecorator('dni', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -305,7 +302,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <div className="form-group files">
                                     <label>Subir foto</label>
-                                    <input onChange={onChangeHandler3.bind(this)}/* onChange={(evt) =>
+                                    <input onChange={this.onChangeHandler3}/* onChange={(evt) =>
                                        
                                             onChangeHandler3(evt)
                                         
@@ -351,7 +348,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Cuit">
                                     {getFieldDecorator('cuit', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -791,7 +788,8 @@ function Crearpersona(props) {
                 <Footer style={{ textAlign: 'center' }}>Red Design ©2019 Created by Hushino</Footer>
             </Layout>
         </div>
-    )
+        );
+    }
 }
 const WrappedCrearpersonaForm = Form.create({ name: 'crearpersona' })(Crearpersona);
 export default WrappedCrearpersonaForm
