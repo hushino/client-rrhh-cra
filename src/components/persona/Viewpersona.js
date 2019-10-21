@@ -201,6 +201,7 @@ function Viewpersona(props) {
                             </div>
                             <br />
                             <br />
+                            <Avatar src={`http://localhost:3003/uploads/` + data.foto} />
                             <Descriptions bordered title="Informacion de una persona" size={state.size}>
                                 <Descriptions.Item label="Nombre">{data.nombre}</Descriptions.Item>
                                 <Descriptions.Item label="Apellido">{data.apellido}</Descriptions.Item>

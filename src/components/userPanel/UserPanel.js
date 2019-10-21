@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import store from '../../redux/store';
-import { Table, Input, Button, Icon } from 'antd';
+import { Table, Input, Button, Icon, Avatar } from 'antd';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Highlighter from 'react-highlight-words';
 import AdminPanel from '../adminPanel/AdminPanel';
@@ -168,7 +168,9 @@ function UserPanel() {
                 highlightStyle={{ /* backgroundColor: '#ffc069', */ padding: 0 }}
                 searchWords={[state.searchText]}
                 autoEscape
-                textToHighlight={text.toString()}
+                textToHighlight={
+                    text.toString()
+                }
             />
         ),
     });
