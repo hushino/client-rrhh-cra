@@ -9,6 +9,8 @@ function Crearpersona(props) {
     //const [data, setData] = useState([])
     const [imagestate, setImagestate] = useState({ loading: false })
     const [uploadImage, setUploadImage] = useState({})
+    const [state, setState] = useState({})
+
     let truedata = null;
     const reader = new FileReader();
     //console.log(dataIndex);
@@ -126,7 +128,7 @@ function Crearpersona(props) {
             console.log(error);
         })
 
-    const postImage = (bodyFormData) => axios.post("http://localhost:3003/upload", bodyFormData)
+    /* const postImage = (data) => axios.post("http://localhost:3003/upload", data)
         .then(function (response) {
             //console.log(response.data.filename)
             if (response.data.filename !== undefined) {
@@ -138,16 +140,52 @@ function Crearpersona(props) {
         })
         .catch(function (response) {
             console.log(response);
-        })
+        }) */
 
 
     const { imageUrl } = imagestate;
+    /* let state = ({
+        selectedFile: 0,
+    }) */
+    const onChangeHandler3 = event => {
+        console.log(event.target.files[0])
+        //console.log(event.target.files[1])
+        //console.log(event.target.files[2])
+        setState({
+            selectedFile: event.target.files[0],
+            //selectedFile: event.target.files[0]
+        })
+    }
+    const onClickHandler = (data) => {
+        /*const data = new FormData()
+        for (var x = 0; x < this.state.selectedFile.length; x++) {
+            data.append('file', this.state.selectedFile[x])
+        }  */
+        axios.post("http://localhost:3003/upload", data, {
+            // receive two    parameter endpoint url ,form data
+        }).then(res => { // then print response status
+            //console.log(res.statusText)
+            console.log(res.data)
+            //console.log(res)
 
+            setTimeout(function () {
+                payload.foto = res.data[0].filename
+                postData()
+            }, 200);
+            // postData()
+
+        })
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         props.form.validateFields((err, values) => {
             if (!err) {
+                const data = new FormData()
+                //state.selectedFile.length = 2
+                for (let x = 0; x < state.selectedFile.length; x++) {
+                    data.append('file', state.selectedFile[x])
+                }
                 payload.apellido = values.apellido
                 payload.nombre = values.nombre
                 payload.dni = values.dni
@@ -202,12 +240,16 @@ function Crearpersona(props) {
                 payload.familiaracargonombre2 = values.familiaracargonombre2
 
 
-                for (let value of uploadImage.getAll('image')) {
-                    //console.log('asd ' + value);
-                    bodyFormData.append('image', new Blob([value], { type: 'image/jpg' }), payload.nombre + payload.dni + payload.apellido + payload.legajo);
-                    setUploadImage(bodyFormData)
-                }
-                postImage(bodyFormData)
+                /*  for (let value of uploadImage.getAll('image')) {
+                     //console.log('asd ' + value);
+                     bodyFormData.append('image', new Blob([value], { type: 'image/jpg' }), payload.nombre + payload.dni + payload.apellido + payload.legajo);
+                     setUploadImage(bodyFormData)
+                 } */
+                
+                
+                setTimeout(function () { onClickHandler(data) }, 200);
+                // onClickHandler(data)
+                //  postImage(data)
             }
         });
     };
@@ -261,8 +303,15 @@ function Crearpersona(props) {
                                         />,
                                     )}
                                 </Form.Item>
-
-                                <Form.Item label="Foto" >
+                                <div className="form-group files">
+                                    <label>Subir foto</label>
+                                    <input onChange={onChangeHandler3.bind(this)}/* onChange={(evt) =>
+                                       
+                                            onChangeHandler3(evt)
+                                        
+                                    } */ multiple type="file" id="file-input-id" className="form-control" />
+                                </div>
+                                {/*  <Form.Item label="Foto" >
                                     {getFieldDecorator('foto', {
                                         rules: [{ required: true, message: 'Suba un archivo .png!' }],
                                     })(
@@ -278,7 +327,7 @@ function Crearpersona(props) {
                                             {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
                                         </Upload>,
                                     )}
-                                </Form.Item>
+                                </Form.Item> */}
                                 {/*  <Form.Item label="Fecha">
                                     {getFieldDecorator('fecha', {
                                         rules: [{ required: true, message: 'Ingrese un dato!' }],
@@ -292,7 +341,7 @@ function Crearpersona(props) {
  */}
                                 <Form.Item label="Apodo">
                                     {getFieldDecorator('apodo', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -313,7 +362,7 @@ function Crearpersona(props) {
                                 <h3>Estado civil</h3>
                                 <Form.Item label="Soltero">
                                     {getFieldDecorator('soltero', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -323,7 +372,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Casado">
                                     {getFieldDecorator('casado', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -333,7 +382,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Conviviente">
                                     {getFieldDecorator('conviviente', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -343,7 +392,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Viudo">
                                     {getFieldDecorator('viudo', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -354,7 +403,7 @@ function Crearpersona(props) {
                                 <h3>Docimicilio Real</h3>
                                 <Form.Item label="Domicilio">
                                     {getFieldDecorator('domicilio', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -364,7 +413,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Lugar">
                                     {getFieldDecorator('lugar', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -374,7 +423,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Calle">
                                     {getFieldDecorator('calle', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -384,7 +433,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Numero de calle">
                                     {getFieldDecorator('numero', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -394,7 +443,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Telefono fijo">
                                     {getFieldDecorator('telefonofijo', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -404,7 +453,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Numero de celular">
                                     {getFieldDecorator('numerodecelular', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -412,19 +461,19 @@ function Crearpersona(props) {
                                         />,
                                     )}
                                 </Form.Item>
-                                <Form.Item label="Oficio/Profecion">
+                                <Form.Item label="Oficio/Profesion">
                                     {getFieldDecorator('oficioprofecion', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
-                                            placeholder="oficio/profecion"
+                                            placeholder="oficio/profesion"
                                         />,
                                     )}
                                 </Form.Item>
                                 <Form.Item label="Nivel de estudios">
                                     {getFieldDecorator('niveldeestudios', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -434,7 +483,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Grupo sanguineo">
                                     {getFieldDecorator('gruposanguineo', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -444,7 +493,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Donante">
                                     {getFieldDecorator('donante', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -454,7 +503,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Diabetes">
                                     {getFieldDecorator('diabetes', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -464,7 +513,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Hipertension">
                                     {getFieldDecorator('hipertension', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -474,7 +523,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Alergias">
                                     {getFieldDecorator('alergias', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -484,7 +533,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Asma">
                                     {getFieldDecorator('asma', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -494,7 +543,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Otros">
                                     {getFieldDecorator('otros', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -504,7 +553,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Fecha de Ingreso">
                                     {getFieldDecorator('fechadeingreso', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="date"
@@ -514,7 +563,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Resolucion">
                                     {getFieldDecorator('resolucion', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -524,7 +573,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Categoria">
                                     {getFieldDecorator('categoria', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -534,7 +583,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Item">
                                     {getFieldDecorator('item', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -544,7 +593,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Planta">
                                     {getFieldDecorator('planta', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -555,7 +604,7 @@ function Crearpersona(props) {
                                 <h3>Presta servicio actualmente en:</h3>
                                 <Form.Item label="Area">
                                     {getFieldDecorator('area', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -565,7 +614,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Direccion">
                                     {getFieldDecorator('direccion', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -576,7 +625,7 @@ function Crearpersona(props) {
                                 <h3>Presta servicio en otras institucion publica o privada</h3>
                                 <Form.Item label="Años">
                                     {getFieldDecorator('annos', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -586,7 +635,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Meses">
                                     {getFieldDecorator('meses', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -596,7 +645,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Dias">
                                     {getFieldDecorator('dias', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -606,7 +655,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Realizo computo de servicios">
                                     {getFieldDecorator('realizocomputodeservicios', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -616,7 +665,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Posee conocimientos en maquinas viales">
                                     {getFieldDecorator('poseeconocimientoenmaquinasviales', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -628,7 +677,7 @@ function Crearpersona(props) {
                                 <h1>Contactos en caso de emergencia</h1>
                                 <Form.Item label="En caso de emergencia celular">
                                     {getFieldDecorator('casoemergenciacelular', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -638,7 +687,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="En caso de emergencia celular">
                                     {getFieldDecorator('casoemergenciacelular2', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -648,7 +697,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="En caso de emergencia telefono fijo">
                                     {getFieldDecorator('casoemergenciafijo', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -658,7 +707,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="En caso de emergencia telefono fijo 2">
                                     {getFieldDecorator('casoemergenciafijo2', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -668,7 +717,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="En caso emergencia nombre">
                                     {getFieldDecorator('casoemergencianombre', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -678,7 +727,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="En caso emergencia nombre 2">
                                     {getFieldDecorator('casoemergencianombre2', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -690,7 +739,7 @@ function Crearpersona(props) {
                                 <h3>Familiares a cargo:</h3>
                                 <Form.Item label="Familiar acargo nombre">
                                     {getFieldDecorator('familiaracargonombre', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -700,7 +749,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Familiar acargo nombre 2">
                                     {getFieldDecorator('familiaracargonombre2', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -710,7 +759,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Familiar acargo DNI">
                                     {getFieldDecorator('familiaracargodni', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -720,7 +769,7 @@ function Crearpersona(props) {
                                 </Form.Item>
                                 <Form.Item label="Familiar acargo DNI 2">
                                     {getFieldDecorator('familiaracargodni2', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
