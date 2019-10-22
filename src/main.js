@@ -79,7 +79,6 @@ function createWindow() {
 
     autoUpdater.checkForUpdatesAndNotify()
 
-
     appExpress.use(express.static(path.join(__dirname, '../build')));
 
     appExpress.get('/*', function (req, res) {
