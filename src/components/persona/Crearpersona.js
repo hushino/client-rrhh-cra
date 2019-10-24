@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useLayoutEffect, Component } from 'react';
 import axios from 'axios';
 import * as Scroll from 'react-scroll';
-import { Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
+import { Card,Alert, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 var scroll = Scroll.animateScroll;
@@ -131,6 +131,10 @@ class Crearpersona extends Component {
     postData = () => axios.post(`http://localhost:8080/rrhh-server/api/addPersona`, this.payload)
         .then(function (response) {
             console.log(response.data)
+            const info = () => {
+                message.info('Exito al cargar');
+              };
+              info()
         })
         .catch(function (error) {
             console.log(error);
@@ -262,15 +266,21 @@ class Crearpersona extends Component {
             }
         });
     };
-
+      success = () => {
+        message
+          .loading('Espere...')
+      };
+      
+      
     render() {
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
         return (<div>
             <Layout>
                 <Content style={{ padding: '0 50px' }}>
                     <Row type="flex" gutter={16}>
+                    {/*<Alert message="Success Text" type="success" /> */}
                         <Col>
-                            <Form onSubmit={this.handleSubmit} className="update-form" >
+                            <Form onSubmit={(event) => this.handleSubmit(event)} className="update-form" >
 
                                 <Form.Item label="Nombre" >
                                     {getFieldDecorator('nombre', {
@@ -790,7 +800,7 @@ class Crearpersona extends Component {
 
                                 <Form.Item>
                                     <Row></Row>
-                                    <Button type="primary" htmlType="submit" className="update-form-button" >
+                                    <Button onClick={this.success} type="primary" htmlType="submit" className="update-form-button" >
                                         Enviar
                                     </Button>
                                 </Form.Item>
