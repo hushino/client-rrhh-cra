@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
+import * as Scroll from 'react-scroll';
 import { Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
@@ -10,7 +11,11 @@ function Crearpersona(props) {
     const [imagestate, setImagestate] = useState({ loading: false })
     const [uploadImage, setUploadImage] = useState({})
     const [state, setState] = useState({})
+    var scroll = Scroll.animateScroll;
 
+    const scrollToTop = () => {
+        scroll.scrollToTop();
+      }
     let truedata = null;
     const reader = new FileReader();
     //console.log(dataIndex);
@@ -785,7 +790,9 @@ function Crearpersona(props) {
                                     </Button>
                                 </Form.Item>
                             </Form>
+                            <Button onClick={scrollToTop}>Hacia el cielo!</Button>
                         </Col>
+                        <br/>
                     </Row>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Red Design ©2019 Created by Hushino</Footer>
