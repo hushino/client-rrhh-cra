@@ -179,7 +179,7 @@ class Crearpersona extends Component {
             //console.log(res.statusText)
             console.log(res.data)
             //console.log(res)
-            if (res.data[0] && res.data[0] != undefined  && res.data[0] < 1) {
+            if (/* res.data[0] != undefined   && */res.data[0] < 1) {
                 this.payload.foto = res.data[0].filename
             }
             this.postData()
@@ -194,7 +194,7 @@ class Crearpersona extends Component {
             if (!err) {
                 const data = new FormData()
                 //state.selectedFile.length = 2
-                if (this.state.selectedFile != null && this.state.selectedFile.length < 1) {
+                if (this.state.selectedFile != null /* && this.state.selectedFile.length < 1 */) {
                     for (let x = 0; x < this.state.selectedFile.length; x++) {
                         data.append('file', this.state.selectedFile[x])
                     }
