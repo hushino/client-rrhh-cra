@@ -16,7 +16,7 @@ function Login(props) {
   const isAnyRole = localStorage.getItem("role") === 'USER' || localStorage.getItem("role") === "ADMIN";
   //console.log(props);
   const payload = {
-    usernameOrEmail: "user@gmail.comm",
+    usernameOrEmail: "user@gmail.com",
     password: "1233"
   };
 

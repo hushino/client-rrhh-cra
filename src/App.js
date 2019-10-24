@@ -40,7 +40,6 @@ function App() {
       reduxsub()
       isSubscribed = false
     }
-
   }, []);
  
   return (
@@ -66,7 +65,8 @@ function App() {
         </Col>
       </Row>
 
-      <Particles /* params={{
+      <Particles
+      /* params={{
         "particles": {
           "line_linked": {
             "color": "#000"
