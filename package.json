@@ -66,8 +66,8 @@
     ]
   },
   "devDependencies": {
-    "electron": "^6.0.12",
-    "electron-builder": "^21.2.0"
+    "electron": "^7.0.0",
+    "electron-builder": "^22.1.0"
   },
   "build": {
     "appId": "rrhh.redmagic",

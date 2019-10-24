@@ -274,7 +274,7 @@ class Crearpersona extends Component {
 
                                 <Form.Item label="Nombre" >
                                     {getFieldDecorator('nombre', {
-                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -285,7 +285,7 @@ class Crearpersona extends Component {
                                 </Form.Item>
                                 <Form.Item label="Apellido">
                                     {getFieldDecorator('apellido', {
-                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
@@ -295,7 +295,7 @@ class Crearpersona extends Component {
                                 </Form.Item>
                                 <Form.Item label="Legajo">
                                     {getFieldDecorator('legajo', {
-                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
@@ -305,7 +305,7 @@ class Crearpersona extends Component {
                                 </Form.Item>
                                 <Form.Item label="DNI">
                                     {getFieldDecorator('dni', {
-                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="number"
