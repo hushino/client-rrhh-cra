@@ -6,26 +6,26 @@ import * as Scroll from 'react-scroll';
 import { Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
+var scroll = Scroll.animateScroll;
 
 class Crearpersona extends Component {
     constructor(props) {
         super(props);
         this.state = { selectedFile: null };
     }
+
+
+    scrollToTop = () => {
+        scroll.scrollToTop();
+    }
     //const [data, setData] = useState([])
     /* const [imagestate, setImagestate] = useState({ loading: false })
     const [uploadImage, setUploadImage] = useState({})
     const [state, setState] = useState({})
-    var scroll = Scroll.animateScroll;
-
-<<<<<<< HEAD
-    const scrollToTop = () => {
-        scroll.scrollToTop();
-      }
+    
+     
     let truedata = null;
-=======
     let truedata = null; 
->>>>>>> ae7507e2ea89c97c190627650c18ae68b2b20270
     const reader = new FileReader();
     //console.log(dataIndex);
     const { getFieldDecorator } = props.form;*/
@@ -77,14 +77,14 @@ class Crearpersona extends Component {
     };
 
     /*  function getBase64(img, callback) {
- 
+     
          reader.addEventListener('load', () => callback(reader.result));
          reader.readAsDataURL(img);
      }
-  */
+    */
     /*   function beforeUpload(file) {
           
-  
+     
           const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
           if (!isJpgOrPng) {
               message.error('Solo puedes subir archivos JPG/PNG !');
@@ -95,7 +95,7 @@ class Crearpersona extends Component {
           }
           return isJpgOrPng && isLt2M;
       }
-   */
+    */
     bodyFormData = new FormData();
 
     //useEffect(() => { }, []);
@@ -107,10 +107,10 @@ class Crearpersona extends Component {
        }
        if (info.file.status === 'done') {
            message.success(`${info.file.name} imagen cargada exitosamente`);
-
+    
            bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }));
            setUploadImage(bodyFormData)
-
+    
            getBase64(info.file.originFileObj, imageUrl =>
                setImagestate({
                    imageUrl,
@@ -118,8 +118,8 @@ class Crearpersona extends Component {
                }),
            );
        }
-
-   }; */
+    
+    }; */
 
     /* const uploadButton = (
         <div >
@@ -791,9 +791,9 @@ class Crearpersona extends Component {
                                     </Button>
                                 </Form.Item>
                             </Form>
-                            <Button onClick={scrollToTop}>Hacia el cielo!</Button>
+                            <Button onClick={this.scrollToTop}>Hacia el cielo!</Button>
                         </Col>
-                        <br/>
+                        <br />
                     </Row>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Red Design ©2019 Created by Hushino</Footer>
