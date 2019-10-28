@@ -15,21 +15,9 @@ class Crearpersona extends Component {
         //this.handleSubmit = this.handleSubmit.bind
     }
 
-
     scrollToTop = () => {
         scroll.scrollToTop();
     }
-    //const [data, setData] = useState([])
-    /* const [imagestate, setImagestate] = useState({ loading: false })
-    const [uploadImage, setUploadImage] = useState({})
-    const [state, setState] = useState({})
-    
-     
-    let truedata = null;
-    let truedata = null; 
-    const reader = new FileReader();
-    //console.log(dataIndex);
-    const { getFieldDecorator } = props.form;*/
 
     payload = {
         nombre: "nombrefake",
@@ -37,7 +25,6 @@ class Crearpersona extends Component {
         foto: "nombrefakefoto",
         legajo: "nombrefake",
         dni: 23,
-        /* fecha: "nombre", */
         apodo: "apodo",
         cuit: 423,
         soltero: "soltero",
@@ -77,57 +64,6 @@ class Crearpersona extends Component {
         familiaracargodni: 43,
     };
 
-    /*  function getBase64(img, callback) {
-     
-         reader.addEventListener('load', () => callback(reader.result));
-         reader.readAsDataURL(img);
-     }
-    */
-    /*   function beforeUpload(file) {
-          
-     
-          const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-          if (!isJpgOrPng) {
-              message.error('Solo puedes subir archivos JPG/PNG !');
-          }
-          const isLt2M = file.size / 1024 / 1024 < 2;
-          if (!isLt2M) {
-              message.error('La imagen debe pesar menos de 2MB!');
-          }
-          return isJpgOrPng && isLt2M;
-      }
-    */
-    bodyFormData = new FormData();
-
-    //useEffect(() => { }, []);
-    /* handleChange = info => {
-       
-       if (info.file.status === 'uploading') {
-           setImagestate({ loading: true });
-           return;
-       }
-       if (info.file.status === 'done') {
-           message.success(`${info.file.name} imagen cargada exitosamente`);
-    
-           bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }));
-           setUploadImage(bodyFormData)
-    
-           getBase64(info.file.originFileObj, imageUrl =>
-               setImagestate({
-                   imageUrl,
-                   loading: false,
-               }),
-           );
-       }
-    
-    }; */
-
-    /* const uploadButton = (
-        <div >
-            <Icon type={imagestate.loading ? 'loading' : 'plus'} />
-            <div className="ant-upload-text">Subir</div>
-        </div>
-    ); */
 
     postData = () => axios.post(`http://localhost:8080/rrhh-server/api/addPersona`, this.payload)
         .then(function (response) {
@@ -146,41 +82,14 @@ class Crearpersona extends Component {
             info2()
             scroll.scrollToTop();
             setTimeout(function () { window.location.reload(); }, 1000);
-            //console.log(error);
         })
 
-    /* const postImage = (data) => axios.post("http://localhost:3003/upload", data)
-        .then(function (response) {
-            //console.log(response.data.filename)
-            if (response.data.filename !== undefined) {
-                //data.foto = response.data.filename
-                payload.foto = response.data.filename
-            }
-            //payload.foto = response.data.filename
-            postData()
-        })
-        .catch(function (response) {
-            console.log(response);
-        }) */
 
-
-    //const { imageUrl } = imagestate;
-    /* let state = ({
-        selectedFile: 0,
-    }) */
     onChangeHandler3 = event => {
-        //console.log(event.target.files[0])
-        //console.log(event.target.files[1])
-        //console.log(event.target.files[2])
         let file = event.target.files;
-
         this.setState(() => ({
             selectedFile: file
         }));
-        /*    
-         this.state = {
-             selectedFile: event.target.files,
-         } */
     }
     onClickHandler = (data) => {
 
@@ -195,8 +104,6 @@ class Crearpersona extends Component {
             if (/* res.data[0] !== undefined && */ res.data.length >= 1) {
                 this.payload.foto = res.data[0].filename
             }
-            // this.payload.foto = res.data[0].filename
-
             this.postData()
         })
     }
@@ -265,17 +172,8 @@ class Crearpersona extends Component {
                 this.familiaracargonombre = values.familiaracargonombre
                 this.familiaracargonombre2 = values.familiaracargonombre2
 
-
-                /*  for (let value of uploadImage.getAll('image')) {
-                     //console.log('asd ' + value);
-                     bodyFormData.append('image', new Blob([value], { type: 'image/jpg' }), payload.nombre + payload.dni + payload.apellido + payload.legajo);
-                     setUploadImage(bodyFormData)
-                 } */
-
                 this.onClickHandler(data)
-                // setTimeout(function () { this.onClickHandler(data) }, 100);
-                // onClickHandler(data)
-                //  postImage(data)
+                
             }
         });
     };
@@ -338,40 +236,10 @@ class Crearpersona extends Component {
                                 </Form.Item>
                                 <div className="form-group files">
                                     <label>Subir foto</label>
-                                    <input onChange={this.onChangeHandler3}/* onChange={(evt) =>
-                                       
-                                            onChangeHandler3(evt)
-                                        
-                                    } */ multiple type="file" id="file-input-id" className="form-control" />
+                                    <input onChange={this.onChangeHandler3}
+                                        multiple type="file" id="file-input-id"
+                                        className="form-control" />
                                 </div>
-                                {/*  <Form.Item label="Foto" >
-                                    {getFieldDecorator('foto', {
-                                        rules: [{ required: true, message: 'Suba un archivo .png!' }],
-                                    })(
-                                        <Upload
-                                            name="avatar"
-                                            listType="picture-card"
-                                            className="avatar-uploader"
-                                            showUploadList={false}
-                                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                                            beforeUpload={beforeUpload}
-                                            onChange={handleChange}
-                                        >
-                                            {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
-                                        </Upload>,
-                                    )}
-                                </Form.Item> */}
-                                {/*  <Form.Item label="Fecha">
-                                    {getFieldDecorator('fecha', {
-                                        rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                    })(
-                                        <Input
-                                            type="date"
-                                            placeholder="{data.fecha}"
-                                        />,
-                                    )}
-                                </Form.Item>
- */}
                                 <Form.Item label="Apodo">
                                     {getFieldDecorator('apodo', {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],

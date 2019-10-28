@@ -14,7 +14,7 @@ const { Header, Footer, Sider, Content } = Layout;
 const { TabPane } = Tabs;
 
 function Editarpersona(props) {
-
+    const [state, setState] = useState({ selectedFile: null })
     const [data, setData] = useState([])
 
     const [uploadImage, setUploadImage] = useState({})
@@ -25,26 +25,6 @@ function Editarpersona(props) {
 
     let truedata = null;
 
-    const reader = new FileReader();
-    //console.log(dataIndex);
-    function getBase64(img, callback) {
-        reader.addEventListener('load', () => callback(reader.result));
-        reader.readAsDataURL(img);
-    }
-
-    function beforeUpload(file) {
-        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-        if (!isJpgOrPng) {
-            message.error('Solo puedes subir archivos JPG/PNG !');
-        }
-        const isLt2M = file.size / 1024 / 1024 < 2;
-        if (!isLt2M) {
-            message.error('La imagen debe pesar menos de 2MB!');
-        }
-
-        return isJpgOrPng && isLt2M;
-    }
-
     const postData = (values) => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${dataIndex}`, values)
         .then(function (response) {
             console.log(response.data)
@@ -52,22 +32,6 @@ function Editarpersona(props) {
         .catch(function (error) {
             console.log(error);
         })
-
-    const postImage = (bodyFormData) => axios.post("http://localhost:3003/upload", bodyFormData)
-        .then(function (response) {
-            //console.log(response.data.filename)
-            if (response.data.filename !== undefined) {
-                data.foto = response.data.filename
-            }
-            data.foto = response.data.filename
-            postData(truedata)
-        })
-        .catch(function (response) {
-            console.log(response);
-        })/* .then(() => {
-            postData(data)
-        }) */
-
 
     useLayoutEffect(() => {
         const getData = () => axios.get(`http://localhost:8080/rrhh-server/api/viewpersona/${dataIndex}`)
@@ -137,53 +101,47 @@ function Editarpersona(props) {
 
     }, [data]);
 
+    const onChangeHandler3 = event => {
+        let file = event.target.files;
+        setState(() => ({
+            selectedFile: file
+        }));
+    }
+    const onClickHandler = (data) => {
 
+        /* for (let x = 0; x < this.state.selectedFile.length; x++) {
+            data.append('file', this.state.selectedFile[x])
+        } */
+        axios.post("http://localhost:3003/upload", data, {
+            // receive two    parameter endpoint url ,form data
+        }).then(res => { // then print response status
+            // console.log(res.data)
+            if (/* res.data[0] !== undefined && */ res.data.length >= 1) {
+                data.foto = res.data[0].filename
+            }
+            postData()
+        })
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         props.form.validateFields((err, values) => {
             if (!err) {
-                //console.log(values.nombre)//ok
+                const data = new FormData()
+                //state.selectedFile.length = 2
+                if (state.selectedFile != null /* && this.state.selectedFile.length < 1 */) {
+                    for (let x = 0; x < this.state.selectedFile.length; x++) {
+                        data.append('file', this.state.selectedFile[x])
+                    }
+                }
+
                 truedata = values
                 setData(values)
-                //console.log(uploadImage)
-                postImage(uploadImage)
+
+                //postImage(uploadImage)
+                onClickHandler(data)
             }
         });
     };
-
-    const handleChange = info => {
-        if (info.file.status === 'uploading') {
-            setImagestate({ loading: true });
-            return;
-        }
-        if (info.file.status === 'done') {
-            // Get this url from response in real world.
-            message.success(`${info.file.name} imagen cargada exitosamente`);
-
-            const bodyFormData = new FormData();
-            bodyFormData.append('image', new Blob([info.file.originFileObj], { type: 'image/jpg' }), data.nombre + data.dni + data.apellido + data.legajo);
-
-            //postImage(info.file.originFileObj)
-            setUploadImage(bodyFormData)
-
-            getBase64(info.file.originFileObj, imageUrl =>
-                setImagestate({
-                    imageUrl,
-                    loading: false,
-                }),
-            );
-        }
-    };
-
-    const uploadButton = (
-        < div >
-            <Icon type={imagestate.loading ? 'loading' : 'plus'} />
-            <div className="ant-upload-text">Remplazar</div>
-            <img src={`http://localhost:3003/upload/image/${data.foto}`} alt="avatar" style={{ width: '100%' }} />
-        </div >
-    );
-    const { imageUrl } = imagestate;
-
     const { getFieldDecorator } = props.form;
 
     return (
@@ -242,34 +200,13 @@ function Editarpersona(props) {
                                             )}
                                         </Form.Item>
 
-                                        <Form.Item label="Foto" >
-                                            {getFieldDecorator('foto', {
-                                                rules: [{ required: true, message: 'Suba un archivo .png!' }],
-                                            })(
-                                                <Upload
-                                                    name="avatar"
-                                                    listType="picture-card"
-                                                    className="avatar-uploader"
-                                                    showUploadList={false}
-                                                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                                                    beforeUpload={beforeUpload}
-                                                    onChange={handleChange}
-                                                >
-                                                    {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
-                                                </Upload>,
-                                            )}
-                                        </Form.Item>
-                                        {/* <Form.Item label="Fecha">
-                                            {getFieldDecorator('fecha', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
-                                            })(
-                                                <Input
-                                                    type="date"
-                                                    placeholder={data.fecha}
-                                                    setFieldsValue={data.fecha}
-                                                />,
-                                            )}
-                                        </Form.Item> */}
+                                        <div className="form-group files">
+                                            <label>Subir foto</label>
+                                            <input onChange={onChangeHandler3}
+                                                multiple type="file" id="file-input-id"
+                                                className="form-control" />
+                                        </div>
+
                                         <Form.Item label="">
                                             {getFieldDecorator('usuariosModPersona')(
                                                 <Input
