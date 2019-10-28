@@ -12,6 +12,7 @@ class Crearpersona extends Component {
     constructor(props) {
         super(props);
         this.state = { selectedFile: null };
+        //this.handleSubmit = this.handleSubmit.bind
     }
 
 
@@ -167,10 +168,15 @@ class Crearpersona extends Component {
         //console.log(event.target.files[0])
         //console.log(event.target.files[1])
         //console.log(event.target.files[2])
+        let file = event.target.files;
+
+        this.setState(() => ({
+            selectedFile: file
+          }));
+       /*    
         this.state = {
             selectedFile: event.target.files,
-            //selectedFile: event.target.files[0]
-        }
+        } */
     }
     onClickHandler = (data) => {
 
@@ -182,12 +188,12 @@ class Crearpersona extends Component {
         }).then(res => { // then print response status
             //console.log(res.statusText)
             console.log(res.data)
-            if (res.data[0] !== undefined && res.data.length >= 1/*res.data[0] !== undefined    && res.data[0] < 1 */) {
+            if (/* res.data[0] !== undefined && */ res.data.length >= 1) {
                 this.payload.foto = res.data[0].filename
             }
-            this.postData()
-            // postData()
+           // this.payload.foto = res.data[0].filename
 
+            this.postData()
         })
     }
 
