@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useLayoutEffect, Component } from 'react';
 import axios from 'axios';
 import * as Scroll from 'react-scroll';
-import { Card,Alert, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
+import { Card, Alert, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 var scroll = Scroll.animateScroll;
@@ -134,14 +134,18 @@ class Crearpersona extends Component {
             //console.log(response.data)
             const info = () => {
                 message.info('Exito al cargar');
-              };
-              info()
+            };
+            info()
+            scroll.scrollToTop();
+            setTimeout(function () { window.location.reload(); }, 1000);
         })
         .catch(function (error) {
             const info2 = () => {
                 message.info('Error al cargar');
-              };
-              info2()
+            };
+            info2()
+            scroll.scrollToTop();
+            setTimeout(function () { window.location.reload(); }, 1000);
             //console.log(error);
         })
 
@@ -172,11 +176,11 @@ class Crearpersona extends Component {
 
         this.setState(() => ({
             selectedFile: file
-          }));
-       /*    
-        this.state = {
-            selectedFile: event.target.files,
-        } */
+        }));
+        /*    
+         this.state = {
+             selectedFile: event.target.files,
+         } */
     }
     onClickHandler = (data) => {
 
@@ -191,7 +195,7 @@ class Crearpersona extends Component {
             if (/* res.data[0] !== undefined && */ res.data.length >= 1) {
                 this.payload.foto = res.data[0].filename
             }
-           // this.payload.foto = res.data[0].filename
+            // this.payload.foto = res.data[0].filename
 
             this.postData()
         })
@@ -275,19 +279,19 @@ class Crearpersona extends Component {
             }
         });
     };
-      success = () => {
+    success = () => {
         message
-          .loading('Espere...')
-      };
-      
-      
+            .loading('Espere...')
+    };
+
+
     render() {
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
         return (<div>
             <Layout>
                 <Content style={{ padding: '0 50px' }}>
                     <Row type="flex" gutter={16}>
-                    {/*<Alert message="Success Text" type="success" /> */}
+                        {/*<Alert message="Success Text" type="success" /> */}
                         <Col>
                             <Form onSubmit={(event) => this.handleSubmit(event)} className="update-form" >
 
