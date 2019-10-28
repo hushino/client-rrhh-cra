@@ -130,14 +130,18 @@ class Crearpersona extends Component {
 
     postData = () => axios.post(`http://localhost:8080/rrhh-server/api/addPersona`, this.payload)
         .then(function (response) {
-            console.log(response.data)
+            //console.log(response.data)
             const info = () => {
                 message.info('Exito al cargar');
               };
               info()
         })
         .catch(function (error) {
-            console.log(error);
+            const info2 = () => {
+                message.info('Error al cargar');
+              };
+              info2()
+            //console.log(error);
         })
 
     /* const postImage = (data) => axios.post("http://localhost:3003/upload", data)
@@ -160,7 +164,7 @@ class Crearpersona extends Component {
         selectedFile: 0,
     }) */
     onChangeHandler3 = event => {
-        console.log(event.target.files[0])
+        //console.log(event.target.files[0])
         //console.log(event.target.files[1])
         //console.log(event.target.files[2])
         this.state = {
@@ -178,8 +182,7 @@ class Crearpersona extends Component {
         }).then(res => { // then print response status
             //console.log(res.statusText)
             console.log(res.data)
-            //console.log(res)
-            if (/* res.data[0] != undefined   && */res.data[0] < 1) {
+            if (res.data[0] !== undefined && res.data.length >= 1/*res.data[0] !== undefined    && res.data[0] < 1 */) {
                 this.payload.foto = res.data[0].filename
             }
             this.postData()
