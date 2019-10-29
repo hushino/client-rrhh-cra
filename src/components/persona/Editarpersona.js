@@ -58,7 +58,7 @@ function Editarpersona(props) {
             //fecha: data.fecha,
             usuariosModPersona: localStorage.getItem("nombreusuario"),
             apodo: data.apodo,
-            cuit: data.cuit,
+            cuil: data.cuil,
             soltero: data.soltero,
             casado: data.casado,
             conviviente: data.conviviente,
@@ -95,6 +95,74 @@ function Editarpersona(props) {
             familiaracargodni2: data.familiaracargodni2,
             familiaracargonombre: data.familiaracargonombre,
             familiaracargonombre2: data.familiaracargonombre2,
+
+
+            familiaracargonombre3: data.familiaracargonombre3,
+            familiaracargonombre4: data.familiaracargonombre4,
+            familiaracargonombre5: data.familiaracargonombre5,
+            familiaracargodni3: data.familiaracargodni3,
+            familiaracargodni4: data.familiaracargodni4,
+            familiaracargodni5: data.familiaracargodni5,
+            familiaracargoedad: data.familiaracargoedad,
+
+            familiaracargoedad2: data.familiaracargoedad2,
+            familiaracargoedad3: data.familiaracargoedad3,
+            familiaracargoedad4: data.familiaracargoedad4,
+            familiaracargoedad5: data.familiaracargoedad5,
+            altura: data.altura,
+            estudiosincompletos: data.estudiosincompletos,
+            conyugeapellido: data.conyugeapellido,
+            conyugenombre: data.conyugenombre,
+            conyugedni: data.conyugedni,
+            conyugecuil: data.conyugecuil,
+            grupofamiliarapellidonombre: data.grupofamiliarapellidonombre,
+            grupofamiliarapellidonombre2: data.grupofamiliarapellidonombre2,
+            grupofamiliarapellidonombre3: data.grupofamiliarapellidonombre3,
+            grupofamiliarapellidonombre4: data.grupofamiliarapellidonombre4,
+            grupofamiliarapellidonombre5: data.grupofamiliarapellidonombre5,
+            grupofamiliarapellidonombre6: data.grupofamiliarapellidonombre6,
+            grupofamiliarapellidonombre7: data.grupofamiliarapellidonombre7,
+            grupofamiliarapellidonombre8: data.grupofamiliarapellidonombre8,
+            grupofamiliarapellidonombre9: data.grupofamiliarapellidonombre9,
+            grupofamiliarapellidonombre10: data.grupofamiliarapellidonombre10,
+            grupofamiliarapellidonombre11: data.grupofamiliarapellidonombre11,
+            grupofamiliarapellidonombreedad: data.grupofamiliarapellidonombreedad,
+            grupofamiliarapellidonombreedad2: data.grupofamiliarapellidonombreedad2,
+            grupofamiliarapellidonombreedad3: data.grupofamiliarapellidonombreedad3,
+            grupofamiliarapellidonombreedad4: data.grupofamiliarapellidonombreedad4,
+            grupofamiliarapellidonombreedad5: data.grupofamiliarapellidonombreedad5,
+            grupofamiliarapellidonombreedad6: data.grupofamiliarapellidonombreedad6,
+            grupofamiliarapellidonombreedad7: data.grupofamiliarapellidonombreedad7,
+            grupofamiliarapellidonombreedad8: data.grupofamiliarapellidonombreedad8,
+            grupofamiliarapellidonombreedad9: data.grupofamiliarapellidonombreedad9,
+            grupofamiliarapellidonombreedad10: data.grupofamiliarapellidonombreedad10,
+            grupofamiliarapellidonombreedad11: data.grupofamiliarapellidonombreedad11,
+            grupofamiliarapellidonombredni: data.grupofamiliarapellidonombredni,
+            grupofamiliarapellidonombredni2: data.grupofamiliarapellidonombredni2,
+            grupofamiliarapellidonombredni3: data.grupofamiliarapellidonombredni3,
+            grupofamiliarapellidonombredni4: data.grupofamiliarapellidonombredni4,
+            grupofamiliarapellidonombredni5: data.grupofamiliarapellidonombredni5,
+            grupofamiliarapellidonombredni6: data.grupofamiliarapellidonombredni6,
+            grupofamiliarapellidonombredni7: data.grupofamiliarapellidonombredni7,
+            grupofamiliarapellidonombredni8: data.grupofamiliarapellidonombredni8,
+            grupofamiliarapellidonombredni9: data.grupofamiliarapellidonombredni9,
+            grupofamiliarapellidonombredni10: data.grupofamiliarapellidonombredni10,
+            grupofamiliarapellidonombredni11: data.grupofamiliarapellidonombredni11,
+
+
+            grupofamiliarapellidonombrefamiliar: data.grupofamiliarapellidonombrefamiliar,
+            grupofamiliarapellidonombrefamiliar2: data.grupofamiliarapellidonombrefamiliar2,
+            grupofamiliarapellidonombrefamiliar4: data.grupofamiliarapellidonombrefamiliar4,
+            grupofamiliarapellidonombrefamiliar3: data.grupofamiliarapellidonombrefamiliar3,
+            grupofamiliarapellidonombrefamiliar5: data.grupofamiliarapellidonombrefamiliar5,
+            grupofamiliarapellidonombrefamiliar6: data.grupofamiliarapellidonombrefamiliar6,
+            grupofamiliarapellidonombrefamiliar7: data.grupofamiliarapellidonombrefamiliar7,
+            grupofamiliarapellidonombrefamiliar8: data.grupofamiliarapellidonombrefamiliar8,
+            grupofamiliarapellidonombrefamiliar9: data.grupofamiliarapellidonombrefamiliar9,
+            grupofamiliarapellidonombrefamiliar10: data.grupofamiliarapellidonombrefamiliar10,
+            grupofamiliarapellidonombrefamiliar11: data.grupofamiliarapellidonombrefamiliar11,
+
+
 
         });
         //console.log(data.foto)
@@ -229,14 +297,14 @@ function Editarpersona(props) {
                                                 />,
                                             )}
                                         </Form.Item>
-                                        <Form.Item label="Cuit">
-                                            {getFieldDecorator('cuit', {
+                                        <Form.Item label="Cuil">
+                                            {getFieldDecorator('cuil', {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
-                                                    type="number"
-                                                    placeholder={data.cuit}
-                                                    setFieldsValue={data.cuit}
+                                                    type="text"
+                                                    placeholder={data.cuil}
+                                                    setFieldsValue={data.cuil}
                                                 />,
                                             )}
                                         </Form.Item>
@@ -319,6 +387,17 @@ function Editarpersona(props) {
                                                 />,
                                             )}
                                         </Form.Item>
+                                        <Form.Item label="Altura">
+                                            {getFieldDecorator('altura', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.altura}
+                                                    setFieldsValue={data.altura}
+                                                />,
+                                            )}
+                                        </Form.Item>
                                         <Form.Item label="Numero de calle">
                                             {getFieldDecorator('numero', {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
@@ -371,6 +450,17 @@ function Editarpersona(props) {
                                                     type="text"
                                                     placeholder={data.niveldeestudios}
                                                     setFieldsValue={data.niveldeestudios}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Estudios incompletos">
+                                            {getFieldDecorator('estudiosincompletos', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.estudiosincompletos}
+                                                    setFieldsValue={data.estudiosincompletos}
                                                 />,
                                             )}
                                         </Form.Item>
@@ -451,6 +541,496 @@ function Editarpersona(props) {
                                                 />,
                                             )}
                                         </Form.Item>
+
+                                        <h3>Grupo Familiar:(Cónyuge e hijos)</h3>
+
+                                        <Form.Item label="Grupo familiar apellido y nombre">
+                                            {getFieldDecorator('grupofamiliarapellidonombre', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.grupofamiliarapellidonombre}
+                                                    setFieldsValue={data.grupofamiliarapellidonombre}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar edad">
+                                            {getFieldDecorator('grupofamiliarapellidonombreedad', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombreedad}
+                                                    setFieldsValue={data.grupofamiliarapellidonombreedad}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar DNI">
+                                            {getFieldDecorator('grupofamiliarapellidonombredni', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombredni}
+                                                    setFieldsValue={data.grupofamiliarapellidonombredni}
+                                                />,
+                                            )}
+                                        </Form.Item>
+
+                                        <Form.Item label="Grupo familiar Familiar">
+                                            {getFieldDecorator('grupofamiliarapellidonombrefamiliar', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombrefamiliar}
+                                                    setFieldsValue={data.grupofamiliarapellidonombrefamiliar}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar apellido y nombre 2">
+                                            {getFieldDecorator('grupofamiliarapellidonombre2', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.grupofamiliarapellidonombre2}
+                                                    setFieldsValue={data.grupofamiliarapellidonombre2}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar edad 2">
+                                            {getFieldDecorator('grupofamiliarapellidonombreedad2', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombreedad2}
+                                                    setFieldsValue={data.grupofamiliarapellidonombreedad2}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar DNI 2">
+                                            {getFieldDecorator('grupofamiliarapellidonombredni2', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombredni2}
+                                                    setFieldsValue={data.grupofamiliarapellidonombredni2}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar Familiar 2">
+                                            {getFieldDecorator('grupofamiliarapellidonombrefamiliar2', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombrefamiliar2}
+                                                    setFieldsValue={data.grupofamiliarapellidonombrefamiliar2}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar apellido y nombre 3">
+                                            {getFieldDecorator('grupofamiliarapellidonombre3', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.grupofamiliarapellidonombre3}
+                                                    setFieldsValue={data.grupofamiliarapellidonombre3}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar edad 3">
+                                            {getFieldDecorator('grupofamiliarapellidonombreedad3', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombreedad3}
+                                                    setFieldsValue={data.grupofamiliarapellidonombreedad3}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar DNI 3">
+                                            {getFieldDecorator('grupofamiliarapellidonombredni3', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombredni3}
+                                                    setFieldsValue={data.grupofamiliarapellidonombredni3}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar Familiar 3">
+                                            {getFieldDecorator('grupofamiliarapellidonombrefamiliar3', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombrefamiliar3}
+                                                    setFieldsValue={data.grupofamiliarapellidonombrefamiliar3}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar apellido y nombre 4">
+                                            {getFieldDecorator('grupofamiliarapellidonombre4', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.grupofamiliarapellidonombre4}
+                                                    setFieldsValue={data.grupofamiliarapellidonombre4}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar edad 4" >
+                                            {getFieldDecorator('grupofamiliarapellidonombreedad4', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombreedad4}
+                                                    setFieldsValue={data.grupofamiliarapellidonombreedad4}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar DNI 4">
+                                            {getFieldDecorator('grupofamiliarapellidonombredni4', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombredni4}
+                                                    setFieldsValue={data.grupofamiliarapellidonombredni4}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar Familiar 4">
+                                            {getFieldDecorator('grupofamiliarapellidonombrefamiliar4', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombrefamiliar4}
+                                                    setFieldsValue={data.grupofamiliarapellidonombrefamiliar4}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar apellido y nombre 5">
+                                            {getFieldDecorator('grupofamiliarapellidonombre5', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.grupofamiliarapellidonombre5}
+                                                    setFieldsValue={data.grupofamiliarapellidonombre5}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar edad 5">
+                                            {getFieldDecorator('grupofamiliarapellidonombreedad5', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombreedad5}
+                                                    setFieldsValue={data.grupofamiliarapellidonombreedad5}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar DNI 5">
+                                            {getFieldDecorator('grupofamiliarapellidonombredni5', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombredni5}
+                                                    setFieldsValue={data.grupofamiliarapellidonombredni5}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar Familiar 5 ">
+                                            {getFieldDecorator('grupofamiliarapellidonombrefamiliar5', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombrefamiliar5}
+                                                    setFieldsValue={data.grupofamiliarapellidonombrefamiliar5}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar apellido y nombre 6">
+                                            {getFieldDecorator('grupofamiliarapellidonombre6', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.grupofamiliarapellidonombre6}
+                                                    setFieldsValue={data.grupofamiliarapellidonombre6}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar edad 6">
+                                            {getFieldDecorator('grupofamiliarapellidonombreedad6', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombreedad6}
+                                                    setFieldsValue={data.grupofamiliarapellidonombreedad6}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar DNI 6">
+                                            {getFieldDecorator('grupofamiliarapellidonombredni6', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombredni6}
+                                                    setFieldsValue={data.grupofamiliarapellidonombredni6}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar Familiar 6">
+                                            {getFieldDecorator('grupofamiliarapellidonombrefamiliar6', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombrefamiliar6}
+                                                    setFieldsValue={data.grupofamiliarapellidonombrefamiliar6}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar apellido y nombre 7">
+                                            {getFieldDecorator('grupofamiliarapellidonombre7', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.grupofamiliarapellidonombre7}
+                                                    setFieldsValue={data.grupofamiliarapellidonombre7}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar edad 7">
+                                            {getFieldDecorator('grupofamiliarapellidonombreedad7', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombreedad7}
+                                                    setFieldsValue={data.grupofamiliarapellidonombreedad7}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar DNI 7">
+                                            {getFieldDecorator('grupofamiliarapellidonombredni7', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombredni7}
+                                                    setFieldsValue={data.grupofamiliarapellidonombredni7}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar Familiar 7">
+                                            {getFieldDecorator('grupofamiliarapellidonombrefamiliar7', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombrefamiliar7}
+                                                    setFieldsValue={data.grupofamiliarapellidonombrefamiliar7}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar apellido y nombre 8">
+                                            {getFieldDecorator('grupofamiliarapellidonombre8', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.grupofamiliarapellidonombre8}
+                                                    setFieldsValue={data.grupofamiliarapellidonombre8}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar edad 8 ">
+                                            {getFieldDecorator('grupofamiliarapellidonombreedad8', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombreedad8}
+                                                    setFieldsValue={data.grupofamiliarapellidonombreedad8}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar DNI 8">
+                                            {getFieldDecorator('grupofamiliarapellidonombredni8', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombredni8}
+                                                    setFieldsValue={data.grupofamiliarapellidonombredni8}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar Familiar 8">
+                                            {getFieldDecorator('grupofamiliarapellidonombrefamiliar8', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombrefamiliar8}
+                                                    setFieldsValue={data.grupofamiliarapellidonombrefamiliar8}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar apellido y nombre 9">
+                                            {getFieldDecorator('grupofamiliarapellidonombre9', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.grupofamiliarapellidonombre9}
+                                                    setFieldsValue={data.grupofamiliarapellidonombre9}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar edad 9">
+                                            {getFieldDecorator('grupofamiliarapellidonombreedad9', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombreedad9}
+                                                    setFieldsValue={data.grupofamiliarapellidonombreedad9}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar DNI 9">
+                                            {getFieldDecorator('grupofamiliarapellidonombredni9', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombredni9}
+                                                    setFieldsValue={data.grupofamiliarapellidonombredni9}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar Familiar 9">
+                                            {getFieldDecorator('grupofamiliarapellidonombrefamiliar9', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombrefamiliar9}
+                                                    setFieldsValue={data.grupofamiliarapellidonombrefamiliar9}
+                                                />,
+                                            )}
+                                        </Form.Item>
+
+                                        <Form.Item label="Grupo familiar apellido y nombre 10">
+                                            {getFieldDecorator('grupofamiliarapellidonombre10', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.grupofamiliarapellidonombre10}
+                                                    setFieldsValue={data.grupofamiliarapellidonombre10}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar edad 10">
+                                            {getFieldDecorator('grupofamiliarapellidonombreedad10', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombreedad10}
+                                                    setFieldsValue={data.grupofamiliarapellidonombreedad10}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar DNI 10">
+                                            {getFieldDecorator('grupofamiliarapellidonombredni10', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombredni10}
+                                                    setFieldsValue={data.grupofamiliarapellidonombredni10}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar Familiar 10">
+                                            {getFieldDecorator('grupofamiliarapellidonombrefamiliar10', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombrefamiliar10}
+                                                    setFieldsValue={data.grupofamiliarapellidonombrefamiliar10}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar apellido y nombre 11">
+                                            {getFieldDecorator('grupofamiliarapellidonombre11', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.grupofamiliarapellidonombre11}
+                                                    setFieldsValue={data.grupofamiliarapellidonombre11}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar edad">
+                                            {getFieldDecorator('grupofamiliarapellidonombreedad11', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombreedad11}
+                                                    setFieldsValue={data.grupofamiliarapellidonombreedad11}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar DNI">
+                                            {getFieldDecorator('grupofamiliarapellidonombredni11', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombredni11}
+                                                    setFieldsValue={data.grupofamiliarapellidonombredni11}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Grupo familiar Familiar">
+                                            {getFieldDecorator('grupofamiliarapellidonombrefamiliar11', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.grupofamiliarapellidonombrefamiliar11}
+                                                    setFieldsValue={data.grupofamiliarapellidonombrefamiliar11}
+                                                />,
+                                            )}
+                                        </Form.Item>
+
                                         <Form.Item label="Fecha de Ingreso">
                                             {getFieldDecorator('fechadeingreso', {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
@@ -695,6 +1275,166 @@ function Editarpersona(props) {
                                                     type="number"
                                                     placeholder={data.familiaracargodni2}
                                                     setFieldsValue={data.familiaracargodni2}
+                                                />,
+                                            )}
+                                        </Form.Item>
+
+
+                                        <Form.Item label="Familiar acargo edad 2">
+                                            {getFieldDecorator('familiaracargoedad2', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.familiaracargoedad2}
+                                                    setFieldsValue={data.familiaracargoedad2}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Familiar acargo nombre 3">
+                                            {getFieldDecorator('familiaracargonombre3', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.familiaracargonombre3}
+                                                    setFieldsValue={data.familiaracargonombre3}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Familiar acargo DNI 3">
+                                            {getFieldDecorator('familiaracargodni3', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.familiaracargodni3}
+                                                    setFieldsValue={data.familiaracargodni3}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Familiar acargo edad 3">
+                                            {getFieldDecorator('familiaracargoedad3', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.familiaracargoedad3}
+                                                    setFieldsValue={data.familiaracargoedad3}
+                                                />,
+                                            )}
+                                        </Form.Item>
+
+
+                                        <Form.Item label="Familiar acargo nombre 4">
+                                            {getFieldDecorator('familiaracargonombre4', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.familiaracargonombre4}
+                                                    setFieldsValue={data.familiaracargonombre4}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Familiar acargo DNI 4">
+                                            {getFieldDecorator('familiaracargodni4', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.familiaracargodni4}
+                                                    setFieldsValue={data.familiaracargodni4}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Familiar acargo edad 4">
+                                            {getFieldDecorator('familiaracargoedad4', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.familiaracargoedad4}
+                                                    setFieldsValue={data.familiaracargoedad4}
+                                                />,
+                                            )}
+                                        </Form.Item>
+
+                                        <Form.Item label="Familiar acargo nombre 5">
+                                            {getFieldDecorator('familiaracargonombre5', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.familiaracargonombre5}
+                                                    setFieldsValue={data.familiaracargonombre5}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Familiar acargo DNI 5">
+                                            {getFieldDecorator('familiaracargodni5', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.familiaracargodni5}
+                                                    setFieldsValue={data.familiaracargodni5}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Familiar acargo edad 5">
+                                            {getFieldDecorator('familiaracargoedad5', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.familiaracargoedad5}
+                                                    setFieldsValue={data.familiaracargoedad5}
+                                                />,
+                                            )}
+                                        </Form.Item>
+
+                                        <Form.Item label="Conyuge nombre">
+                                            {getFieldDecorator('conyugenombre', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.conyugenombre}
+                                                    setFieldsValue={data.conyugenombre}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Conyuge apellido">
+                                            {getFieldDecorator('conyugeapellido', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.conyugeapellido}
+                                                    setFieldsValue={data.conyugeapellido}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Conyuge DNI">
+                                            {getFieldDecorator('conyugedni', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="number"
+                                                    placeholder={data.conyugedni}
+                                                    setFieldsValue={data.conyugedni}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Conyuge CUIL">
+                                            {getFieldDecorator('conyugecuil', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.conyugecuil}
+                                                    setFieldsValue={data.conyugecuil}
                                                 />,
                                             )}
                                         </Form.Item>
