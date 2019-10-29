@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useLayoutEffect, Component } from 'react';
 import axios from 'axios';
 import * as Scroll from 'react-scroll';
-import { Card, Alert, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
+import { Card, DatePicker, Alert, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 var scroll = Scroll.animateScroll;
@@ -40,6 +40,7 @@ class Crearpersona extends Component {
         oficioprofecion: "",
         niveldeestudios: "",
         gruposanguineo: "",
+        factor: "",
         donante: "",
         diabetes: "",
         hipertension: "",
@@ -139,7 +140,7 @@ class Crearpersona extends Component {
             };
             info()
             scroll.scrollToTop();
-            setTimeout(function () { window.location.reload(); }, 1000);
+            setTimeout(function () { window.location.reload(); }, 1200);
         })
         .catch(function (error) {
             const info2 = () => {
@@ -147,7 +148,7 @@ class Crearpersona extends Component {
             };
             info2()
             scroll.scrollToTop();
-            setTimeout(function () { window.location.reload(); }, 1000);
+            setTimeout(function () { window.location.reload(); }, 1200);
         })
 
 
@@ -185,6 +186,8 @@ class Crearpersona extends Component {
                         data.append('file', this.state.selectedFile[x])
                     }
                 }
+
+
                 this.payload.apellido = values.apellido
                 this.payload.nombre = values.nombre
                 this.payload.dni = values.dni
@@ -213,7 +216,7 @@ class Crearpersona extends Component {
                 this.payload.alergias = values.alergias
                 this.payload.asma = values.asma
                 this.payload.otros = values.otros
-                this.payload.fechadeingreso = values.fechadeingreso
+                this.payload.fechadeingreso = values['fechadeingreso'].format('YYYY-MM-DD')  /* values.fechadeingreso */
                 this.payload.resolucion = values.resolucion
                 this.payload.categoria = values.categoria
                 this.payload.item = values.item
@@ -309,7 +312,6 @@ class Crearpersona extends Component {
                 this.grupofamiliarapellidonombrefamiliar10 = values.grupofamiliarapellidonombrefamiliar10
                 this.grupofamiliarapellidonombrefamiliar11 = values.grupofamiliarapellidonombrefamiliar11
 
-
                 this.onClickHandler(data)
 
             }
@@ -322,6 +324,9 @@ class Crearpersona extends Component {
 
 
     render() {
+        const config = {
+            rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+        };
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
         return (<div>
             <Layout>
@@ -329,7 +334,7 @@ class Crearpersona extends Component {
                     <Row type="flex" gutter={16}>
                         {/*<Alert message="Success Text" type="success" /> */}
                         <Col>
-                            <Form onSubmit={(event) => this.handleSubmit(event)} className="update-form" >
+                            <Form /* layout="inline"  */ onSubmit={(event) => this.handleSubmit(event)} className="update-form" >
 
                                 <Form.Item label="Nombre" >
                                     {getFieldDecorator('nombre', {
@@ -548,6 +553,16 @@ class Crearpersona extends Component {
                                         <Input
                                             type="text"
                                             placeholder="grupo sanguineo"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Factor sanguineo">
+                                    {getFieldDecorator('factor', {
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="factor sanguineo"
                                         />,
                                     )}
                                 </Form.Item>
@@ -1058,16 +1073,9 @@ class Crearpersona extends Component {
                                         />,
                                     )}
                                 </Form.Item>
-                                
+
                                 <Form.Item label="Fecha de Ingreso">
-                                    {getFieldDecorator('fechadeingreso', {
-                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
-                                    })(
-                                        <Input
-                                            type="date"
-                                            placeholder="fecha de Ingreso"
-                                        />,
-                                    )}
+                                    {getFieldDecorator('fechadeingreso', config)(<DatePicker />)}
                                 </Form.Item>
                                 <Form.Item label="Resolucion">
                                     {getFieldDecorator('resolucion', {

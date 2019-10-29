@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import axios from 'axios';
 import { Tabs, Card, Icon, Avatar, Row, Col, Layout, Form, Input, Button, Radio, Upload, message } from 'antd';
 import WrappedEditarLicenciaForm from './manyside/Editarlicencia'
@@ -9,28 +9,39 @@ import WrappedEditarEmbargoForm from './manyside/embargos/EditarEmbargo'
 import WrappedEditarGarantiaForm from './manyside/garantia/EditarGarantia'
 import WrappedEditarOtrosServiciosPrestadosForm from './manyside/otrosServiciosPrestados/EditarOtrosServiciosPrestados'
 import WrappedEditarPenasDisciplinariasSufridasForm from './manyside/penasDisciplinariasSufridas/EditarPenasDisciplinariasSufridas'
+import * as Scroll from 'react-scroll';
 const { Meta } = Card;
 const { Header, Footer, Sider, Content } = Layout;
 const { TabPane } = Tabs;
-
+var scroll = Scroll.animateScroll;
 function Editarpersona(props) {
     const [state, setState] = useState({ selectedFile: null })
     const [data, setData] = useState([])
 
-    const [uploadImage, setUploadImage] = useState({})
-
-    const [imagestate, setImagestate] = useState({ loading: false })
-
     const { dataIndex } = props.match.params
-
+    const nameRef = useRef(null);
     let truedata = null;
+    const scrollToTop = () => {
+        scroll.scrollToTop();
+    }
 
     const postData = (values) => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${dataIndex}`, values)
         .then(function (response) {
-            console.log(response.data)
+            //console.log(response.data)
+            const info = () => {
+                message.info('Exito al actualizar');
+            };
+            info()
+            scroll.scrollToTop();
+            setTimeout(function () { window.location.reload(); }, 1200);
         })
         .catch(function (error) {
-            console.log(error);
+            const info2 = () => {
+                message.info('Error al actualizar');
+            };
+            info2()
+            scroll.scrollToTop();
+            setTimeout(function () { window.location.reload(); }, 1200);
         })
 
     useLayoutEffect(() => {
@@ -47,8 +58,10 @@ function Editarpersona(props) {
 
     }, [dataIndex])
 
+    let fotasa = null
     useEffect(() => {
-
+        nameRef.current = data.foto
+        //console.log(nameRef.current)
         props.form.setFieldsValue({
             nombre: data.nombre,
             apellido: data.apellido,
@@ -187,6 +200,10 @@ function Editarpersona(props) {
             if (/* res.data[0] !== undefined && */ res.data.length >= 1) {
                 values.foto = res.data[0].filename
                 data.foto = res.data[0].filename
+            } else {
+                console.log(nameRef.current)
+                data.foto = nameRef.current
+                values.foto = nameRef.current
             }
             //console.log(values.foto)
             postData(values)
@@ -202,6 +219,9 @@ function Editarpersona(props) {
                     for (let x = 0; x < state.selectedFile.length; x++) {
                         data.append('file', state.selectedFile[x])
                     }
+                } else {
+                    data.foto = nameRef.current
+                    values.foto = nameRef.current
                 }
 
                 truedata = values
