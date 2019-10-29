@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useLayoutEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Card, Icon, Avatar, Row, Col, Layout, Button, Descriptions, Radio } from 'antd';
+import { Card, Icon, message, Avatar, Row, Col, Layout, Button, Descriptions, Radio } from 'antd';
 import './style.css'
 import * as jsPDF from 'jspdf'
 
@@ -22,18 +22,21 @@ function Viewpersona(props) {
 
     const isAnyRole = localStorage.getItem("role") === 'USER' || localStorage.getItem("role") === "ADMIN";
     const onChange = e => {
-        console.log('size checked', e.target.value);
+        // console.log('size checked', e.target.value);
         setState({
             size: e.target.value,
         });
     };
     const fetchData = () => axios.get(`http://localhost:8080/rrhh-server/api/viewpersona/${dataIndex}`)
         .then(function (response) {
-            console.log(response.data)
+            // console.log(response.data)
             setData(response.data)
         })
         .catch(function (error) {
-            console.log(error);
+            const info = () => {
+                message.info('Ocurrio un error al obtener datos');
+            };
+            info()
         })
 
     useLayoutEffect(() => {
@@ -46,68 +49,73 @@ function Viewpersona(props) {
     let licenciasget = data.licencias && data.licencias.length > 0 ?
         data.licencias.map(licencias2 =>
             <span key={licencias2.id}>
-                Fecha de Licencia:  {licencias2.fechaLicencia}
+                <h4> Fecha de Licencia:  {licencias2.fechaLicencia}</h4>
+                <h4> Referencias:  {licencias2.referencias}</h4>
+                <h4> Numero de dias: {licencias2.numeroDeDias}</h4 >
+                <h4>Observaciones: {licencias2.observaciones}</h4 >
+                <br />
+                <br />
             </span>
         ) : <span>...</span>;
     let penasDisciplinariasSufridasget = data.penasDisciplinariasSufridas && data.penasDisciplinariasSufridas.length > 0 ?
         data.penasDisciplinariasSufridas.map(penasDisciplinariasSufridas2 =>
             <span key={penasDisciplinariasSufridas2.id}>
-                Fecha: {penasDisciplinariasSufridas2.fecha}
+                <h4> Fecha: {penasDisciplinariasSufridas2.fecha}</h4>
                 <br />
-                Expediente: {penasDisciplinariasSufridas2.expediente}
+                <h4>  Expediente: {penasDisciplinariasSufridas2.expediente}</h4>
                 <br />
-                Referencias: {penasDisciplinariasSufridas2.referencias}
+                <h4> Referencias: {penasDisciplinariasSufridas2.referencias}</h4 >
             </span>
         ) : <span>...</span>;
     let otrosServiciosPrestadosget = data.otrosServiciosPrestados && data.otrosServiciosPrestados.length > 0 ?
         data.otrosServiciosPrestados.map(otrosServiciosPrestados2 =>
             <span key={otrosServiciosPrestados2.id}>
-                Fecha: {otrosServiciosPrestados2.fecha}
+                <h4> Fecha: {otrosServiciosPrestados2.fecha}</h4>
                 <br />
-                Referencias:{otrosServiciosPrestados2.referencias}
+                <h4>  Referencias: {otrosServiciosPrestados2.referencias}</h4 >
             </span>
         ) : <span>...</span>;
 
     let garantiasget = data.garantias && data.garantias.length > 0 ?
         data.garantias.map(garantias2 =>
             <span key={garantias2.id}>
-                Garantia:  {garantias2.garantia}
+                <h4>Garantia:  {garantias2.garantia}</h4>
                 <br />
-                Presentada Fecha: {garantias2.presentadaFecha}
+                <h4> Presentada Fecha: {garantias2.presentadaFecha}</h4>
                 <br />
-                Observaciones: {garantias2.observaciones}
+                <h4> Observaciones: {garantias2.observaciones}</h4>
             </span>
         ) : <span>...</span>;
 
     let embargosget = data.embargos && data.embargos.length > 0 ?
         data.embargos.map(embargos2 =>
             <span key={embargos2.id}>
-                Fecha: {embargos2.fecha}
+                <h4> Fecha: {embargos2.fecha}</h4>
                 <br />
-                Juzgado:  {embargos2.juzgado}
+                <h4> Juzgado: {embargos2.juzgado}</h4 >
                 <br />
-                Acreedor: {embargos2.acreedor}
+                <h4> Acreedor: {embargos2.acreedor}</h4 >
                 <br />
-                Cantidad: {embargos2.cantidad}
+                <h4>  Cantidad: {embargos2.cantidad}</h4 >
                 <br />
-                Expediente: {embargos2.expediente}
+                <h4>  Expediente: {embargos2.expediente}</h4 >
                 <br />
-                Fianza o deuda propia: {embargos2.fianzaODeudaPropia}
+                <h4>  Fianza o deuda propia: {embargos2.fianzaODeudaPropia}</h4 >
                 <br />
-                Origen de la Deuda: {embargos2.origenDeLaDeuda}
+                <h4>   Origen de la Deuda: {embargos2.origenDeLaDeuda}</h4 >
                 <br />
-                Observaciones:{embargos2.observaciones}
+                <h4> Observaciones: {embargos2.observaciones}</h4 >
                 <br />
-                Levantada: {embargos2.levantada}
+                <h4> Levantada: {embargos2.levantada}</h4 >
             </span>
         ) : <span>...</span>;
 
     let conceptoConocimientosEspecialesClasificacionPremios = data.conceptoConocimientosEspecialesClasificacionPremios && data.conceptoConocimientosEspecialesClasificacionPremios.length > 0 ?
         data.conceptoConocimientosEspecialesClasificacionPremios.map(conceptoConocimientosEspecialesClasificacionPremios2 =>
             <span key={conceptoConocimientosEspecialesClasificacionPremios2.id}>
-                fecha:{conceptoConocimientosEspecialesClasificacionPremios2.fecha}
+                <h4>fecha:{conceptoConocimientosEspecialesClasificacionPremios2.fecha}</h4>
                 <div></div>
-                referencias:{conceptoConocimientosEspecialesClasificacionPremios2.referencias}
+                <h4> referencias:{conceptoConocimientosEspecialesClasificacionPremios2.referencias}</h4>
             </span>
         ) : <span>...</span>;
 
@@ -121,10 +129,16 @@ function Viewpersona(props) {
 
     const eliminar = () => axios.delete(`http://localhost:8080/rrhh-server/api/delete/${dataIndex}`)
         .then(function (response) {
-            console.log(response.data)
+            const info = () => {
+                message.info('Exito al Borrar');
+            };
+            info()
         })
         .catch(function (error) {
-            console.log(error);
+            const info = () => {
+                message.info('Error al Borrar');
+            };
+            info()
         })
 
     const activateLasers = () => {
@@ -205,6 +219,7 @@ function Viewpersona(props) {
                                 <Descriptions.Item label="Conviviente">{data.conviviente}</Descriptions.Item>
                                 <Descriptions.Item label="Viudo">{data.viudo}</Descriptions.Item>
                                 <Descriptions.Item label="Domicilio">{data.domicilio}</Descriptions.Item>
+                                <Descriptions.Item label="Altura">{data.altura}</Descriptions.Item>
                                 <Descriptions.Item label="Lugar">{data.lugar}</Descriptions.Item>
                                 <Descriptions.Item label="Calle">{data.calle}</Descriptions.Item>
                                 <Descriptions.Item label="Numero de calle">{data.numero}</Descriptions.Item>
@@ -212,7 +227,9 @@ function Viewpersona(props) {
                                 <Descriptions.Item label="Numero de celular">{data.numerodecelular}</Descriptions.Item>
                                 <Descriptions.Item label="Oficio/Profesión">{data.oficioprofecion}</Descriptions.Item>
                                 <Descriptions.Item label="Nivel de estudios">{data.niveldeestudios}</Descriptions.Item>
+                                <Descriptions.Item label="Estudios incompletos">{data.estudiosincompletos}</Descriptions.Item>
                                 <Descriptions.Item label="Grupo sanguineo">{data.gruposanguineo}</Descriptions.Item>
+                                <Descriptions.Item label="Factor sanguineo">{data.factor}</Descriptions.Item>
                                 <Descriptions.Item label="Diabetes">{data.diabetes}</Descriptions.Item>
                                 <Descriptions.Item label="Hipertension">{data.hipertension}</Descriptions.Item>
                                 <Descriptions.Item label="Alergias">{data.alergias}</Descriptions.Item>
@@ -296,6 +313,11 @@ function Viewpersona(props) {
                                 <Descriptions.Item label="Grupo familiar dni 11">{data.grupofamiliarapellidonombredni11}</Descriptions.Item>
                                 <Descriptions.Item label="Grupo familiar tipo 11">{data.grupofamiliarapellidonombrefamiliar11}</Descriptions.Item>
                                 <Descriptions.Item label="Grupo familiar edad 11">{data.grupofamiliarapellidonombreedad11}</Descriptions.Item>
+
+                                <Descriptions.Item label="Conyuge apellido">{data.conyugeapellido}</Descriptions.Item>
+                                <Descriptions.Item label="Conyuge nombre">{data.conyugenombre}</Descriptions.Item>
+                                <Descriptions.Item label="Conyuge dni">{data.conyugedni}</Descriptions.Item>
+                                <Descriptions.Item label="Conyuge cuil">{data.conyugecuil}</Descriptions.Item>
 
 
                                 <Descriptions.Item label="Licencia">

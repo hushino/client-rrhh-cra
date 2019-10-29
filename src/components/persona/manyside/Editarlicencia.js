@@ -21,7 +21,7 @@ function Editarlicencia(props) {
         //console.log(personaidd);
         const getData = () => axios.get(`http://localhost:8080/rrhh-server/api/licencia/${personaidd}`)
             .then(function (response) {
-                //console.log("datos de licencia ", response.data)
+               console.log("datos de licencia ", response.data)
                 setData(response.data)
             })
             .catch(function (error) {
