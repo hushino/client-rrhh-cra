@@ -241,6 +241,63 @@ function Viewpersona(props) {
                                 <Descriptions.Item label="En caso emergencia nombre 3">{data.casoemergencianombre3}</Descriptions.Item>
                                 <Descriptions.Item label="En caso emergencia nombre 4">{data.casoemergencianombre4}</Descriptions.Item>
                                 <Descriptions.Item label="En caso emergencia nombre 5">{data.casoemergencianombre5}</Descriptions.Item>
+                               
+                                <Descriptions.Item label="Grupo familiar nombre">{data.grupofamiliarapellidonombre}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar dni">{data.grupofamiliarapellidonombredni}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar edad">{data.grupofamiliarapellidonombreedad}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar tipo">{data.grupofamiliarapellidonombrefamiliar}</Descriptions.Item>
+
+                                <Descriptions.Item label="Grupo familiar nombre 2">{data.grupofamiliarapellidonombre2}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar dni 2">{data.grupofamiliarapellidonombredni2}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar edad 2">{data.grupofamiliarapellidonombreedad2}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar tipo 2">{data.grupofamiliarapellidonombrefamiliar2}</Descriptions.Item>
+
+                                <Descriptions.Item label="Grupo familiar nombre 3">{data.grupofamiliarapellidonombre3}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar dni 3">{data.grupofamiliarapellidonombredni3}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar edad 3">{data.grupofamiliarapellidonombreedad3}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar tipo 3">{data.grupofamiliarapellidonombrefamiliar3}</Descriptions.Item>
+
+                                <Descriptions.Item label="Grupo familiar nombre 4">{data.grupofamiliarapellidonombre4}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar dni 4">{data.grupofamiliarapellidonombredni4}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar edad 4">{data.grupofamiliarapellidonombreedad4}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar tipo 4">{data.grupofamiliarapellidonombrefamiliar4}</Descriptions.Item>
+
+                                <Descriptions.Item label="Grupo familiar nombre 5">{data.grupofamiliarapellidonombre5}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar dni 5">{data.grupofamiliarapellidonombredni5}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar edad 5">{data.grupofamiliarapellidonombreedad5}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar tipo 5">{data.grupofamiliarapellidonombrefamiliar5}</Descriptions.Item>
+
+                                <Descriptions.Item label="Grupo familiar nombre 6">{data.grupofamiliarapellidonombre6}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar dni 6">{data.grupofamiliarapellidonombredni6}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar edad 6">{data.grupofamiliarapellidonombreedad6}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar tipo 6">{data.grupofamiliarapellidonombrefamiliar6}</Descriptions.Item>
+
+                                <Descriptions.Item label="Grupo familiar nombre 7">{data.grupofamiliarapellidonombre7}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar dni 7">{data.grupofamiliarapellidonombredni7}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar edad 7">{data.grupofamiliarapellidonombreedad7}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar tipo 7">{data.grupofamiliarapellidonombrefamiliar7}</Descriptions.Item>
+
+                                <Descriptions.Item label="Grupo familiar nombre 8">{data.grupofamiliarapellidonombre8}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar dni 8">{data.grupofamiliarapellidonombredni8}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar edad 8">{data.grupofamiliarapellidonombreedad8}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar tipo 8">{data.grupofamiliarapellidonombrefamiliar8}</Descriptions.Item>
+
+                                <Descriptions.Item label="Grupo familiar nombre 9">{data.grupofamiliarapellidonombre9}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar dni 9">{data.grupofamiliarapellidonombredni9}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar edad 9">{data.grupofamiliarapellidonombreedad9}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar tipo 9">{data.grupofamiliarapellidonombrefamiliar9}</Descriptions.Item>
+
+                                <Descriptions.Item label="Grupo familiar nombre 10">{data.grupofamiliarapellidonombre10}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar dni 10">{data.grupofamiliarapellidonombredni10}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar edad 10">{data.grupofamiliarapellidonombreedad10}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar tipo 10">{data.grupofamiliarapellidonombrefamiliar10}</Descriptions.Item>
+
+                                <Descriptions.Item label="Grupo familiar nombre 11">{data.grupofamiliarapellidonombre11}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar dni 11">{data.grupofamiliarapellidonombredni11}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar tipo 11">{data.grupofamiliarapellidonombrefamiliar11}</Descriptions.Item>
+                                <Descriptions.Item label="Grupo familiar edad 11">{data.grupofamiliarapellidonombreedad11}</Descriptions.Item>
+
+
                                 <Descriptions.Item label="Licencia">
                                     {licenciasget}
                                 </Descriptions.Item>
