@@ -37,14 +37,6 @@ function Viewpersona(props) {
         })
 
     useLayoutEffect(() => {
-
-        /*   var doc = new jsPDF({
-              orientation: 'landscape',
-          })
-  
-          doc.text('Hello world!', 10, 10)
-          doc.save('a4.pdf') */
-
         fetchData();
     }, [])
 
@@ -187,7 +179,7 @@ function Viewpersona(props) {
     return (
         <Layout style={{ /* background: "white", */ }}>
             <Content style={{ padding: '0 50px' }}>
-                <Row type="flex" gutter={16}>
+                <Row type="flex" >
                     <Col>
                         <div style={{ marginTop: 12 }}>
                             <Radio.Group onChange={onChange} value={state.size}>
@@ -202,7 +194,7 @@ function Viewpersona(props) {
                             <br />
                             <br />
                             <Avatar shape="square" icon="user" size={164} src={`http://localhost:3003/uploads/` + data.foto} />
-                            <Descriptions bordered title="Informacion de una persona" size={state.size}>
+                            <Descriptions bordered column={{ xxl: 2, xl: 2, lg: 2, md: 1, sm: 1, xs: 1 }} title="Informacion de una persona" size={state.size}>
                                 <Descriptions.Item label="Nombre">{data.nombre}</Descriptions.Item>
                                 <Descriptions.Item label="Apellido">{data.apellido}</Descriptions.Item>
                                 <Descriptions.Item label="Legajo">{data.legajo}</Descriptions.Item>
@@ -246,8 +238,9 @@ function Viewpersona(props) {
                                 <Descriptions.Item label="En caso de emergencia telefono fijo">{data.casoemergenciafijo2}</Descriptions.Item>
                                 <Descriptions.Item label="En caso emergencia nombre">{data.casoemergencianombre}</Descriptions.Item>
                                 <Descriptions.Item label="En caso emergencia nombre 2">{data.casoemergencianombre2}</Descriptions.Item>
-
-
+                                <Descriptions.Item label="En caso emergencia nombre 3">{data.casoemergencianombre3}</Descriptions.Item>
+                                <Descriptions.Item label="En caso emergencia nombre 4">{data.casoemergencianombre4}</Descriptions.Item>
+                                <Descriptions.Item label="En caso emergencia nombre 5">{data.casoemergencianombre5}</Descriptions.Item>
                                 <Descriptions.Item label="Licencia">
                                     {licenciasget}
                                 </Descriptions.Item>

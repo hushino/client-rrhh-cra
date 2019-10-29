@@ -603,7 +603,7 @@ function Editarpersona(props) {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
-                                                    type="number"
+                                                    type="text"
                                                     placeholder={data.grupofamiliarapellidonombrefamiliar}
                                                     setFieldsValue={data.grupofamiliarapellidonombrefamiliar}
                                                 />,
@@ -647,7 +647,7 @@ function Editarpersona(props) {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
-                                                    type="number"
+                                                    type="text"
                                                     placeholder={data.grupofamiliarapellidonombrefamiliar2}
                                                     setFieldsValue={data.grupofamiliarapellidonombrefamiliar2}
                                                 />,
@@ -691,7 +691,7 @@ function Editarpersona(props) {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
-                                                    type="number"
+                                                    type="text"
                                                     placeholder={data.grupofamiliarapellidonombrefamiliar3}
                                                     setFieldsValue={data.grupofamiliarapellidonombrefamiliar3}
                                                 />,
@@ -735,7 +735,7 @@ function Editarpersona(props) {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
-                                                    type="number"
+                                                    type="text"
                                                     placeholder={data.grupofamiliarapellidonombrefamiliar4}
                                                     setFieldsValue={data.grupofamiliarapellidonombrefamiliar4}
                                                 />,
@@ -779,7 +779,7 @@ function Editarpersona(props) {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
-                                                    type="number"
+                                                    type="text"
                                                     placeholder={data.grupofamiliarapellidonombrefamiliar5}
                                                     setFieldsValue={data.grupofamiliarapellidonombrefamiliar5}
                                                 />,
@@ -823,7 +823,7 @@ function Editarpersona(props) {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
-                                                    type="number"
+                                                    type="text"
                                                     placeholder={data.grupofamiliarapellidonombrefamiliar6}
                                                     setFieldsValue={data.grupofamiliarapellidonombrefamiliar6}
                                                 />,
@@ -867,7 +867,7 @@ function Editarpersona(props) {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
-                                                    type="number"
+                                                    type="text"
                                                     placeholder={data.grupofamiliarapellidonombrefamiliar7}
                                                     setFieldsValue={data.grupofamiliarapellidonombrefamiliar7}
                                                 />,
@@ -911,7 +911,7 @@ function Editarpersona(props) {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
-                                                    type="number"
+                                                    type="text"
                                                     placeholder={data.grupofamiliarapellidonombrefamiliar8}
                                                     setFieldsValue={data.grupofamiliarapellidonombrefamiliar8}
                                                 />,
@@ -955,7 +955,7 @@ function Editarpersona(props) {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
-                                                    type="number"
+                                                    type="text"
                                                     placeholder={data.grupofamiliarapellidonombrefamiliar9}
                                                     setFieldsValue={data.grupofamiliarapellidonombrefamiliar9}
                                                 />,
@@ -1000,7 +1000,7 @@ function Editarpersona(props) {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
-                                                    type="number"
+                                                    type="text"
                                                     placeholder={data.grupofamiliarapellidonombrefamiliar10}
                                                     setFieldsValue={data.grupofamiliarapellidonombrefamiliar10}
                                                 />,
@@ -1044,7 +1044,7 @@ function Editarpersona(props) {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
-                                                    type="number"
+                                                    type="text"
                                                     placeholder={data.grupofamiliarapellidonombrefamiliar11}
                                                     setFieldsValue={data.grupofamiliarapellidonombrefamiliar11}
                                                 />,

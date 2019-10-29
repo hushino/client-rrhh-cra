@@ -667,7 +667,7 @@ class Crearpersona extends Component {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="Grupo familiar tipo"
                                         />,
                                     )}
@@ -707,7 +707,7 @@ class Crearpersona extends Component {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="Grupo familiar tipo"
                                         />,
                                     )}
@@ -747,7 +747,7 @@ class Crearpersona extends Component {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="Grupo familiar tipo"
                                         />,
                                     )}
@@ -787,7 +787,7 @@ class Crearpersona extends Component {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="Grupo familiar tipo"
                                         />,
                                     )}
@@ -827,7 +827,7 @@ class Crearpersona extends Component {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="Grupo familiar tipo"
                                         />,
                                     )}
@@ -867,7 +867,7 @@ class Crearpersona extends Component {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="Grupo familiar tipo"
                                         />,
                                     )}
@@ -907,7 +907,7 @@ class Crearpersona extends Component {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="Grupo familiar tipo"
                                         />,
                                     )}
@@ -947,7 +947,7 @@ class Crearpersona extends Component {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="Grupo familiar tipo"
                                         />,
                                     )}
@@ -987,7 +987,7 @@ class Crearpersona extends Component {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="Grupo familiar tipo"
                                         />,
                                     )}
@@ -1028,7 +1028,7 @@ class Crearpersona extends Component {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="Grupo familiar tipo"
                                         />,
                                     )}
@@ -1068,7 +1068,7 @@ class Crearpersona extends Component {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="Grupo familiar tipo"
                                         />,
                                     )}
