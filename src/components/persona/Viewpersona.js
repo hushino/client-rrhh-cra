@@ -136,7 +136,7 @@ function Viewpersona(props) {
         doc.text("Apellido: " + data.apellido, 10, 30)
         doc.text("Legajo: " + data.legajo, 10, 40)
         doc.text("Apodo: " + data.apodo, 10, 50)
-        doc.text("Cuit: " + data.cuit, 10, 60)
+        doc.text("Cuil: " + data.cuil, 10, 60)
         doc.text("Soltero: " + data.soltero, 10, 70)
         doc.text("Casado: " + data.casado, 10, 80)
         doc.text("Conviviente: " + data.conviviente, 10, 90)
@@ -146,7 +146,7 @@ function Viewpersona(props) {
         doc.text("Numero: " + data.numero, 10, 130)
         doc.text("Telefono fijo: " + data.telefonofijo, 10, 140)
         doc.text("Numero de celular: " + data.numerodecelular, 10, 150)
-        doc.text("Oficio/Profecion: " + data.oficioprofecion, 10, 160)
+        doc.text("Oficio/Profesión: " + data.oficioprofecion, 10, 160)
         doc.text("Nivel de estudios: " + data.niveldeestudios, 10, 170)
         doc.text("Grupo sanguineo: " + data.gruposanguineo, 10, 180)
         doc.text("Diabetes: " + data.diabetes, 10, 190)
@@ -199,7 +199,7 @@ function Viewpersona(props) {
                                 <Descriptions.Item label="Apellido">{data.apellido}</Descriptions.Item>
                                 <Descriptions.Item label="Legajo">{data.legajo}</Descriptions.Item>
                                 <Descriptions.Item label="Apodo">{data.apodo}</Descriptions.Item>
-                                <Descriptions.Item label="Cuit">{data.cuit}</Descriptions.Item>
+                                <Descriptions.Item label="Cuil">{data.cuil}</Descriptions.Item>
                                 <Descriptions.Item label="Soltero">{data.soltero}</Descriptions.Item>
                                 <Descriptions.Item label="Casado">{data.casado}</Descriptions.Item>
                                 <Descriptions.Item label="Conviviente">{data.conviviente}</Descriptions.Item>
@@ -210,7 +210,7 @@ function Viewpersona(props) {
                                 <Descriptions.Item label="Numero de calle">{data.numero}</Descriptions.Item>
                                 <Descriptions.Item label="Telefono fijo">{data.telefonofijo}</Descriptions.Item>
                                 <Descriptions.Item label="Numero de celular">{data.numerodecelular}</Descriptions.Item>
-                                <Descriptions.Item label="Oficio/Profecion">{data.oficioprofecion}</Descriptions.Item>
+                                <Descriptions.Item label="Oficio/Profesión">{data.oficioprofecion}</Descriptions.Item>
                                 <Descriptions.Item label="Nivel de estudios">{data.niveldeestudios}</Descriptions.Item>
                                 <Descriptions.Item label="Grupo sanguineo">{data.gruposanguineo}</Descriptions.Item>
                                 <Descriptions.Item label="Diabetes">{data.diabetes}</Descriptions.Item>
@@ -241,7 +241,7 @@ function Viewpersona(props) {
                                 <Descriptions.Item label="En caso emergencia nombre 3">{data.casoemergencianombre3}</Descriptions.Item>
                                 <Descriptions.Item label="En caso emergencia nombre 4">{data.casoemergencianombre4}</Descriptions.Item>
                                 <Descriptions.Item label="En caso emergencia nombre 5">{data.casoemergencianombre5}</Descriptions.Item>
-                               
+
                                 <Descriptions.Item label="Grupo familiar nombre">{data.grupofamiliarapellidonombre}</Descriptions.Item>
                                 <Descriptions.Item label="Grupo familiar dni">{data.grupofamiliarapellidonombredni}</Descriptions.Item>
                                 <Descriptions.Item label="Grupo familiar edad">{data.grupofamiliarapellidonombreedad}</Descriptions.Item>
