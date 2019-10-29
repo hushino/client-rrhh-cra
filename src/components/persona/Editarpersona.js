@@ -107,7 +107,7 @@ function Editarpersona(props) {
             selectedFile: file
         }));
     }
-    const onClickHandler = (data) => {
+    const onClickHandler = (data, values) => {
 
         /* for (let x = 0; x < this.state.selectedFile.length; x++) {
             data.append('file', this.state.selectedFile[x])
@@ -117,9 +117,11 @@ function Editarpersona(props) {
         }).then(res => { // then print response status
             // console.log(res.data)
             if (/* res.data[0] !== undefined && */ res.data.length >= 1) {
+                values.foto = res.data[0].filename
                 data.foto = res.data[0].filename
             }
-            postData()
+            //console.log(values.foto)
+            postData(values)
         })
     }
     const handleSubmit = (e) => {
@@ -129,8 +131,8 @@ function Editarpersona(props) {
                 const data = new FormData()
                 //state.selectedFile.length = 2
                 if (state.selectedFile != null /* && this.state.selectedFile.length < 1 */) {
-                    for (let x = 0; x < this.state.selectedFile.length; x++) {
-                        data.append('file', this.state.selectedFile[x])
+                    for (let x = 0; x < state.selectedFile.length; x++) {
+                        data.append('file', state.selectedFile[x])
                     }
                 }
 
@@ -138,7 +140,7 @@ function Editarpersona(props) {
                 setData(values)
 
                 //postImage(uploadImage)
-                onClickHandler(data)
+                onClickHandler(data, values)
             }
         });
     };
@@ -218,7 +220,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Apodo">
                                             {getFieldDecorator('apodo', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -229,7 +231,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Cuit">
                                             {getFieldDecorator('cuit', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="number"
@@ -241,7 +243,7 @@ function Editarpersona(props) {
                                         <h3>Estado civil</h3>
                                         <Form.Item label="Soltero">
                                             {getFieldDecorator('soltero', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -252,7 +254,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Casado">
                                             {getFieldDecorator('casado', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -263,7 +265,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Conviviente">
                                             {getFieldDecorator('conviviente', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -274,7 +276,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Viudo">
                                             {getFieldDecorator('viudo', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -286,7 +288,7 @@ function Editarpersona(props) {
                                         <h3>Docimicilio Real</h3>
                                         <Form.Item label="Domicilio">
                                             {getFieldDecorator('domicilio', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -297,7 +299,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Lugar">
                                             {getFieldDecorator('lugar', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -308,7 +310,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Calle">
                                             {getFieldDecorator('calle', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -319,7 +321,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Numero de calle">
                                             {getFieldDecorator('numero', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -330,7 +332,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Telefono fijo">
                                             {getFieldDecorator('telefonofijo', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -341,7 +343,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Numero de celular">
                                             {getFieldDecorator('numerodecelular', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -352,7 +354,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Oficio/Profecion">
                                             {getFieldDecorator('oficioprofecion', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -363,7 +365,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Nivel de estudios">
                                             {getFieldDecorator('niveldeestudios', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -374,7 +376,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Grupo sanguineo">
                                             {getFieldDecorator('gruposanguineo', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -385,7 +387,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Donante">
                                             {getFieldDecorator('donante', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -396,7 +398,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Diabetes">
                                             {getFieldDecorator('diabetes', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -407,7 +409,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Hipertension">
                                             {getFieldDecorator('hipertension', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -418,7 +420,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Alergias">
                                             {getFieldDecorator('alergias', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -429,7 +431,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Asma">
                                             {getFieldDecorator('asma', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -440,7 +442,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Otros">
                                             {getFieldDecorator('otros', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -451,7 +453,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Fecha de Ingreso">
                                             {getFieldDecorator('fechadeingreso', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="date"
@@ -462,7 +464,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Resolucion">
                                             {getFieldDecorator('resolucion', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -473,7 +475,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Categoria">
                                             {getFieldDecorator('categoria', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -484,7 +486,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Item">
                                             {getFieldDecorator('item', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -495,7 +497,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Planta">
                                             {getFieldDecorator('planta', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -507,7 +509,7 @@ function Editarpersona(props) {
                                         <h3>Presta servicio actualmente en:</h3>
                                         <Form.Item label="Area">
                                             {getFieldDecorator('area', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -518,7 +520,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Direccion">
                                             {getFieldDecorator('direccion', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -530,7 +532,7 @@ function Editarpersona(props) {
                                         <h3>Presta servicio en otras institucion publica o privada</h3>
                                         <Form.Item label="Años">
                                             {getFieldDecorator('annos', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="number"
@@ -541,7 +543,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Meses">
                                             {getFieldDecorator('meses', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="number"
@@ -552,7 +554,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Dias">
                                             {getFieldDecorator('dias', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="number"
@@ -563,7 +565,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Realizo computo de servicios">
                                             {getFieldDecorator('realizocomputodeservicios', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -574,7 +576,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Posee conocimientos en maquinas viales">
                                             {getFieldDecorator('categoria', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -587,7 +589,7 @@ function Editarpersona(props) {
                                         <h1>Contactos en caso de emergencia</h1>
                                         <Form.Item label="En caso de emergencia celular">
                                             {getFieldDecorator('casoemergenciacelular', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="number"
@@ -598,7 +600,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="En caso de emergencia celular">
                                             {getFieldDecorator('casoemergenciacelular2', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="number"
@@ -609,7 +611,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="En caso de emergencia telefono fijo">
                                             {getFieldDecorator('casoemergenciafijo', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="number"
@@ -620,7 +622,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="En caso de emergencia telefono fijo 2">
                                             {getFieldDecorator('casoemergenciafijo2', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="number"
@@ -631,7 +633,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="En caso emergencia nombre">
                                             {getFieldDecorator('casoemergencianombre', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -642,7 +644,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="En caso emergencia nombre 2">
                                             {getFieldDecorator('casoemergencianombre2', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -654,7 +656,7 @@ function Editarpersona(props) {
                                         <h3>Familiares a cargo:</h3>
                                         <Form.Item label="Familiar acargo nombre">
                                             {getFieldDecorator('familiaracargonombre', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -665,7 +667,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Familiar acargo nombre 2">
                                             {getFieldDecorator('familiaracargonombre2', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="text"
@@ -676,7 +678,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Familiar acargo DNI">
                                             {getFieldDecorator('familiaracargodni', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="number"
@@ -687,7 +689,7 @@ function Editarpersona(props) {
                                         </Form.Item>
                                         <Form.Item label="Familiar acargo DNI 2">
                                             {getFieldDecorator('familiaracargodni2', {
-                                                rules: [{ required: true, message: 'Ingrese un dato!' }],
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
                                                 <Input
                                                     type="number"
