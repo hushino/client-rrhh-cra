@@ -7,6 +7,8 @@ import './index.css';
 //import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Header from './components/header/Header';
+import * as Sentry from '@sentry/browser';
+Sentry.init({dsn: "https://8839572e21fe429bb5f080d732e169af@sentry.io/1776203"});
 
 ReactDOM.render(
     <Provider store={stores.default}>

@@ -1,7 +1,8 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
-const { autoUpdater } = require("electron-updater")
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
+const Sentry = require('@sentry/node');
+const { autoUpdater } = require("electron-updater");
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 const log = require("electron-log")
@@ -10,7 +11,7 @@ const appExpress = express();
 
 let mainWindow
 const notifier = require('node-notifier');
-
+Sentry.init({ dsn: 'https://8839572e21fe429bb5f080d732e169af@sentry.io/1776203' });
 autoUpdater.logger = log
 log.transports.file.level = "debug"
 autoUpdater.logger.transports.file.level = 'info';
@@ -78,7 +79,8 @@ function createWindow() {
     //mainWindow.webContents.openDevTools()
 
     autoUpdater.checkForUpdatesAndNotify()
-
+    
+    appExpress.use(Sentry.Handlers.errorHandler());
     appExpress.use(express.static(path.join(__dirname, '../build')));
 
     appExpress.get('/*', function (req, res) {
