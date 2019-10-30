@@ -11,7 +11,6 @@ const appExpress = express();
 
 let mainWindow
 const notifier = require('node-notifier');
-Sentry.init({ dsn: 'https://8839572e21fe429bb5f080d732e169af@sentry.io/1776203' });
 autoUpdater.logger = log
 log.transports.file.level = "debug"
 autoUpdater.logger.transports.file.level = 'info';
@@ -62,6 +61,7 @@ autoUpdater.on('update-downloaded', (info) => {
 
 function createWindow() {
     // Create the browser window.
+    Sentry.init({ dsn: 'https://8839572e21fe429bb5f080d732e169af@sentry.io/1776203' });
 
     mainWindow = new BrowserWindow({
         width: 800,
