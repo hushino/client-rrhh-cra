@@ -191,6 +191,7 @@ function Viewpersona(props) {
         doc.save('a4.pdf')
     }
     return (
+
         <Layout style={{ /* background: "white", */ }}>
             <Content style={{ padding: '0 50px' }}>
                 <Row type="flex" >
