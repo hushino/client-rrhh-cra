@@ -57,10 +57,9 @@ function Header() {
       });
   }; */
 
-
   return (
     <Router>
-      <nav>
+      <nav >
         <div className="clearfix" id="header">
           <div className="ant-row">
             <div className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-5 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4">
@@ -69,7 +68,7 @@ function Header() {
             <Menu mode="horizontal">
               <Menu.Item key="mail" >
                 <Link to="/">
-                  <Icon type="home"/>
+                  <Icon type="home" />
                   Inicio
                 </Link>
               </Menu.Item>

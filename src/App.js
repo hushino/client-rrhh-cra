@@ -5,7 +5,6 @@ import './App.css';
 import axios from 'axios';
 import { PageHeader, Row, Col, Icon, Input, Button, Layout } from 'antd';
 import Particles from 'react-particles-js';
-
 import WrappedNormalLoginForm from './components/login/Login';
 import { useSelector, connect } from 'react-redux' 
 import store from './redux/store'
@@ -15,10 +14,13 @@ const { Header, Content, Footer, Sider } = Layout;
 function App() {
   const [data, setData] = useState([]); 
   const [role, setRole] = useState([])
-  const [state, setState] = useState({ vars: { '@primary-color': '#dddddd' } })
+  const [state, setState] = useState({ style: { background: 'red' } })
   const isRoleUser = role === 'USER' || role === 'ADMIN';
 
-  
+  const handleButtonClick = () => {
+    setState({ style: { background: 'black' } });
+  }
+
   useEffect(() => {
     setRole(store.getState().Role)
     let isSubscribed = true
@@ -41,7 +43,7 @@ function App() {
       isSubscribed = false
     }
   }, []);
- 
+
   return (
  <React.Fragment>
       <PageHeader onBack={() => null} backIcon={<Icon type="appstore" />} title="RRHH" subTitle="Bienvenido" />
@@ -51,9 +53,14 @@ function App() {
           : 'Inicie sesion para continuar' */}
      
    
-    <Row>
+    <Row >
       <Col span={1}></Col>
-      <Col span={6}>
+        <Col span={6}>
+   
+       {/*    <div style={state.style}>
+            <link rel="stylesheet" type="text/css" href={state.style} />
+            <button type="button" onClick={handleButtonClick.bind(this)}>Click to update stylesheet</button>
+          </div> */}
        <WrappedNormalLoginForm />
         </Col>
       </Row>
@@ -97,11 +104,11 @@ function App() {
               }
             },
             "color": {
-              "value": "#000"
+              "value": "#fff"
             },
             "line_linked": {
               "enable": true,
-              "color": "#000",
+              "color": "#fff",
               "opacity": 0.3
             },
             "size": {

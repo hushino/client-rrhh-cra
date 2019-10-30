@@ -11,8 +11,126 @@
   -webkit-app-region: drag;
 } */
 
-body {
+/* .ant-layout {
+    background:  #16151d !important;
+}
+.ant-btn {
+    background-image: none;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.65);
+    background-color: #2f3944 !important;
+    border-color: #d9d9d9;
+    margin-bottom: 10px  !important;
+}
+.ant-form-item-label > label {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+.ant-tabs {
+    color: rgba(255, 255, 255, 0.65) !important;
+}
+.ant-input {
+    color: rgba(0, 0, 0, 0.65) !important;
+    background-color: #1d1b26 !important;
+    background-image: none !important;
+    border: 1px solid #1d1b26 !important;
+    border-radius: 4px !important;
+}
+.ant-form label {
+    font-size: 14px !important;
+    color: aliceblue !important;
+}
+.ant-form input[type='file'] {
+    display: block !important;
+    color: aliceblue !important;
+}
+a, area, button, [role='button'], input:not([type='range']), label, select, summary, textarea {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    color: aliceblue !important;
+}
+.ant-layout-footer {
+    color: rgba(0, 0, 0, 0.65)  !important;
+    background: #364d6f  !important;
+}
+.ant-descriptions-title {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+.ant-layout-footer {
+    color: rgba(0, 0, 0, 0.65) !important;
+    background: #7e5294 
+}
+.ant-descriptions-bordered .ant-descriptions-item-label  {
+    background-color: #332c52 !important;
+    color: aliceblue  !important;
+    border-right: 1px solid #573e85 !important;
+} 
+.ant-descriptions-bordered .ant-descriptions-view {
+    border: 1px solid  #573e85 !important;
+}
+.ant-descriptions-bordered .ant-descriptions-row {
+    border-bottom: 1px solid   #573e85 !important;
+}
+ span{
+  color: aliceblue !important;
+}
+h1,h2,h3,h4,h5{
+  color: aliceblue !important;
+}
+#text{
+  color: aliceblue !important;
+}
+a{
+  color: rgb(51, 137, 212) !important;
+}
+.ant-menu-horizontal{
+  background-color: #16151d !important;
+}
+.ant-table-tbody > tr > td {
+    border-bottom: 1px solid #353232  !important;
+}
+.ant-table-thead > tr > th .ant-table-header-column .ant-table-column-sorters::before {
+ background-color: #16151d !important;
+}
+
+.ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td, .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td, .ant-table-thead > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td, .ant-table-tbody > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td {
+    background:  #1d1b26 !important;
+}
+.ant-table-thead > tr > th .anticon-filter, .ant-table-thead > tr > th .ant-table-filter-icon {
+    color: #bfbcbf !important;
+}
+.ant-table-thead > tr > th {
+    color:#16151d !important;
+    background: #16151d !important;
+    border-bottom: 1px solid #0b0a0d !important;
+}
+
+.ant-pagination-item-active {
+    background: #ffffff !important;
+   border-color: aquamarine !important;
+}
+.ant-pagination-item {
+    background-color: #16151d !important;
    
+    border-radius: 4px;
+}
+.ant-pagination-disabled a, .ant-pagination-disabled:hover a, .ant-pagination-disabled:focus a, .ant-pagination-disabled .ant-pagination-item-link, .ant-pagination-disabled:hover .ant-pagination-item-link, .ant-pagination-disabled:focus .ant-pagination-item-link {
+    color: rgba(0, 0, 0, 0.25);
+    border-color: #983434 !important;
+}
+.ant-pagination-item-active:focus a, .ant-pagination-item-active:hover a {
+    color: #40a9ff !important;
+    border-color: aquamarine !important;
+}
+.ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link {
+    background-color: #001529 !important;
+    border: 1px solid #ff4d4f !important;
+    border-radius: 4px;
+}
+ */
+body {
+/*   background-color: #16151d !important; */
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",

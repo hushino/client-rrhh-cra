@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import * as stores from './redux/store'
 import './styles/index.less';
-//import './index.css';
+import './index.css';
 //import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Header from './components/header/Header';
 
 ReactDOM.render(
     <Provider store={stores.default}>
-            <Header />
+        <Header />
     </Provider>,
     document.getElementById('header'));
 
