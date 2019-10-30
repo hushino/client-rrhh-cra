@@ -128,6 +128,9 @@ a{
     border: 1px solid #ff4d4f !important;
     border-radius: 4px;
 }
+.ant-table-placeholder{
+    background-color: #001529 !important;
+}
 .ant-message-notice-content{
     background-color: #001529 !important;
 }
