@@ -33,7 +33,7 @@ function Editarpersona(props) {
             };
             info()
             scroll.scrollToTop();
-            setTimeout(function () { window.location.reload(); }, 1200);
+            //setTimeout(function () { window.location.reload(); }, 1000);
         })
         .catch(function (error) {
             const info2 = () => {
@@ -41,7 +41,7 @@ function Editarpersona(props) {
             };
             info2()
             scroll.scrollToTop();
-            setTimeout(function () { window.location.reload(); }, 1200);
+            //setTimeout(function () { window.location.reload(); }, 1200);
         })
 
     useLayoutEffect(() => {

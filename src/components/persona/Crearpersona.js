@@ -216,7 +216,7 @@ class Crearpersona extends Component {
                 this.payload.alergias = values.alergias
                 this.payload.asma = values.asma
                 this.payload.otros = values.otros
-                this.payload.fechadeingreso = values['fechadeingreso'].format('YYYY-MM-DD')  /* values.fechadeingreso */
+                this.payload.fechadeingreso =  values.fechadeingreso
                 this.payload.resolucion = values.resolucion
                 this.payload.categoria = values.categoria
                 this.payload.item = values.item
@@ -1073,10 +1073,20 @@ class Crearpersona extends Component {
                                         />,
                                     )}
                                 </Form.Item>
-
                                 <Form.Item label="Fecha de Ingreso">
-                                    {getFieldDecorator('fechadeingreso', config)(<DatePicker />)}
+                                    {getFieldDecorator('fechadeingreso', {
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="date"
+                                            placeholder="fecha de Ingreso"
+                                        />,
+                                    )}
                                 </Form.Item>
+
+                                {/* <Form.Item label="Fecha de Ingreso">
+                                    {getFieldDecorator('fechadeingreso', config)(<DatePicker />)}
+                                </Form.Item> */}
                                 <Form.Item label="Resolucion">
                                     {getFieldDecorator('resolucion', {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
