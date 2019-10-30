@@ -11,7 +11,7 @@
   -webkit-app-region: drag;
 } */
 
-/* .ant-layout {
+ .ant-layout {
     background:  #16151d !important;
 }
 .ant-btn {
@@ -128,9 +128,11 @@ a{
     border: 1px solid #ff4d4f !important;
     border-radius: 4px;
 }
- */
+.ant-message-notice-content{
+    background-color: #001529 !important;
+}
 body {
-/*   background-color: #16151d !important; */
+ background-color: #16151d !important; 
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
