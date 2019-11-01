@@ -216,7 +216,7 @@ class Crearpersona extends Component {
                 this.payload.alergias = values.alergias
                 this.payload.asma = values.asma
                 this.payload.otros = values.otros
-                this.payload.fechadeingreso =  values.fechadeingreso
+                this.payload.fechadeingreso = values.fechadeingreso
                 this.payload.resolucion = values.resolucion
                 this.payload.categoria = values.categoria
                 this.payload.item = values.item
@@ -315,8 +315,10 @@ class Crearpersona extends Component {
                 this.onClickHandler(data)
 
             }
-        });
+        }, { passive: true });
     };
+
+
     success = () => {
         message
             .loading('Espere...')
