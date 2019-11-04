@@ -129,6 +129,8 @@ class Crearpersona extends Component {
         grupofamiliarapellidonombrefamiliar9: '',
         grupofamiliarapellidonombrefamiliar10: '',
         grupofamiliarapellidonombrefamiliar11: '',
+
+        barrio: '',
     };
 
 
@@ -312,6 +314,7 @@ class Crearpersona extends Component {
                 this.grupofamiliarapellidonombrefamiliar10 = values.grupofamiliarapellidonombrefamiliar10
                 this.grupofamiliarapellidonombrefamiliar11 = values.grupofamiliarapellidonombrefamiliar11
 
+                this.barrio = values.barrio
                 this.onClickHandler(data)
 
             }
@@ -487,12 +490,22 @@ class Crearpersona extends Component {
                                         />,
                                     )}
                                 </Form.Item>
-                                <Form.Item label="Numero de altura">
+                                <Form.Item label="Barrio">
+                                    {getFieldDecorator('barrio', {
+                                        rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                    })(
+                                        <Input
+                                            type="text"
+                                            placeholder="barrio"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item label="Altura">
                                     {getFieldDecorator('altura', {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="altura"
                                         />,
                                     )}
@@ -1089,13 +1102,13 @@ class Crearpersona extends Component {
                                 {/* <Form.Item label="Fecha de Ingreso">
                                     {getFieldDecorator('fechadeingreso', config)(<DatePicker />)}
                                 </Form.Item> */}
-                                <Form.Item label="Resolucion">
+                                <Form.Item label="Inst.legal">
                                     {getFieldDecorator('resolucion', {
                                         rules: [{ required: false, message: 'Ingrese un dato!' }],
                                     })(
                                         <Input
                                             type="text"
-                                            placeholder="resolucion"
+                                            placeholder="Inst.legal"
                                         />,
                                     )}
                                 </Form.Item>

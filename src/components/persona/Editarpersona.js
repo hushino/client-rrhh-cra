@@ -79,6 +79,7 @@ function Editarpersona(props) {
             domicilio: data.domicilio,
             lugar: data.lugar,
             calle: data.calle,
+            barrio: data.barrio,
             numero: data.numero,
             telefonofijo: data.telefonofijo,
             numerodecelular: data.numerodecelular,
@@ -404,6 +405,17 @@ function Editarpersona(props) {
                                                     type="text"
                                                     placeholder={data.calle}
                                                     setFieldsValue={data.calle}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item label="Barrio">
+                                            {getFieldDecorator('barrio', {
+                                                rules: [{ required: false, message: 'Ingrese un dato!' }],
+                                            })(
+                                                <Input
+                                                    type="text"
+                                                    placeholder={data.barrio}
+                                                    setFieldsValue={data.barrio}
                                                 />,
                                             )}
                                         </Form.Item>
@@ -1062,7 +1074,7 @@ function Editarpersona(props) {
                                                 />,
                                             )}
                                         </Form.Item>
-                                        <Form.Item label="Resolucion">
+                                        <Form.Item label="Inst.legal">
                                             {getFieldDecorator('resolucion', {
                                                 rules: [{ required: false, message: 'Ingrese un dato!' }],
                                             })(
