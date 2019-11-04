@@ -128,7 +128,7 @@ class Crearpersona extends Component {
     };
 
 
-    postData = () => axios.post(`http://localhost:8080/api/addPersona`, this.payload)
+    postData = () => axios.post(`http://localhost:8080/rrhh-server/api/addPersona`, this.payload)
         .then(function (response) {
             //console.log(response.data)
             const info = () => {

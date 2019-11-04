@@ -27,7 +27,7 @@ function Viewpersona(props) {
             size: e.target.value,
         });
     };
-    const fetchData = () => axios.get(`http://localhost:8080/api/viewpersona/${dataIndex}`)
+    const fetchData = () => axios.get(`http://localhost:8080/rrhh-server/api/viewpersona/${dataIndex}`)
         .then(function (response) {
             // console.log(response.data)
             setData(response.data)
@@ -127,7 +127,7 @@ function Viewpersona(props) {
         ) : <span>...</span>;
 
 
-    const eliminar = () => axios.delete(`http://localhost:8080/api/delete/${dataIndex}`)
+    const eliminar = () => axios.delete(`http://localhost:8080/rrhh-server/api/delete/${dataIndex}`)
         .then(function (response) {
             const info = () => {
                 message.info('Exito al Borrar');
