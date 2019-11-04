@@ -63,8 +63,6 @@ class Crearpersona extends Component {
         familiaracargonombre: "",
         familiaracargodni2: '',
         familiaracargodni: '',
-
-
         familiaracargonombre3: '',
         familiaracargonombre4: '',
         familiaracargonombre5: '',
@@ -72,7 +70,6 @@ class Crearpersona extends Component {
         familiaracargodni4: '',
         familiaracargodni5: '',
         familiaracargoedad: '',
-
         familiaracargoedad2: '',
         familiaracargoedad3: '',
         familiaracargoedad4: '',
@@ -116,8 +113,6 @@ class Crearpersona extends Component {
         grupofamiliarapellidonombredni9: '',
         grupofamiliarapellidonombredni10: '',
         grupofamiliarapellidonombredni11: '',
-
-
         grupofamiliarapellidonombrefamiliar: '',
         grupofamiliarapellidonombrefamiliar2: '',
         grupofamiliarapellidonombrefamiliar4: '',
@@ -129,12 +124,11 @@ class Crearpersona extends Component {
         grupofamiliarapellidonombrefamiliar9: '',
         grupofamiliarapellidonombrefamiliar10: '',
         grupofamiliarapellidonombrefamiliar11: '',
-
         barrio: '',
     };
 
 
-    postData = () => axios.post(`http://localhost:8080/rrhh-server/api/addPersona`, this.payload)
+    postData = () => axios.post(`http://localhost:8080/api/addPersona`, this.payload)
         .then(function (response) {
             //console.log(response.data)
             const info = () => {
@@ -174,7 +168,9 @@ class Crearpersona extends Component {
                 this.payload.foto = res.data[0].filename
             }
             this.postData()
-        })
+        }).catch(function (error) {
+            this.postData()
+          })
     }
 
     handleSubmit = (e) => {

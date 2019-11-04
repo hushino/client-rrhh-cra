@@ -28,7 +28,7 @@ function App() {
     if (isSubscribed) {
     const fetchData = async () => {
       reduxsub = store.subscribe( async () => {
-        const response = await axios.get('http://localhost:8080/rrhh-server/api/', {
+        const response = await axios.get('http://localhost:8080/api/', {
           headers: {
             Authorization: store.getState().Authorization
           }

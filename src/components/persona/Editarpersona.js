@@ -25,7 +25,7 @@ function Editarpersona(props) {
         scroll.scrollToTop();
     }
 
-    const postData = (values) => axios.post(`http://localhost:8080/rrhh-server/api/updatepersona/${dataIndex}`, values)
+    const postData = (values) => axios.post(`http://localhost:8080/api/updatepersona/${dataIndex}`, values)
         .then(function (response) {
             //console.log(response.data)
             const info = () => {
@@ -45,7 +45,7 @@ function Editarpersona(props) {
         })
 
     useLayoutEffect(() => {
-        const getData = () => axios.get(`http://localhost:8080/rrhh-server/api/viewpersona/${dataIndex}`)
+        const getData = () => axios.get(`http://localhost:8080/api/viewpersona/${dataIndex}`)
             .then(function (response) {
                 //console.log(response.data)
                 setData(response.data)
@@ -208,7 +208,9 @@ function Editarpersona(props) {
             }
             //console.log(values.foto)
             postData(values)
-        })
+        }).catch(function (error) {
+             postData(values)
+          })
     }
     const handleSubmit = (e) => {
         e.preventDefault();
