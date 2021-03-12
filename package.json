@@ -20,7 +20,7 @@
     "electron-log": "^3.0.8",
     "electron-updater": "^4.1.2",
     "express": "^4.17.1",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "less-loader": "^5.0.0",
     "node-notifier": "^6.0.0",
     "react": "^16.10.2",
